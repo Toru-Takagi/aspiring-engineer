@@ -1,0 +1,188 @@
+$main_color: #5F5E5E;
+$sub_color: #3D3D3D;
+$accent_color: #CA3E47;
+$white: #F5F7FA;
+$twitter_color: #1DA0F1;
+$qiita_color: #58BA0C;
+$note_color: #41C9B4;
+
+$footer_toggle_button_top: 15px;
+$footer_toggle_button_size: 70px;
+$profile_area_size: 300px;
+$profile_icon_size: 100px;
+$sns_icon_size: 20px;
+
+:export {
+  white: $white;
+  twitterColor: $twitter_color;
+  noteColor: $note_color;
+  snsIconSize: $sns_icon_size;
+}
+
+html, body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $sub_color;
+  /* overflow: hidden; */
+}
+
+div {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+span {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  height: auto;
+}
+
+#default-layout {
+  position: relative;
+  padding: 20px 20px 0 20px;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  background-color: $main_color; /* 削除予定 */
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  .toggle-button {
+    position: absolute;
+    top: $footer_toggle_button_top;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $footer_toggle_button_size;
+    height: $footer_toggle_button_size;
+    background-color: $accent_color;
+    z-index: 100;
+  }
+  #footer-background {
+    position: absolute;
+    bottom: 0;
+    border-radius: 30px 30px 0 0;
+    height: calc(100% - #{$footer_toggle_button_top} - #{$footer_toggle_button_size / 2});
+    background-color: $main_color;
+    #footer-container {
+      position: relative;
+      display: flex;
+      padding: 35px 35px 10px 35px;
+      #profile-area {
+        display: flex;
+        width: $profile_area_size;
+        #profile {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: $profile_icon_size;
+          color: $white;
+          .user-icon {
+            width: $profile_icon_size;
+            height: $profile_icon_size;
+            img {
+              border-radius: 15px;
+            }
+          }
+        }
+        .sns-area {
+          margin-left: 30px;
+          ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            list-style: none;
+            li {
+              display: flex;
+              span {
+                margin-left: 8px;
+              }
+              &.twitter span {
+                color: $twitter_color;
+              }
+              &.qiita {
+                div {
+                  width: $sns_icon_size;
+                  height: $sns_icon_size;
+                }
+                span {
+                  color: $qiita_color;
+                }
+              }
+              &.note span {
+                color: #41C9B4;
+              }
+              &.mail span {
+                color: $white;
+              }
+            }
+          }
+        }      
+      }
+      #category-area {
+        padding: 0 20px;
+        width: calc((100% - #{$profile_area_size}) / 2);
+        #category-list {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0;
+          padding: 0;
+          height: calc(100% - 20px);
+          overflow: auto;
+          li {
+            margin: 0.25em;
+          }
+          .tag {
+            height: auto;
+            margin: 5px;
+            color: $accent_color;
+            background-color: $sub_color;
+          }
+        }
+      }
+      #like-article-area {
+        width: calc((100% - #{$profile_area_size}) / 2);
+        ul {
+          margin-top: 0;
+          height: calc(100% - 20px);
+          overflow-x: hidden;
+          overflow-y: auto;
+          white-space: nowrap;
+          li {
+            margin-top: 0.25em;
+            list-style-type: disc;
+            color: $white;
+          }
+        }
+      }
+      .sub-title {
+        color:$white;
+        height: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
