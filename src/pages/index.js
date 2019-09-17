@@ -8,7 +8,7 @@ import LikeIcon from '../components/atoms/icons/likeIcon'
 import NotLikeIcon from '../components/atoms/icons/notLikeIcon'
 import './index.scss'
 
-export default () => (
+export default (props) => (
   <Layout>
     <div>
       <header>
@@ -20,25 +20,46 @@ export default () => (
         <SearchIcon />
       </div>
       <div id='article-area'>
-        <article>
-          <Image filename='header' />
-          <h1>IT研修でVuePress+Express+Nuxt on Dockerでシステムを作成した話</h1>
-          <div class='article-tag'>2019/08/09</div>
-          <LikeIcon />
-        </article>
-        <article>
-          <Image filename='header' />
-          <h1>Nuxt.js＋Firebase Cloud Messaging(FCM)を使ったPWA化が簡単で衝撃的だった</h1>
-          <div class='article-tag'>2019/08/09</div>
-          <NotLikeIcon />
-        </article>
-        <article>
-          <Image filename='header' />
-          <h1>JSのフレームワークを知らない人間がVue.jsを2ヵ月触ってみたって話</h1>
-          <div class='article-tag'>2019/08/09</div>
-          <LikeIcon />
-        </article>
+        {
+          props.data.allContentfulArticle.nodes.map((article) => {
+            return (
+              <article>
+                <Image filename='header' />
+                <h1>{ article.title }</h1>
+                <div class='article-tag'>
+                  {
+                    (() => {
+                      const date = new Date(article.createdAt)
+                      let month = date.getMonth() + 1
+                      month = month > 9 ? month : '0' + month
+                      const day = date.getDay() > 9 ? date.getDay() : '0' + date.getDay()
+                      const result = date.getFullYear() + '/' + month + '/' + day
+                      return result
+                    })() 
+                  }
+                </div>
+                <NotLikeIcon />
+              </article>
+            )
+          })
+        }
       </div>
     </div>
   </Layout>
 )
+
+export const articleQuery = graphql`
+  query MyQuery {
+    allContentfulArticle(sort: {order: DESC, fields: createdAt}) {
+      nodes {
+        id
+        title
+        content {
+          content
+        }
+        createNumber
+        createdAt
+      }
+    }
+  }
+`

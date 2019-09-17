@@ -29,6 +29,13 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `q5pi73rk26ss`,
+        accessToken: `CuqHO-IaP4CA6N-hKeaRSV25KqVCESvzrJxJC6GHHqo`,
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
