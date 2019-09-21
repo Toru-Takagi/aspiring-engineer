@@ -1,12 +1,4 @@
-$main_color: #5F5E5E;
-$sub_color: #3D3D3D;
-$accent_color: #CA3E47;
-$white: #F5F7FA;
-$twitter_color: #1DA0F1;
-$qiita_color: #58BA0C;
-$note_color: #41C9B4;
-$scroll_bar_background_color: rgba(202, 62, 62, .2);
-$scroll_bar_color: rgba(61, 61, 61, .9);
+@import './colors.scss';
 
 $footer_toggle_button_top: 15px;
 $footer_toggle_button_size: 70px;

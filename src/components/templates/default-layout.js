@@ -7,11 +7,11 @@ import TwitterIcon from '../atoms/icons/twitterIcon'
 import NoteIcon from '../atoms/icons/noteIcon'
 import MailIcon from '../atoms/icons/mailIcon'
 
-import scssVar from './default-layout.scss'
+import scssVar from '../../scss/default-layout.scss'
 
 const Layout = (props) => {
   const { children } = props
-  const [footerHeight, setFooterHeight] = useState(225)
+  const [footerHeight] = useState(225)
   const mainStyle = {
     height: 'calc(100% - ' + footerHeight + 'px)'
   }
@@ -22,35 +22,35 @@ const Layout = (props) => {
     <div id='default-layout'>
       <main style={ mainStyle }>{children}</main>
       <footer style={ footerStyle }>
-        <div class='toggle-button'>
+        <div className='toggle-button'>
           <ArrowIcon iconColor={ scssVar.white } size='40px' />
         </div>
         <div id='footer-background'>
           <div id='footer-container'>
             <div id='profile-area'>
               <div id='profile'>
-                <div class='user-icon'>
+                <div className='user-icon'>
                   <Image filename='user-icon.png' />
                 </div>
-                <span class='profile-name'>Toru Takagi</span>
+                <span className='profile-name'>Toru Takagi</span>
               </div>
-              <div class='sns-area'>
+              <div className='sns-area'>
                 <ul>
-                  <li class='twitter'>
+                  <li className='twitter'>
                     <TwitterIcon iconColor={ scssVar.twitterColor } size={ scssVar.snsIconSize} />
                     <span>Twitter</span>
                   </li>
-                  <li class='qiita'>
+                  <li className='qiita'>
                     <div>
                       <Image filename='qiita-square.png' />
                     </div>
                     <span>Qiita</span>
                   </li>
-                  <li class='note'>
+                  <li className='note'>
                     <NoteIcon backgroundColor={ scssVar.noteColor } iconColor='#FFFFFF' size={ scssVar.snsIconSize } />
                     <span>note</span>
                   </li>
-                  <li class='mail'>
+                  <li className='mail'>
                     <MailIcon iconColor={ scssVar.white } size={ scssVar.snsIconSize } />
                     <span>mail</span>
                   </li>
@@ -58,7 +58,7 @@ const Layout = (props) => {
               </div>
             </div>
             <div id='category-area'>
-              <span class='sub-title'>カテゴリ一覧</span>
+              <span className='sub-title'>カテゴリ一覧</span>
               <ul id='category-list'>
                 <li><Tag itemName='Vue.js (3)' bgColor='#3D3D3D' color='#CA3E47' /></li>
                 <li><Tag itemName='VuePress (5)' bgColor='#3D3D3D' color='#CA3E47' /></li>
@@ -91,7 +91,7 @@ const Layout = (props) => {
               </ul>
             </div>
             <div id='like-article-area'>
-              <span class='sub-title'>お気に入り</span>
+              <span className='sub-title'>お気に入り</span>
               <ul>
                 <li>IT研修でVuePress+Express+Nuxt on Dockerでシステムを作成した話</li>
                 <li>JSのフレームワークを知らない人間がVue.jsを2ヵ月触ってみたって話</li>

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Layout from '../components/template/default-layout'
+import Layout from '../components/templates/default-layout'
 import Image from '../components/atoms/gatsbyImage'
 import AspiringEngineer from '../components/atoms/aspiringEngineer'
 import SearchIcon from '../components/atoms/icons/searchIcon'
-import LikeIcon from '../components/atoms/icons/likeIcon'
+// import LikeIcon from '../components/atoms/icons/likeIcon'
 import NotLikeIcon from '../components/atoms/icons/notLikeIcon'
-import './index.scss'
+import '../scss/index.scss'
 
 export default (props) => (
   <Layout>
@@ -21,12 +21,12 @@ export default (props) => (
       </div>
       <div id='article-area'>
         {
-          props.data.allContentfulArticle.nodes.map((article) => {
+          props.data.allContentfulArticle.nodes.map((article, index) => {
             return (
-              <article>
+              <article key={ index }>
                 <Image filename='header' />
                 <h1>{ article.title }</h1>
-                <div class='article-tag'>
+                <div className='article-tag'>
                   {
                     (() => {
                       const date = new Date(article.createdAt)
