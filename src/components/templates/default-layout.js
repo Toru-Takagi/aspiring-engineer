@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import CategoryArea from '../molecules/category-area'
 import Image from '../atoms/gatsbyImage'
-import Tag from '../atoms/tag'
 import ArrowIcon from '../atoms/icons/arrowIcon'
 import TwitterIcon from '../atoms/icons/twitterIcon'
 import NoteIcon from '../atoms/icons/noteIcon'
@@ -57,39 +57,7 @@ const Layout = (props) => {
                 </ul>
               </div>
             </div>
-            <div id='category-area'>
-              <span className='sub-title'>カテゴリ一覧</span>
-              <ul id='category-list'>
-                <li><Tag itemName='Vue.js (3)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='VuePress (5)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Riot.js (14)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='React (1)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Nuxt.js (3)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Docker (34)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='AWS (3)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='PHP (2)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='HTML (4)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='JavaScript (5)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='CSS (4)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Node.js (59)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Java (3)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Express (12)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='FuelPHP (4)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Laravel (4)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='CakePHP (2)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Gatsby (9)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Kubernetes (73)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='ECS (43)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Python (3)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Firebase (5)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Visual Studio Code (45)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Apache (4)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='CentOS (7)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='Cerny.js (9)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='MySQL (45)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-                <li><Tag itemName='PostgreSQL (4)' bgColor='#3D3D3D' color='#CA3E47' /></li>
-              </ul>
-            </div>
+            <CategoryArea />
             <div id='like-article-area'>
               <span className='sub-title'>お気に入り</span>
               <ul>
