@@ -27,7 +27,7 @@ export default () => {
   `)
   return (
     <Layout>
-      <div>
+      <div id='home'>
         <header>
           <Image filename='header' />
           <AspiringEngineer />
