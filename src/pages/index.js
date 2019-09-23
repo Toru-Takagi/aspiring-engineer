@@ -40,25 +40,27 @@ export default () => {
           {
             data.allContentfulArticle.nodes.map((article, index) => {
               return (
-                <Link to={ `/article/${ article.createNumber }` }  key={ index }>
-                  <article>
-                    <Image filename='header' />
-                    <h1>{ article.title }</h1>
-                    <div className='article-tag'>
-                      {
-                        (() => {
-                          const date = new Date(article.createdAt)
-                          let month = date.getMonth() + 1
-                          month = month > 9 ? month : '0' + month
-                          const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
-                          const result = date.getFullYear() + '/' + month + '/' + day
-                          return result
-                        })() 
-                      }
-                    </div>
-                    <NotLikeIcon />
-                  </article>
-                </Link>
+                <div class='article-bg'>
+                  <Link to={ `/article/${ article.createNumber }` }  key={ index }>
+                    <article>
+                      <Image filename='header' />
+                      <h1>{ article.title }</h1>
+                      <div className='article-tag'>
+                        {
+                          (() => {
+                            const date = new Date(article.createdAt)
+                            let month = date.getMonth() + 1
+                            month = month > 9 ? month : '0' + month
+                            const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
+                            const result = date.getFullYear() + '/' + month + '/' + day
+                            return result
+                          })() 
+                        }
+                      </div>
+                      <NotLikeIcon />
+                    </article>
+                  </Link>
+                </div>
               )
             })
           }

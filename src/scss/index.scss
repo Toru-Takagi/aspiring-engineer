@@ -52,11 +52,19 @@
 
 #article-area {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: 30px;
   height: calc(70% - 90px);
   overflow-y: scroll;
+  .article-bg {
+    flex-basis: 33%;
+    display: flex;
+    justify-content: center;
+    a {
+      width: 300px;
+    }
+  }
   article {
     border-radius: 15px;
     width: 300px;
