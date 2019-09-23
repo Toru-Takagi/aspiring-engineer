@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import Layout from '../components/templates/default-layout'
 import Image from '../components/atoms/gatsbyImage'
@@ -40,23 +40,25 @@ export default () => {
           {
             data.allContentfulArticle.nodes.map((article, index) => {
               return (
-                <article key={ index }>
-                  <Image filename='header' />
-                  <h1>{ article.title }</h1>
-                  <div className='article-tag'>
-                    {
-                      (() => {
-                        const date = new Date(article.createdAt)
-                        let month = date.getMonth() + 1
-                        month = month > 9 ? month : '0' + month
-                        const day = date.getDay() > 9 ? date.getDay() : '0' + date.getDay()
-                        const result = date.getFullYear() + '/' + month + '/' + day
-                        return result
-                      })() 
-                    }
-                  </div>
-                  <NotLikeIcon />
-                </article>
+                <Link to={ `/article/${ article.createNumber }` }  key={ index }>
+                  <article>
+                    <Image filename='header' />
+                    <h1>{ article.title }</h1>
+                    <div className='article-tag'>
+                      {
+                        (() => {
+                          const date = new Date(article.createdAt)
+                          let month = date.getMonth() + 1
+                          month = month > 9 ? month : '0' + month
+                          const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
+                          const result = date.getFullYear() + '/' + month + '/' + day
+                          return result
+                        })() 
+                      }
+                    </div>
+                    <NotLikeIcon />
+                  </article>
+                </Link>
               )
             })
           }
