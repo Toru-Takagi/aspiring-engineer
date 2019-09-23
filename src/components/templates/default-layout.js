@@ -11,18 +11,23 @@ import scssVar from '../../scss/default-layout.scss'
 
 const Layout = (props) => {
   const { children } = props
-  const [footerHeight] = useState(225)
+  const [footerHeight, setFooterHeight] = useState(225)
+  const [toggleFlag, setToggleFlag] = useState(true)
   const mainStyle = {
     height: 'calc(100% - ' + footerHeight + 'px)'
   }
   const footerStyle = {
     height: footerHeight + 'px'
   }
+  const toggle = () => {
+    setFooterHeight(toggleFlag ? 87 : 225)
+    setToggleFlag(!toggleFlag)
+  }
   return (
     <div id='default-layout'>
       <main style={ mainStyle }>{children}</main>
       <footer style={ footerStyle }>
-        <div className='toggle-button'>
+        <div className={ 'toggle-button' + ' ' + (toggleFlag ? '' : 'reverse') } onClick={ toggle }>
           <ArrowIcon iconColor={ scssVar.white } size='40px' />
         </div>
         <div id='footer-background'>

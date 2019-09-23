@@ -40,8 +40,8 @@ export default () => {
           {
             data.allContentfulArticle.nodes.map((article, index) => {
               return (
-                <div class='article-bg'>
-                  <Link to={ `/article/${ article.createNumber }` }  key={ index }>
+                <div className='article-bg' key={ index }>
+                  <Link to={ `/article/${ article.createNumber }` }>
                     <article>
                       <Image filename='header' />
                       <h1>{ article.title }</h1>

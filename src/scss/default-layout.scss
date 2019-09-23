@@ -84,6 +84,7 @@ main {
 footer {
   position: relative;
   width: 100%;
+  font-size: 1.2rem;
   .toggle-button {
     position: absolute;
     top: $footer_toggle_button_top;
@@ -98,6 +99,9 @@ footer {
     height: $footer_toggle_button_size;
     background-color: $accent_color;
     z-index: 100;
+    &:hover {
+      cursor: pointer;
+    }
   }
   #footer-background {
     position: absolute;
@@ -217,3 +221,6 @@ footer {
   }
 }
 
+.reverse {
+  transform: rotateX(180deg)
+}
