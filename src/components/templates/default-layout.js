@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import CategoryArea from '../molecules/category-area'
 import Image from '../atoms/gatsbyImage'
@@ -20,14 +20,21 @@ const Layout = (props) => {
     height: footerHeight + 'px'
   }
   const toggle = () => {
+    let flag = !toggleFlag
+    localStorage.setItem('toggleFlag', flag)
     setFooterHeight(toggleFlag ? 87 : 225)
-    setToggleFlag(!toggleFlag)
+    setToggleFlag(flag)
   }
+  useEffect(() => {
+    let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
+    setFooterHeight(flag ? 225 : 87)
+    setToggleFlag(flag)
+  }, [])
   return (
     <div id='default-layout'>
       <main style={ mainStyle }>{children}</main>
       <footer style={ footerStyle }>
-        <div className={ 'toggle-button' + ' ' + (toggleFlag ? '' : 'reverse') } onClick={ toggle }>
+        <div className={ 'toggle-button' + (toggleFlag ? '' : ' reverse') } onClick={ toggle }>
           <ArrowIcon iconColor={ scssVar.white } size='40px' />
         </div>
         <div id='footer-background'>
