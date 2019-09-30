@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useSelector, useDispatch } from 'react-redux';
 
 import Layout from '../components/templates/default-layout'
 import Image from '../components/atoms/gatsbyImage'
 import AspiringEngineer from '../components/atoms/aspiringEngineer'
 import SearchIcon from '../components/atoms/icons/searchIcon'
-// import LikeIcon from '../components/atoms/icons/likeIcon'
+import LikeIcon from '../components/atoms/icons/likeIcon'
 import NotLikeIcon from '../components/atoms/icons/notLikeIcon'
 import '../scss/index.scss'
 
@@ -25,6 +26,28 @@ export default () => {
       }
     }
   `)
+  const likeMap = useSelector(state => state.likeMap, []);
+  const dispatch = useDispatch()
+  const clickLike = (e) => {
+    let createNumber = e.currentTarget.getAttribute('data-create-number')
+    let title = e.currentTarget.getAttribute('data-title')
+
+    if (e.currentTarget.getAttribute('data-like') === 'true') {
+      likeMap.delete(createNumber)
+    } else {
+      likeMap.set(createNumber, {'createNumber': createNumber, 'title': title,})
+    }
+    dispatch({
+      type: 'SET_LIKE_MAP',
+      likeMap: likeMap,
+    })
+    let likeObject = {}
+    likeMap.forEach((value, key) => {
+      likeObject[key] = value
+    })
+    localStorage.setItem('likeObject', JSON.stringify(likeObject))
+    e.preventDefault()
+  }
   return (
     <Layout>
       <div id='home'>
@@ -57,7 +80,17 @@ export default () => {
                           })() 
                         }
                       </div>
-                      <NotLikeIcon />
+                      <div
+                        className='like-icon-area'
+                        data-like={ likeMap.get(article.createNumber.toString()) !== undefined ? true : false }
+                        data-create-number={ article.createNumber }
+                        data-title={ article.title }
+                        onClick={ clickLike }
+                      >
+                        {
+                          likeMap.get(article.createNumber.toString()) !== undefined ? <LikeIcon /> : <NotLikeIcon />
+                        }
+                      </div>
                     </article>
                   </Link>
                 </div>

@@ -36,7 +36,17 @@ module.exports = {
         accessToken: `CuqHO-IaP4CA6N-hKeaRSV25KqVCESvzrJxJC6GHHqo`,
       }
     },
-    `gatsby-transformer-remark`,
+    `gatsby-transformer-remark`,{
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        pathToCreateStoreModule: './src/state/createStore',
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false,
+        },
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

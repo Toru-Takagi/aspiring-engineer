@@ -97,11 +97,16 @@
     line-height: 30px;
     text-align: center;
   }
-  svg {
-    height: 30px;
+  .like-icon-area {
+    width: auto;
+    height: auto;
     position: absolute;
     bottom: 5px;
-    right: 7px;
-    color: #CA3E47;
+    right: 10px;
+    z-index: 100;
+    svg {
+      height: 30px;
+      color: #CA3E47;
+    }
   }
 }

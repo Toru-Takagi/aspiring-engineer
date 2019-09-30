@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'gatsby'
+import { useSelector, useDispatch } from 'react-redux';
+
 import PropTypes from 'prop-types'
 import CategoryArea from '../molecules/category-area'
 import Image from '../atoms/gatsbyImage'
@@ -13,6 +16,8 @@ const Layout = (props) => {
   const { children } = props
   const [footerHeight, setFooterHeight] = useState(225)
   const [toggleFlag, setToggleFlag] = useState(true)
+  const likeMap = useSelector(state => state.likeMap, []);
+  const dispatch = useDispatch()
   const mainStyle = {
     height: 'calc(100% - ' + footerHeight + 'px)'
   }
@@ -29,7 +34,12 @@ const Layout = (props) => {
     let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
     setFooterHeight(flag ? 225 : 87)
     setToggleFlag(flag)
-  }, [])
+
+    dispatch({
+      type: 'SET_LIKE_MAP',
+      likeMap: new Map(Object.entries(JSON.parse(localStorage.getItem('likeObject')))),
+    })
+  }, [dispatch])
   return (
     <div id='default-layout'>
       <main style={ mainStyle }>{children}</main>
@@ -73,12 +83,13 @@ const Layout = (props) => {
             <div id='like-article-area'>
               <span className='sub-title'>お気に入り</span>
               <ul>
-                <li>IT研修でVuePress+Express+Nuxt on Dockerでシステムを作成した話</li>
-                <li>JSのフレームワークを知らない人間がVue.jsを2ヵ月触ってみたって話</li>
-                <li>Nuxt.js＋Firebase Cloud Messaging(FCM)を使ったPWA化が簡単で衝撃的だった</li>
-                <li>MAMP3.5.1 Apache couldn't be started.</li>
-                <li>Eclipseを使ってSelenium-WebDriverを使ってみた</li>
-                <li>pyinstallerで躓いたところ～Pythonコードをexe化～</li>
+                {
+                  Array.from(likeMap.keys()).map(key => {
+                    return (
+                      <Link to={ `/article/${ key }` } key={ key }><li>{ likeMap.get(key).title }</li></Link>
+                    )
+                  })
+                }
               </ul>
             </div>
           </div>
