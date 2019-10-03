@@ -32,20 +32,13 @@ export default () => {
     let createNumber = e.currentTarget.getAttribute('data-create-number')
     let title = e.currentTarget.getAttribute('data-title')
 
-    if (e.currentTarget.getAttribute('data-like') === 'true') {
-      likeMap.delete(createNumber)
-    } else {
-      likeMap.set(createNumber, {'createNumber': createNumber, 'title': title,})
-    }
     dispatch({
-      type: 'SET_LIKE_MAP',
+      type: 'CLICK_LIKE',
+      likeFlag: e.currentTarget.getAttribute('data-like') === 'true',
       likeMap: likeMap,
+      createNumber: createNumber,
+      title: title,
     })
-    let likeObject = {}
-    likeMap.forEach((value, key) => {
-      likeObject[key] = value
-    })
-    localStorage.setItem('likeObject', JSON.stringify(likeObject))
     e.preventDefault()
   }
   return (
@@ -88,7 +81,11 @@ export default () => {
                         onClick={ clickLike }
                       >
                         {
-                          likeMap.get(article.createNumber.toString()) !== undefined ? <LikeIcon /> : <NotLikeIcon />
+                          likeMap.get(article.createNumber.toString()) !== undefined
+                            ?
+                              <LikeIcon />
+                            :
+                              <NotLikeIcon />
                         }
                       </div>
                     </article>
