@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -41,9 +41,16 @@ export default () => {
     })
     e.preventDefault()
   }
+  const [scrollFlag, setScrollFlag] = useState(false)
+  const scrollArticleArea = (e) => {
+    let isScrollTop = e.currentTarget.scrollTop === 0
+    if (!isScrollTop && !scrollFlag) {
+      setScrollFlag(true)
+    }
+  }
   return (
     <Layout>
-      <div id='home'>
+      <div id='home' className={ scrollFlag ? 'on-scroll' : '' }>
         <header>
           <Image filename='header' />
           <AspiringEngineer />
@@ -52,7 +59,7 @@ export default () => {
           <input type='text' placeholder='記事を検索'></input>
           <SearchIcon />
         </div>
-        <div id='article-area'>
+        <div id='article-area' onScroll={ scrollArticleArea }>
           {
             data.allContentfulArticle.nodes.map((article, index) => {
               return (

@@ -1,8 +1,17 @@
+
+::placeholder {
+  color: #F5F7FA;
+}
+
+$on_scroll_transition: 1s;
+
 #home {
   header {
-    height: 30%;
+    height: 200px;
+    transform-origin: top center;
+    will-change: transform;
+    transition: $on_scroll_transition;
     img {
-      border-radius: 15px 15px 0 0;
       object-position: center 55%;
     }
     svg {
@@ -11,102 +20,116 @@
       left: 0;
       right: 0;
       margin: 15px auto;
-      height: calc(30% - 30px);
+      height: calc(200px - 30px);
+      will-change: transform;
+      transition: $on_scroll_transition;
     }
   }
-}
-
-::placeholder {
-  color: #F5F7FA;
-}
-
-#search-area {
-  margin: 10px auto 0;
-  width: 40%;
-  height: 50px;
-  input {
-    box-sizing: border-box;
-    outline: none;
-    border: 1px solid #F5F7FA;
-    border-radius: 5px;
-    padding: 0 10px;
-    width: 100%;
-    height: 100%;
-    background-color: #5F5E5E;
-    font-size: 1.3rem;
-    color: #F5F7FA;
-    &:hover {
-      outline: none;
-    }
-  }
-  svg {
-    box-sizing: border-box;
-    padding: 10px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #CA3E47;
-  }
-}
-
-#article-area {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-top: 30px;
-  height: calc(70% - 90px);
-  overflow-y: scroll;
-  .article-bg {
-    flex-basis: 33%;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    a {
-      width: 300px;
-    }
-  }
-  article {
-    border-radius: 15px;
-    width: 300px;
-    height: 250px;
-    position: relative;
-    background-color: #F5F7FA;
-    .gatsby-image-wrapper {
-      width: 100%;
-      height: 100px;
-      border-radius: 15px 15px 0 0;
-    }
-    h1 {
+  #search-area {
+    margin: 10px auto 0;
+    width: 40%;
+    height: 50px;
+    will-change: transform;
+    transition: $on_scroll_transition;
+    input {
       box-sizing: border-box;
-      padding: 15px;
+      outline: none;
+      border: 1px solid #F5F7FA;
+      border-radius: 5px;
+      padding: 0 10px;
       width: 100%;
-      height: calc(100% - 100px);
-      font-size: 22px;
+      height: 100%;
+      background-color: #5F5E5E;
+      font-size: 1.3rem;
+      color: #F5F7FA;
+      &:hover {
+        outline: none;
+      }
+    }
+    svg {
+      box-sizing: border-box;
+      padding: 10px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #CA3E47;
+    }
+  }
+  #article-area {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    height: calc(100% - 100px - 90px);
+    will-change: $on_scroll_transition;
+    transition: $on_scroll_transition;
+    overflow-y: scroll;
+    .article-bg {
+      flex-basis: 33%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      a {
+        width: 300px;
+      }
+    }
+    article {
+      border-radius: 15px;
+      width: 300px;
+      height: 250px;
+      position: relative;
+      background-color: #F5F7FA;
+      .gatsby-image-wrapper {
+        width: 100%;
+        height: 100px;
+        border-radius: 15px 15px 0 0;
+      }
+      h1 {
+        box-sizing: border-box;
+        padding: 15px;
+        width: 100%;
+        height: calc(100% - 100px);
+        font-size: 22px;
+        text-align: center;
+      }
+    }
+    .article-tag {
+      width: 80px;
+      height: 30px;
+      position: absolute;
+      top: 85px;
+      left: 0;
+      background-color: #CA3E47;
+      color: #F5F7FA;
+      line-height: 30px;
       text-align: center;
     }
+    .like-icon-area {
+      width: auto;
+      height: auto;
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      z-index: 100;
+      svg {
+        height: 30px;
+        color: #CA3E47;
+      }
+    }
   }
-  .article-tag {
-    width: 80px;
-    height: 30px;
-    position: absolute;
-    top: 85px;
-    left: 0;
-    background-color: #CA3E47;
-    color: #F5F7FA;
-    line-height: 30px;
-    text-align: center;
-  }
-  .like-icon-area {
-    width: auto;
-    height: auto;
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    z-index: 100;
-    svg {
-      height: 30px;
-      color: #CA3E47;
+  &.on-scroll {
+    header {
+      transform: translateY(-100px);
+      svg {
+        transform: scale(0.5) translateY(100px);
+      }
+    }
+    #search-area {
+      transform: translateY(-100px);
+    }
+    #article-area  {
+      transform: translateY(-100px);
     }
   }
 }
