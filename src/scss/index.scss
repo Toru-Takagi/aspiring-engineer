@@ -1,6 +1,5 @@
-
 ::placeholder {
-  color: #F5F7FA;
+  color: #f5f7fa;
 }
 
 $on_scroll_transition: 1s;
@@ -34,14 +33,14 @@ $on_scroll_transition: 1s;
     input {
       box-sizing: border-box;
       outline: none;
-      border: 1px solid #F5F7FA;
+      border: 1px solid #f5f7fa;
       border-radius: 5px;
       padding: 0 10px;
       width: 100%;
       height: 100%;
-      background-color: #5F5E5E;
+      background-color: #5f5e5e;
       font-size: 1.3rem;
-      color: #F5F7FA;
+      color: #f5f7fa;
       &:hover {
         outline: none;
       }
@@ -53,7 +52,7 @@ $on_scroll_transition: 1s;
       position: absolute;
       top: 0;
       right: 0;
-      color: #CA3E47;
+      color: #ca3e47;
     }
   }
   #article-area {
@@ -79,7 +78,7 @@ $on_scroll_transition: 1s;
       width: 300px;
       height: 250px;
       position: relative;
-      background-color: #F5F7FA;
+      background-color: #f5f7fa;
       .gatsby-image-wrapper {
         width: 100%;
         height: 100px;
@@ -100,8 +99,8 @@ $on_scroll_transition: 1s;
       position: absolute;
       top: 85px;
       left: 0;
-      background-color: #CA3E47;
-      color: #F5F7FA;
+      background-color: #ca3e47;
+      color: #f5f7fa;
       line-height: 30px;
       text-align: center;
     }
@@ -114,7 +113,7 @@ $on_scroll_transition: 1s;
       z-index: 100;
       svg {
         height: 30px;
-        color: #CA3E47;
+        color: #ca3e47;
       }
     }
   }
@@ -128,7 +127,7 @@ $on_scroll_transition: 1s;
     #search-area {
       transform: translateY(-100px);
     }
-    #article-area  {
+    #article-area {
       transform: translateY(-100px);
     }
   }

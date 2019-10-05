@@ -1,7 +1,7 @@
 @import '../scss/colors.scss';
 
 :export {
-  white: $white
+  white: $white;
 }
 
 #article {
@@ -20,7 +20,7 @@
       justify-content: space-around;
       color: $white;
       text-align: center;
-      background-color: rgba(0, 0, 0, .4);
+      background-color: rgba(0, 0, 0, 0.4);
       .article-title {
         font-size: 2.5rem;
       }

@@ -16,7 +16,7 @@ $sns_icon_size: 20px;
 ::-webkit-scrollbar {
   width: 10px;
   background: $scroll_bar_background_color;
-  opacity: .1;
+  opacity: 0.1;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
@@ -25,7 +25,8 @@ $sns_icon_size: 20px;
   background-color: $accent_color;
 }
 
-html, body {
+html,
+body {
   position: relative;
   margin: 0;
   padding: 0;
@@ -57,7 +58,12 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   font-size: 1rem;
@@ -107,7 +113,9 @@ footer {
     position: absolute;
     bottom: 0;
     border-radius: 30px 30px 0 0;
-    height: calc(100% - #{$footer_toggle_button_top} - #{$footer_toggle_button_size / 2});
+    height: calc(
+      100% - #{$footer_toggle_button_top} - #{$footer_toggle_button_size / 2}
+    );
     background-color: $main_color;
     #footer-container {
       position: relative;
@@ -160,14 +168,14 @@ footer {
                 }
               }
               &.note span {
-                color: #41C9B4;
+                color: #41c9b4;
               }
               &.mail span {
                 color: $white;
               }
             }
           }
-        }      
+        }
       }
       #category-area {
         padding: 0 20px;
@@ -199,7 +207,7 @@ footer {
           height: calc(100% - 20px);
           overflow-x: hidden;
           overflow-y: auto;
-          white-space: nowrap;          
+          white-space: nowrap;
           li {
             margin-top: 0.25em;
             margin-right: 0.75em;
@@ -207,13 +215,13 @@ footer {
             color: $white;
             overflow-x: hidden;
             &::before {
-              content: "◆ "
+              content: '◆ ';
             }
           }
         }
       }
       .sub-title {
-        color:$white;
+        color: $white;
         height: 20px;
         font-weight: bold;
       }
@@ -222,5 +230,5 @@ footer {
 }
 
 .reverse {
-  transform: rotateX(180deg)
+  transform: rotateX(180deg);
 }

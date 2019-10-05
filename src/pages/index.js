@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 
 import Layout from '../components/templates/default-layout'
 import Image from '../components/atoms/gatsbyImage'
@@ -13,7 +13,7 @@ import '../scss/index.scss'
 export default () => {
   const data = useStaticQuery(graphql`
     query IndexQuery {
-      allContentfulArticle(sort: {order: DESC, fields: createdAt}) {
+      allContentfulArticle(sort: { order: DESC, fields: createdAt }) {
         nodes {
           id
           title
@@ -26,9 +26,9 @@ export default () => {
       }
     }
   `)
-  const likeMap = useSelector(state => state.likeMap, []);
+  const likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
-  const clickLike = (e) => {
+  const clickLike = e => {
     let createNumber = e.currentTarget.getAttribute('data-create-number')
     let title = e.currentTarget.getAttribute('data-title')
 
@@ -42,7 +42,7 @@ export default () => {
     e.preventDefault()
   }
   const [scrollFlag, setScrollFlag] = useState(false)
-  const scrollArticleArea = (e) => {
+  const scrollArticleArea = e => {
     let isScrollTop = e.currentTarget.scrollTop === 0
     if (!isScrollTop && !scrollFlag) {
       setScrollFlag(true)
@@ -50,7 +50,7 @@ export default () => {
   }
   return (
     <Layout>
-      <div id='home' className={ scrollFlag ? 'on-scroll' : '' }>
+      <div id='home' className={scrollFlag ? 'on-scroll' : ''}>
         <header>
           <Image filename='header' />
           <AspiringEngineer />
@@ -59,52 +59,54 @@ export default () => {
           <input type='text' placeholder='記事を検索'></input>
           <SearchIcon />
         </div>
-        <div id='article-area' onScroll={ scrollArticleArea }>
-          {
-            data.allContentfulArticle.nodes.map((article, index) => {
-              return (
-                <div className='article-bg' key={ index }>
-                  <Link to={ `/article/${ article.createNumber }` }>
-                    <article>
-                      <Image filename='header' />
-                      <h1>{ article.title }</h1>
-                      <div className='article-tag'>
-                        {
-                          (() => {
-                            const date = new Date(article.createdAt)
-                            let month = date.getMonth() + 1
-                            month = month > 9 ? month : '0' + month
-                            const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
-                            const result = date.getFullYear() + '/' + month + '/' + day
-                            return result
-                          })() 
-                        }
-                      </div>
-                      <div
-                        className='like-icon-area'
-                        data-like={ likeMap.get(article.createNumber.toString()) !== undefined ? true : false }
-                        data-create-number={ article.createNumber }
-                        data-title={ article.title }
-                        onClick={ clickLike }
-                      >
-                        {
-                          likeMap.get(article.createNumber.toString()) !== undefined
-                            ?
-                              <LikeIcon />
-                            :
-                              <NotLikeIcon />
-                        }
-                      </div>
-                    </article>
-                  </Link>
-                </div>
-              )
-            })
-          }
+        <div id='article-area' onScroll={scrollArticleArea}>
+          {data.allContentfulArticle.nodes.map((article, index) => {
+            return (
+              <div className='article-bg' key={index}>
+                <Link to={`/article/${article.createNumber}`}>
+                  <article>
+                    <Image filename='header' />
+                    <h1>{article.title}</h1>
+                    <div className='article-tag'>
+                      {(() => {
+                        const date = new Date(article.createdAt)
+                        let month = date.getMonth() + 1
+                        month = month > 9 ? month : '0' + month
+                        const day =
+                          date.getDate() > 9
+                            ? date.getDate()
+                            : '0' + date.getDate()
+                        const result =
+                          date.getFullYear() + '/' + month + '/' + day
+                        return result
+                      })()}
+                    </div>
+                    <div
+                      className='like-icon-area'
+                      data-like={
+                        likeMap.get(article.createNumber.toString()) !==
+                        undefined
+                          ? true
+                          : false
+                      }
+                      data-create-number={article.createNumber}
+                      data-title={article.title}
+                      onClick={clickLike}
+                    >
+                      {likeMap.get(article.createNumber.toString()) !==
+                      undefined ? (
+                        <LikeIcon />
+                      ) : (
+                        <NotLikeIcon />
+                      )}
+                    </div>
+                  </article>
+                </Link>
+              </div>
+            )
+          })}
         </div>
       </div>
     </Layout>
   )
 }
-
-

@@ -13,11 +13,11 @@ import HatenaBookmarkIcon from '../components/atoms/icons/hatenaBookmarkIcon'
 
 import scssVar from '../scss/article.scss'
 
-export default (props) => {
+export default props => {
   const data = props.pageContext.data
   let likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
-  const clickLike = (e) => {
+  const clickLike = e => {
     dispatch({
       type: 'CLICK_LIKE',
       likeFlag: e.currentTarget.getAttribute('data-like') === 'true',
@@ -32,18 +32,17 @@ export default (props) => {
         <header>
           <Image filename='header' />
           <div className='article-title-area'>
-            <h1 className='article-title'>{ data.title }</h1>
+            <h1 className='article-title'>{data.title}</h1>
             <span className='date'>
-              {
-                (() => {
-                  const date = new Date(data.createdAt)
-                  let month = date.getMonth() + 1
-                  month = month > 9 ? month : '0' + month
-                  const day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
-                  const result = date.getFullYear() + '/' + month + '/' + day
-                  return result
-                })() 
-              }
+              {(() => {
+                const date = new Date(data.createdAt)
+                let month = date.getMonth() + 1
+                month = month > 9 ? month : '0' + month
+                const day =
+                  date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
+                const result = date.getFullYear() + '/' + month + '/' + day
+                return result
+              })()}
             </span>
           </div>
         </header>
@@ -51,22 +50,28 @@ export default (props) => {
           <div id='menu-bar'>
             <Link to='/'>
               <div className='menu-bar-item'>
-                <HomeIcon color={ scssVar.white } />
+                <HomeIcon color={scssVar.white} />
                 <span>Home</span>
               </div>
             </Link>
             <div
               className='menu-bar-item'
-              data-like={ likeMap.get(data.createNumber.toString()) !== undefined ? true : false }
-              onClick={ clickLike }
-            >
-              {
-                likeMap.get(data.createNumber.toString()) !== undefined ? <LikeIcon color={ scssVar.white } /> : <NotLikeIcon color={ scssVar.white } />
+              data-like={
+                likeMap.get(data.createNumber.toString()) !== undefined
+                  ? true
+                  : false
               }
+              onClick={clickLike}
+            >
+              {likeMap.get(data.createNumber.toString()) !== undefined ? (
+                <LikeIcon color={scssVar.white} />
+              ) : (
+                <NotLikeIcon color={scssVar.white} />
+              )}
               <span>Like</span>
             </div>
             <div className='menu-bar-item'>
-              <TwitterIcon color={ scssVar.white } />
+              <TwitterIcon color={scssVar.white} />
               <span>Twitter</span>
             </div>
             <div className='menu-bar-item'>
@@ -75,13 +80,24 @@ export default (props) => {
             </div>
           </div>
         </div>
-        <div className='article-main' dangerouslySetInnerHTML={{__html: data.content.childMarkdownRemark.html}}></div>
+        <div
+          className='article-main'
+          dangerouslySetInnerHTML={{
+            __html: data.content.childMarkdownRemark.html,
+          }}
+        ></div>
         <div className='tag-area'>
-          {
-            data.category.map((category, index) => {
-              return <span key={ index }><Tag itemName={ category.name } bgColor='#3D3D3D' color='#CA3E47' /></span>
-            })
-          }
+          {data.category.map((category, index) => {
+            return (
+              <span key={index}>
+                <Tag
+                  itemName={category.name}
+                  bgColor='#3D3D3D'
+                  color='#CA3E47'
+                />
+              </span>
+            )
+          })}
         </div>
       </div>
     </Layout>

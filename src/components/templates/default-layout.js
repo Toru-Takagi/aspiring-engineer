@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 
 import PropTypes from 'prop-types'
 import CategoryArea from '../molecules/category-area'
@@ -12,17 +12,17 @@ import MailIcon from '../atoms/icons/mailIcon'
 
 import scssVar from '../../scss/default-layout.scss'
 
-const Layout = (props) => {
+const Layout = props => {
   const { children } = props
   const [footerHeight, setFooterHeight] = useState(225)
   const [toggleFlag, setToggleFlag] = useState(true)
-  const likeMap = useSelector(state => state.likeMap, []);
+  const likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
   const mainStyle = {
-    height: 'calc(100% - ' + footerHeight + 'px)'
+    height: 'calc(100% - ' + footerHeight + 'px)',
   }
   const footerStyle = {
-    height: footerHeight + 'px'
+    height: footerHeight + 'px',
   }
   const toggle = () => {
     let flag = !toggleFlag
@@ -37,15 +37,20 @@ const Layout = (props) => {
 
     dispatch({
       type: 'SET_LIKE_MAP',
-      likeMap: new Map(Object.entries(JSON.parse(localStorage.getItem('likeObject')))),
+      likeMap: new Map(
+        Object.entries(JSON.parse(localStorage.getItem('likeObject')))
+      ),
     })
   }, [dispatch])
   return (
     <div id='default-layout'>
-      <main style={ mainStyle }>{children}</main>
-      <footer style={ footerStyle }>
-        <div className={ 'toggle-button' + (toggleFlag ? '' : ' reverse') } onClick={ toggle }>
-          <ArrowIcon iconColor={ scssVar.white } size='40px' />
+      <main style={mainStyle}>{children}</main>
+      <footer style={footerStyle}>
+        <div
+          className={'toggle-button' + (toggleFlag ? '' : ' reverse')}
+          onClick={toggle}
+        >
+          <ArrowIcon iconColor={scssVar.white} size='40px' />
         </div>
         <div id='footer-background'>
           <div id='footer-container'>
@@ -59,7 +64,10 @@ const Layout = (props) => {
               <div className='sns-area'>
                 <ul>
                   <li className='twitter'>
-                    <TwitterIcon iconColor={ scssVar.twitterColor } size={ scssVar.snsIconSize} />
+                    <TwitterIcon
+                      iconColor={scssVar.twitterColor}
+                      size={scssVar.snsIconSize}
+                    />
                     <span>Twitter</span>
                   </li>
                   <li className='qiita'>
@@ -69,11 +77,18 @@ const Layout = (props) => {
                     <span>Qiita</span>
                   </li>
                   <li className='note'>
-                    <NoteIcon backgroundColor={ scssVar.noteColor } iconColor='#FFFFFF' size={ scssVar.snsIconSize } />
+                    <NoteIcon
+                      backgroundColor={scssVar.noteColor}
+                      iconColor='#FFFFFF'
+                      size={scssVar.snsIconSize}
+                    />
                     <span>note</span>
                   </li>
                   <li className='mail'>
-                    <MailIcon iconColor={ scssVar.white } size={ scssVar.snsIconSize } />
+                    <MailIcon
+                      iconColor={scssVar.white}
+                      size={scssVar.snsIconSize}
+                    />
                     <span>mail</span>
                   </li>
                 </ul>
@@ -83,13 +98,13 @@ const Layout = (props) => {
             <div id='like-article-area'>
               <span className='sub-title'>お気に入り</span>
               <ul>
-                {
-                  Array.from(likeMap.keys()).map(key => {
-                    return (
-                      <Link to={ `/article/${ key }` } key={ key }><li>{ likeMap.get(key).title }</li></Link>
-                    )
-                  })
-                }
+                {Array.from(likeMap.keys()).map(key => {
+                  return (
+                    <Link to={`/article/${key}`} key={key}>
+                      <li>{likeMap.get(key).title}</li>
+                    </Link>
+                  )
+                })}
               </ul>
             </div>
           </div>
