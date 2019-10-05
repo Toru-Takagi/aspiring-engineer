@@ -14,25 +14,16 @@ import scssVar from '../../scss/default-layout.scss'
 
 const Layout = props => {
   const { children } = props
-  const [footerHeight, setFooterHeight] = useState(225)
   const [toggleFlag, setToggleFlag] = useState(true)
   const likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
-  const mainStyle = {
-    height: 'calc(100% - ' + footerHeight + 'px)',
-  }
-  const footerStyle = {
-    height: footerHeight + 'px',
-  }
   const toggle = () => {
     let flag = !toggleFlag
     localStorage.setItem('toggleFlag', flag)
-    setFooterHeight(toggleFlag ? 87 : 225)
     setToggleFlag(flag)
   }
   useEffect(() => {
     let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
-    setFooterHeight(flag ? 225 : 87)
     setToggleFlag(flag)
 
     dispatch({
@@ -44,10 +35,10 @@ const Layout = props => {
   }, [dispatch])
   return (
     <div id='default-layout'>
-      <main style={mainStyle}>{children}</main>
-      <footer style={footerStyle}>
+      <main className={toggleFlag ? '' : 'footer-open'}>{children}</main>
+      <footer>
         <div
-          className={'toggle-button' + (toggleFlag ? '' : ' reverse')}
+          className={'toggle-button' + (toggleFlag ? ' reverse' : '')}
           onClick={toggle}
         >
           <ArrowIcon iconColor={scssVar.white} size='40px' />
