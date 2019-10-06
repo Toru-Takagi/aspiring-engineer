@@ -40,12 +40,48 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
-        pathToCreateStoreModule: "./src/state/createStore",
+        pathToCreateStoreModule: './src/state/createStore',
         serialize: {
           space: 0,
           isJSON: true,
           unsafe: false,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: 'BJI7EFTZSF',
+        apiKey: '8b669f0ccad27b266831fda14655edd3',
+        indexName: 'aspiring-engineer',
+        chunkSize: 10000,
+        queries: [
+          {
+            query: `{
+              allContentfulArticle(sort: { order: DESC, fields: createdAt }) {
+                nodes {
+                  id
+                  title
+                  content {
+                    content
+                  }
+                  createNumber
+                  createdAt
+                }
+              }
+            }`,
+            transformer: ({ data }) =>
+              data.allContentfulArticle.nodes.map(article => {
+                return {
+                  id: article.id,
+                  title: article.title,
+                  content: article.content.content,
+                  createNumber: article.createNumber,
+                  createdAt: article.createdAt,
+                }
+              }),
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
