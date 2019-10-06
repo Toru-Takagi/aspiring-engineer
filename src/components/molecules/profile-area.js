@@ -19,7 +19,11 @@ export default () => {
       </div>
       <div className='sns-area'>
         <ul>
-          <a href='https://twitter.com/TTrpbm' target='_blank'>
+          <a
+            href='https://twitter.com/TTrpbm'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <li className='twitter'>
               <TwitterIcon
                 iconColor={scssColor.twitterColor}
@@ -28,7 +32,11 @@ export default () => {
               <span>Twitter</span>
             </li>
           </a>
-          <a href='https://qiita.com/TakagiToru' target='_blank'>
+          <a
+            href='https://qiita.com/TakagiToru'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <li className='qiita'>
               <div>
                 <Image filename='qiita-square.png' />
@@ -36,7 +44,11 @@ export default () => {
               <span>Qiita</span>
             </li>
           </a>
-          <a href='https://note.mu/toru_takagi' target='_blank'>
+          <a
+            href='https://note.mu/toru_takagi'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <li className='note'>
               <NoteIcon
                 backgroundColor={scssColor.noteColor}
