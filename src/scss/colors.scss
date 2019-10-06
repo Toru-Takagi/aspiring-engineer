@@ -7,3 +7,9 @@ $qiita_color: #58ba0c;
 $note_color: #41c9b4;
 $scroll_bar_background_color: rgba(202, 62, 62, 0.2);
 $scroll_bar_color: rgba(61, 61, 61, 0.9);
+
+:export {
+  twitterColor: $twitter_color;
+  noteColor: $note_color;
+  white: $white;
+}

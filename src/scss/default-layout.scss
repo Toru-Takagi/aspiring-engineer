@@ -1,10 +1,8 @@
 @import './colors.scss';
+@import './profile-area.scss';
 
 $footer_toggle_button_top: 15px;
 $footer_toggle_button_size: 70px;
-$profile_area_size: 300px;
-$profile_icon_size: 100px;
-$sns_icon_size: 20px;
 
 :export {
   white: $white;
@@ -131,62 +129,6 @@ footer {
       position: relative;
       display: flex;
       padding: 37px 35px 10px 35px;
-      #profile-area {
-        display: flex;
-        width: $profile_area_size;
-        #profile {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: center;
-          width: $profile_icon_size;
-          color: $white;
-          .user-icon {
-            width: $profile_icon_size;
-            height: $profile_icon_size;
-            img {
-              border-radius: 15px;
-            }
-          }
-        }
-        .sns-area {
-          margin-left: 30px;
-          ul {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            list-style: none;
-            li {
-              display: flex;
-              span {
-                margin-left: 8px;
-              }
-              &.twitter span {
-                color: $twitter_color;
-              }
-              &.qiita {
-                div {
-                  width: $sns_icon_size;
-                  height: $sns_icon_size;
-                }
-                span {
-                  color: $qiita_color;
-                }
-              }
-              &.note span {
-                color: #41c9b4;
-              }
-              &.mail span {
-                color: $white;
-              }
-            }
-          }
-        }
-      }
       #category-area {
         padding: 0 20px;
         width: calc((100% - #{$profile_area_size}) / 2);

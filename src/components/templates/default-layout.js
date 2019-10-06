@@ -3,12 +3,9 @@ import { Link } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 
 import PropTypes from 'prop-types'
+import ProfileArea from '../molecules/profile-area'
 import CategoryArea from '../molecules/category-area'
-import Image from '../atoms/gatsbyImage'
 import ArrowIcon from '../atoms/icons/arrowIcon'
-import TwitterIcon from '../atoms/icons/twitterIcon'
-import NoteIcon from '../atoms/icons/noteIcon'
-import MailIcon from '../atoms/icons/mailIcon'
 
 import scssVar from '../../scss/default-layout.scss'
 
@@ -45,46 +42,7 @@ const Layout = props => {
         </div>
         <div id='footer-background'>
           <div id='footer-container'>
-            <div id='profile-area'>
-              <div id='profile'>
-                <div className='user-icon'>
-                  <Image filename='user-icon.png' />
-                </div>
-                <span className='profile-name'>Toru Takagi</span>
-              </div>
-              <div className='sns-area'>
-                <ul>
-                  <li className='twitter'>
-                    <TwitterIcon
-                      iconColor={scssVar.twitterColor}
-                      size={scssVar.snsIconSize}
-                    />
-                    <span>Twitter</span>
-                  </li>
-                  <li className='qiita'>
-                    <div>
-                      <Image filename='qiita-square.png' />
-                    </div>
-                    <span>Qiita</span>
-                  </li>
-                  <li className='note'>
-                    <NoteIcon
-                      backgroundColor={scssVar.noteColor}
-                      iconColor='#FFFFFF'
-                      size={scssVar.snsIconSize}
-                    />
-                    <span>note</span>
-                  </li>
-                  <li className='mail'>
-                    <MailIcon
-                      iconColor={scssVar.white}
-                      size={scssVar.snsIconSize}
-                    />
-                    <span>mail</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ProfileArea />
             <CategoryArea />
             <div id='like-article-area'>
               <span className='sub-title'>お気に入り</span>
