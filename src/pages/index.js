@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 import algoliaSearch from 'algoliasearch'
@@ -66,6 +66,15 @@ export default () => {
       })
     }, 500)
   }
+  useEffect(() => {
+    let time = 300
+    document.querySelectorAll('.article-animation').forEach(elm => {
+      setTimeout(() => {
+        elm.classList.add('show-animation')
+      }, time)
+      time += 200
+    })
+  }, [])
   return (
     <Layout>
       <div id='home' className={scrollFlag ? 'on-scroll' : ''}>
@@ -92,7 +101,7 @@ export default () => {
               return (
                 <div className='article-bg' key={index}>
                   <Link to={`/article/${article.createNumber}`}>
-                    <article>
+                    <article className='article-animation'>
                       <Image filename='header' />
                       <h1>{article.title}</h1>
                       <div className='article-tag'>
