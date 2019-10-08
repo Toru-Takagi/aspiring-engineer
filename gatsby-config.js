@@ -65,6 +65,9 @@ module.exports = {
                   content {
                     content
                   }
+                  category {
+                    name
+                  }
                   createNumber
                   createdAt
                 }
@@ -77,6 +80,7 @@ module.exports = {
                   title: article.title,
                   content: article.content.content,
                   createNumber: article.createNumber,
+                  category: article.category.map(cate => cate.name),
                   createdAt: article.createdAt,
                 }
               }),
