@@ -63,10 +63,11 @@ export default () => {
     timer = setTimeout(() => {
       algoliaIndex.search({ query: value }).then(searchResult => {
         setArticleList(searchResult.hits)
+        showArticle()
       })
     }, 500)
   }
-  useEffect(() => {
+  const showArticle = () => {
     let time = 300
     document.querySelectorAll('.article-animation').forEach(elm => {
       setTimeout(() => {
@@ -74,6 +75,9 @@ export default () => {
       }, time)
       time += 200
     })
+  }
+  useEffect(() => {
+    showArticle()
   }, [])
   return (
     <Layout>
