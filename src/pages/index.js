@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 import algoliaSearch from 'algoliasearch'
+import Img from 'gatsby-image'
 
 import Layout from '../components/templates/default-layout'
 import Image from '../components/atoms/gatsbyImage'
@@ -23,6 +24,11 @@ export default () => {
           }
           createNumber
           createdAt
+          coverImage {
+            sizes(maxWidth: 1280) {
+              ...GatsbyContentfulSizes
+            }
+          }
         }
       }
     }
@@ -106,7 +112,7 @@ export default () => {
                 <div className='article-bg' key={index}>
                   <Link to={`/article/${article.createNumber}`}>
                     <article className='article-animation'>
-                      <Image filename='header' />
+                      <Img sizes={article.coverImage.sizes} />
                       <h1>{article.title}</h1>
                       <div className='article-tag'>
                         {(() => {
