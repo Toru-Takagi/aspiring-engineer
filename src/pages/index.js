@@ -112,7 +112,13 @@ export default () => {
                 <div className='article-bg' key={index}>
                   <Link to={`/article/${article.createNumber}`}>
                     <article className='article-animation'>
-                      <Img sizes={article.coverImage.sizes} />
+                      <Img
+                        sizes={
+                          article.sizes === undefined
+                            ? article.coverImage.sizes
+                            : article.sizes
+                        }
+                      />
                       <h1>{article.title}</h1>
                       <div className='article-tag'>
                         {(() => {

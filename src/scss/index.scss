@@ -1,6 +1,7 @@
 @import './colors.scss';
 
 ::placeholder {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', 'Kosugi Maru';
   color: #f5f7fa;
 }
 
@@ -140,6 +141,7 @@ $on_scroll_transition: 1s;
       background-color: #ca3e47;
       color: #f5f7fa;
       line-height: 30px;
+      font-size: 0.9rem;
       text-align: center;
     }
     .like-icon-area {

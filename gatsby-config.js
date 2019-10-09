@@ -68,6 +68,15 @@ module.exports = {
                   category {
                     name
                   }
+                  coverImage {
+                    sizes(maxWidth: 1280) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                    }
+                  }
                   createNumber
                   createdAt
                 }
@@ -80,12 +89,21 @@ module.exports = {
                   title: article.title,
                   content: article.content.content,
                   createNumber: article.createNumber,
+                  sizes: article.coverImage.sizes,
                   category: article.category.map(cate => cate.name),
                   createdAt: article.createdAt,
                 }
               }),
           },
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: ['M+PLUS+Rounded+1c', 'Noto+Sans+JP', 'Kosugi+Maru'],
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
