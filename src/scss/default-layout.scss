@@ -151,6 +151,11 @@ footer {
             list-style-type: disc;
             color: $white;
             overflow-x: hidden;
+            transition: 0.4s;
+            will-change: color;
+            &:hover {
+              color: $accent_color;
+            }
             &::before {
               content: '◆ ';
             }
