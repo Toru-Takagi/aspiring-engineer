@@ -155,6 +155,11 @@ footer {
               content: '◆ ';
             }
           }
+          span {
+            line-height: 2.5rem;
+            color: $white;
+            white-space: normal;
+          }
         }
       }
       .sub-title {

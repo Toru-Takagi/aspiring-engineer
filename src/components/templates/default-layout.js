@@ -47,13 +47,19 @@ const Layout = props => {
             <div id='like-article-area'>
               <span className='sub-title'>お気に入り</span>
               <ul>
-                {Array.from(likeMap.keys()).map(key => {
-                  return (
-                    <Link to={`/article/${key}`} key={key}>
-                      <li>{likeMap.get(key).title}</li>
-                    </Link>
-                  )
-                })}
+                {Array.from(likeMap.keys()).length === 0 ? (
+                  <span>
+                    気に入っていただけるような記事を書けるように精進します。
+                  </span>
+                ) : (
+                  Array.from(likeMap.keys()).map(key => {
+                    return (
+                      <Link to={`/article/${key}`} key={key}>
+                        <li>{likeMap.get(key).title}</li>
+                      </Link>
+                    )
+                  })
+                )}
               </ul>
             </div>
           </div>
