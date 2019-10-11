@@ -2,6 +2,7 @@ import { createStore } from 'redux'
 
 const initialState = {
   likeMap: new Map(),
+  articleList: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +27,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         likeMap: action.likeMap,
+      }
+    case 'SET_ARTICLE_LIST':
+      return {
+        ...state,
+        articleList: action.articleList,
       }
     default:
       return state

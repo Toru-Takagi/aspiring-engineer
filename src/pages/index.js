@@ -34,11 +34,10 @@ export default () => {
     }
   `)
   const likeMap = useSelector(state => state.likeMap, [])
+  const articleList = useSelector(state => state.articleList, [])
   const dispatch = useDispatch()
+  const [isLoaded, setIsLoaded] = useState(false)
   const [scrollFlag, setScrollFlag] = useState(false)
-  const [articleList, setArticleList] = useState(
-    data.allContentfulArticle.nodes
-  )
   let timer
   const algoliaIndex = algoliaSearch(
     'BJI7EFTZSF',
@@ -68,8 +67,10 @@ export default () => {
     clearTimeout(timer)
     timer = setTimeout(() => {
       algoliaIndex.search({ query: value }).then(searchResult => {
-        setArticleList(searchResult.hits)
-        showArticle()
+        dispatch({
+          type: 'SET_ARTICLE_LIST',
+          articleList: searchResult.hits,
+        })
       })
     }, 500)
   }
@@ -83,8 +84,35 @@ export default () => {
     })
   }
   useEffect(() => {
+    if (!isLoaded) {
+      setIsLoaded(true)
+      dispatch({
+        type: 'SET_ARTICLE_LIST',
+        articleList: data.allContentfulArticle.nodes,
+      })
+      window.location.search
+        .slice(1)
+        .split('&')
+        .forEach(parameter => {
+          let parameterArray = parameter.split('=')
+          if (parameterArray[0] === 'word') {
+            document.querySelector('#search-area input').value =
+              parameterArray[1]
+            algoliaIndex
+              .search({ query: parameterArray[1] })
+              .then(searchResult => {
+                dispatch({
+                  type: 'SET_ARTICLE_LIST',
+                  articleList: searchResult.hits,
+                })
+              })
+          }
+        })
+    }
+  }, [isLoaded, algoliaIndex, dispatch, data.allContentfulArticle.nodes])
+  useEffect(() => {
     showArticle()
-  }, [])
+  }, [articleList])
   return (
     <Layout>
       <div id='home' className={scrollFlag ? 'on-scroll' : ''}>

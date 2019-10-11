@@ -1,0 +1,18 @@
+@import './profile-area.scss';
+
+#category-area {
+  padding: 0 20px;
+  width: calc((100% - #{$profile_area_size}) / 2);
+  #category-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    height: calc(100% - 20px);
+    overflow: auto;
+    li {
+      margin: 0.25em;
+      cursor: pointer;
+    }
+  }
+}
