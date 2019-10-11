@@ -13,6 +13,9 @@ export default () => {
       allContentfulCategory {
         nodes {
           name
+          article {
+            id
+          }
         }
       }
     }
@@ -48,7 +51,7 @@ export default () => {
               data-category={category.name}
             >
               <Tag
-                itemName={category.name + ' (3)'}
+                itemName={category.name + ' (' + category.article.length + ')'}
                 bgColor='#3D3D3D'
                 color='#CA3E47'
               />
