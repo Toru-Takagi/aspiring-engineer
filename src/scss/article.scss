@@ -104,6 +104,10 @@
     .twitter-tweet {
       margin-left: 20px;
     }
+    blockquote {
+      margin: 5px 0 5px 40px;
+      border-left: 5px solid #8D8D8D;
+    }
   }
   .tag-area {
     margin: 0 auto;
@@ -112,5 +116,9 @@
     height: auto;
     display: flex;
     justify-content: center;
+    span {
+      margin-left: 3px;
+      margin-right: 3px;
+    }
   }
 }

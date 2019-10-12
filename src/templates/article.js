@@ -91,14 +91,12 @@ export default props => {
           {data.category.map((category, index) => {
             return (
               <Link to={'/?word=' + category.name} key={index}>
-                <span>
-                  <Tag
-                    itemName={category.name}
-                    bgColor='#3D3D3D'
-                    color='#CA3E47'
-                  />
-                </span>
-              </Link>
+                <Tag
+                  itemName={category.name}
+                  bgColor='#3D3D3D'
+                  color='#CA3E47'
+                />
+              </Link> 
             )
           })}
         </div>
