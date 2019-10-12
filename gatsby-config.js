@@ -41,6 +41,10 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-embed-youtube`,
+            options: {},
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: 'language-',
