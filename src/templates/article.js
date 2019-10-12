@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Layout from '../components/templates/default-layout'
-import Image from '../components/atoms/gatsbyImage'
 import Tag from '../components/atoms/tag'
 import HomeIcon from '../components/atoms/icons/homeIcon'
 import LikeIcon from '../components/atoms/icons/likeIcon'
@@ -31,7 +31,7 @@ export default props => {
     <Layout>
       <div id='article'>
         <header>
-          <Image filename='header' />
+          <Img sizes={data.coverImage.sizes} />
           <div className='article-title-area'>
             <h1 className='article-title'>{data.title}</h1>
             <span className='date'>

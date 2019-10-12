@@ -20,6 +20,15 @@ exports.createPages = async ({ graphql, actions }) => {
             category {
               name
             }
+            coverImage {
+              sizes(maxWidth: 1280) {
+                aspectRatio
+                base64
+                sizes
+                src
+                srcSet
+              }
+            }
           }
         }
       }
