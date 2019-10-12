@@ -95,11 +95,12 @@ export default () => {
         .split('&')
         .forEach(parameter => {
           let parameterArray = parameter.split('=')
+          let value = parameterArray[1] === undefined ? '' : parameterArray[1].replace('%20', ' ')
           if (parameterArray[0] === 'word') {
             document.querySelector('#search-area input').value =
-              parameterArray[1]
+              value
             algoliaIndex
-              .search({ query: parameterArray[1] })
+              .search({ query: value })
               .then(searchResult => {
                 dispatch({
                   type: 'SET_ARTICLE_LIST',

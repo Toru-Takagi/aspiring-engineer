@@ -90,13 +90,15 @@ export default props => {
         <div className='tag-area'>
           {data.category.map((category, index) => {
             return (
-              <span key={index}>
-                <Tag
-                  itemName={category.name}
-                  bgColor='#3D3D3D'
-                  color='#CA3E47'
-                />
-              </span>
+              <Link to={'/?word=' + category.name} key={index}>
+                <span>
+                  <Tag
+                    itemName={category.name}
+                    bgColor='#3D3D3D'
+                    color='#CA3E47'
+                  />
+                </span>
+              </Link>
             )
           })}
         </div>
