@@ -41,6 +41,10 @@ $sns_icon_size: 20px;
         display: flex;
         span {
           margin-left: 8px;
+          height: 25px;
+        }
+        svg {
+          height: 25px;
         }
         &.twitter span {
           color: $twitter_color;
