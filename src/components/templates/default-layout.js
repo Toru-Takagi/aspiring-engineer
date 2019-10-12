@@ -23,10 +23,11 @@ const Layout = props => {
     let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
     setToggleFlag(flag)
 
+    let likeObject = localStorage.getItem('likeObject')
     dispatch({
       type: 'SET_LIKE_MAP',
       likeMap: new Map(
-        Object.entries(JSON.parse(localStorage.getItem('likeObject')))
+        Object.entries(JSON.parse(likeObject === null ? '{}' : likeObject))
       ),
     })
   }, [dispatch])
