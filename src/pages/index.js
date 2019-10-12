@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link, useStaticQuery, graphql, navigate } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 import algoliaSearch from 'algoliasearch'
 import Img from 'gatsby-image'
@@ -55,6 +55,16 @@ export default () => {
       title: title,
     })
     e.preventDefault()
+  }
+  const clickHeader = () => {
+    document.querySelector('#search-area input').value = ''
+    algoliaIndex.search({ query: '' }).then(searchResult => {
+      dispatch({
+        type: 'SET_ARTICLE_LIST',
+        articleList: searchResult.hits,
+      })
+    })
+    navigate('/')
   }
   const scrollArticleArea = e => {
     let isScrollTop = e.currentTarget.scrollTop === 0
@@ -117,7 +127,7 @@ export default () => {
   return (
     <Layout>
       <div id='home' className={scrollFlag ? 'on-scroll' : ''}>
-        <header>
+        <header onClick={clickHeader}>
           <Image filename='header' />
           <AspiringEngineer />
         </header>
