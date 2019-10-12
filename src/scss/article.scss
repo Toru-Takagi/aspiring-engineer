@@ -73,9 +73,23 @@
         margin-top: 0;
       }
     }
+    a {
+      color: $twitter_color;
+      font-weight: bold;
+      text-decoration: underline;
+      transition: .4s;
+      &:hover {
+        color: $sub_color;
+      }
+    }
     p {
       padding: 5px 0 5px 20px;
       line-height: 1.5rem;
+    }
+    strong {
+      color: $qiita_color;
+      font-weight: bold;
+      font-size: 1.5rem;
     }
     .gatsby-highlight {
       margin-bottom: 20px;
