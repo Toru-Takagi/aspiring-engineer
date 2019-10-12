@@ -12,6 +12,7 @@ import TwitterIcon from '../components/atoms/icons/twitterIcon'
 import HatenaBookmarkIcon from '../components/atoms/icons/hatenaBookmarkIcon'
 
 import scssVar from '../scss/article.scss'
+import '../scss/prism.scss'
 
 export default props => {
   const data = props.pageContext.data

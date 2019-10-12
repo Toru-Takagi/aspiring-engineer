@@ -62,6 +62,30 @@
     padding: 50px 20px 20px 20px;
     width: 980px;
     height: auto;
+    color: $white;
+    h2 {
+      margin: 30px 0 20px 0;
+      border-left: 8px solid $accent_color;
+      padding: 5px 0 5px 10px;
+      background-color: $sub_color;
+      font-size: 1.8rem;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    p {
+      padding: 5px 0 5px 20px;
+      line-height: 1.5rem;
+    }
+    .gatsby-highlight {
+      margin-bottom: 20px;
+    }
+    pre {
+      margin-left: 20px;
+    }
+    .twitter-tweet {
+      margin-left: 20px;
+    }
   }
   .tag-area {
     margin: 0 auto;
