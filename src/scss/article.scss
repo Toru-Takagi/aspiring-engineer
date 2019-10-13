@@ -113,10 +113,50 @@
       width: 480px;
       height: 270px;
     }
+    ul {
+      margin-left: 10px;
+      li {
+        list-style-type: disc;
+        padding: 3px 0;
+        p {
+          padding: 0;
+        }
+      }
+    }
+    ol {
+      margin-left: 10px;
+      li {
+        list-style-type: decimal;
+        padding: 3px 0 3px 5px;
+        p {
+          padding: 0;
+        }
+      }
+    }
+    table {
+      margin: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-spacing: 0;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+      th {
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        padding: 10px;
+      }
+      td {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 10px;
+      }
+      tr {
+        &:last-child {
+          td {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
   }
   .tag-area {
-    margin: 0 auto;
-    padding: 0 10px 10px;
+    margin: 0 auto 15px auto;
     width: 980px;
     height: auto;
     display: flex;
