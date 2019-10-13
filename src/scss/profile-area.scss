@@ -1,8 +1,4 @@
-@import './colors.scss';
-
-$profile_area_size: 250px;
-$profile_icon_size: 100px;
-$sns_icon_size: 20px;
+@import './mixin.scss';
 
 #profile-area {
   display: flex;
