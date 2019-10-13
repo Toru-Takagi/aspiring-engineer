@@ -5,10 +5,15 @@ import TwitterIcon from '../atoms/icons/twitterIcon'
 import NoteIcon from '../atoms/icons/noteIcon'
 import MailIcon from '../atoms/icons/mailIcon'
 
-import scssVar from '../../scss/profile-area.scss'
-import scssColor from '../../scss/colors.scss'
+import '../../scss/profile-area.scss'
 
 export default () => {
+  const styles = {
+    twitterColor: '#1da0f1',
+    noteColor: '#41c9b4',
+    white: '#f5f7fa',
+    snsIconSize: '20px',
+  }
   return (
     <div id='profile-area'>
       <div id='profile'>
@@ -26,8 +31,8 @@ export default () => {
           >
             <li className='twitter'>
               <TwitterIcon
-                iconColor={scssColor.twitterColor}
-                size={scssVar.snsIconSize}
+                iconColor={styles.twitterColor}
+                size={styles.snsIconSize}
               />
               <span>Twitter</span>
             </li>
@@ -51,19 +56,16 @@ export default () => {
           >
             <li className='note'>
               <NoteIcon
-                backgroundColor={scssColor.noteColor}
+                backgroundColor={styles.noteColor}
                 iconColor='#FFFFFF'
-                size={scssVar.snsIconSize}
+                size={styles.snsIconSize}
               />
               <span>note</span>
             </li>
           </a>
           <a href='mailto:kurowasi2525@gmail.com'>
             <li className='mail'>
-              <MailIcon
-                iconColor={scssColor.white}
-                size={scssVar.snsIconSize}
-              />
+              <MailIcon iconColor={styles.white} size={styles.snsIconSize} />
               <span>mail</span>
             </li>
           </a>

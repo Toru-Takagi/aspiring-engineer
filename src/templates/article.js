@@ -11,11 +11,14 @@ import NotLikeIcon from '../components/atoms/icons/notLikeIcon'
 import TwitterIcon from '../components/atoms/icons/twitterIcon'
 import HatenaBookmarkIcon from '../components/atoms/icons/hatenaBookmarkIcon'
 
-import scssVar from '../scss/article.scss'
+import '../scss/article.scss'
 import '../scss/prism.scss'
 
 export default props => {
   const data = props.pageContext.data
+  const styles = {
+    white: '#f5f7fa',
+  }
   let likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
   const clickLike = e => {
@@ -51,7 +54,7 @@ export default props => {
           <div id='menu-bar'>
             <Link to='/'>
               <div className='menu-bar-item'>
-                <HomeIcon color={scssVar.white} />
+                <HomeIcon color={styles.white} />
                 <span>Home</span>
               </div>
             </Link>
@@ -65,14 +68,14 @@ export default props => {
               onClick={clickLike}
             >
               {likeMap.get(data.createNumber.toString()) !== undefined ? (
-                <LikeIcon color={scssVar.white} />
+                <LikeIcon color={styles.white} />
               ) : (
-                <NotLikeIcon color={scssVar.white} />
+                <NotLikeIcon color={styles.white} />
               )}
               <span>Like</span>
             </div>
             <div className='menu-bar-item'>
-              <TwitterIcon color={scssVar.white} />
+              <TwitterIcon color={styles.white} />
               <span>Twitter</span>
             </div>
             <div className='menu-bar-item'>
@@ -96,7 +99,7 @@ export default props => {
                   bgColor='#3D3D3D'
                   color='#CA3E47'
                 />
-              </Link> 
+              </Link>
             )
           })}
         </div>

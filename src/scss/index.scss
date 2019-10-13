@@ -91,6 +91,9 @@ $on_scroll_transition: 1s;
       color: $white;
       text-align: center;
       line-height: 2.2rem;
+      opacity: 0;
+      animation: showAnimation 1s 2s;
+      animation-fill-mode: forwards;
     }
     .article-bg {
       flex-basis: 33%;

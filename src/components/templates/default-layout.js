@@ -7,10 +7,13 @@ import ProfileArea from '../molecules/profile-area'
 import CategoryArea from '../molecules/category-area'
 import ArrowIcon from '../atoms/icons/arrowIcon'
 
-import scssVar from '../../scss/default-layout.scss'
+import '../../scss/default-layout.scss'
 
 const Layout = props => {
   const { children } = props
+  const styles = {
+    white: '#f5f7fa',
+  }
   const [toggleFlag, setToggleFlag] = useState(true)
   const likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
@@ -39,7 +42,7 @@ const Layout = props => {
           className={'toggle-button' + (toggleFlag ? ' reverse' : '')}
           onClick={toggle}
         >
-          <ArrowIcon iconColor={scssVar.white} size='40px' />
+          <ArrowIcon iconColor={styles.white} size='40px' />
         </div>
         <div id='footer-background'>
           <div id='footer-container'>
@@ -48,7 +51,9 @@ const Layout = props => {
             <div id='like-article-area'>
               <span className='sub-title'>お気に入り</span>
               <ul>
-                {Array.from(likeMap.keys()).length === 0 ? (
+                {likeMap.keys === undefined ? (
+                  <span></span>
+                ) : Array.from(likeMap.keys()).length === 0 ? (
                   <span>
                     気に入っていただけるような記事を書けるように精進します。
                   </span>

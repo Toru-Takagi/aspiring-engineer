@@ -4,13 +4,6 @@
 $footer_toggle_button_top: 15px;
 $footer_toggle_button_size: 70px;
 
-:export {
-  white: $white;
-  twitterColor: $twitter_color;
-  noteColor: $note_color;
-  snsIconSize: $sns_icon_size;
-}
-
 ::-webkit-scrollbar {
   width: 10px;
   background: $scroll_bar_background_color;
