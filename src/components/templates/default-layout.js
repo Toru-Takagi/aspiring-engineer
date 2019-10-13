@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Link } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -11,9 +11,6 @@ import '../../scss/default-layout.scss'
 
 const Layout = props => {
   const { children } = props
-  const styles = {
-    white: '#f5f7fa',
-  }
   const [toggleFlag, setToggleFlag] = useState(true)
   const likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
@@ -22,10 +19,11 @@ const Layout = props => {
     localStorage.setItem('toggleFlag', flag)
     setToggleFlag(flag)
   }
-  useEffect(() => {
+  const initToggleFlag = () => {
     let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
     setToggleFlag(flag)
-
+  }
+  const initLikeMap = useCallback(() => {
     let likeObject = localStorage.getItem('likeObject')
     dispatch({
       type: 'SET_LIKE_MAP',
@@ -34,6 +32,10 @@ const Layout = props => {
       ),
     })
   }, [dispatch])
+  useEffect(() => {
+    initToggleFlag()
+    initLikeMap()
+  }, [initLikeMap])
   return (
     <div id='default-layout'>
       <main className={toggleFlag ? '' : 'footer-open'}>{children}</main>
@@ -42,7 +44,7 @@ const Layout = props => {
           className={'toggle-button' + (toggleFlag ? ' reverse' : '')}
           onClick={toggle}
         >
-          <ArrowIcon iconColor={styles.white} size='40px' />
+          <ArrowIcon />
         </div>
         <div id='footer-background'>
           <div id='footer-container'>

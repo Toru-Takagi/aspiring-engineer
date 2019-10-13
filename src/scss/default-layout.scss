@@ -1,4 +1,5 @@
 @import './mixin.scss';
+@import './reset.scss';
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -12,154 +13,95 @@
   background-color: $accent_color;
 }
 
-html,
-body {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background-color: $sub_color;
-  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', 'Kosugi Maru';
-  font-size: 14px;
-  overflow: hidden;
-}
-
-main {
-  border-radius: 15px;
-  height: calc(100% - 87px);
-  transition: 1s;
-  backface-visibility: hidden;
-  will-change: height;
-  &.footer-open {
-    height: calc(100% - 225px);
-  }
-}
-
-div {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-}
-
-span {
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  color: #000;
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-}
-
-p {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-  height: auto;
-}
-
 #default-layout {
   position: relative;
   padding: 20px 20px 0 20px;
-}
-
-main {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  width: 100%;
-  background-color: $main_color;
-}
-
-footer {
-  position: relative;
-  width: 100%;
-  height: 225px;
-  font-size: 1.2rem;
-  .toggle-button {
-    position: absolute;
-    top: $footer_toggle_button_top;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: $footer_toggle_button_size;
-    height: $footer_toggle_button_size;
-    background-color: $accent_color;
-    z-index: 100;
-    transition: 1s;
-    will-change: transform;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  #footer-background {
-    position: absolute;
-    bottom: 0;
-    border-radius: 30px 30px 0 0;
-    height: calc(
-      100% - #{$footer_toggle_button_top} - #{$footer_toggle_button_size / 2}
-    );
+  main {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%;
     background-color: $main_color;
-    #footer-container {
-      position: relative;
+  }
+  footer {
+    position: relative;
+    width: 100%;
+    height: 225px;
+    font-size: 1.2rem;
+    .toggle-button {
+      position: absolute;
+      top: $footer_toggle_button_top;
+      left: 0;
+      right: 0;
+      margin: auto;
+      border-radius: 50%;
       display: flex;
-      padding: 37px 35px 10px 35px;
-      #like-article-area {
-        width: calc((100% - #{$profile_area_size}) / 2);
-        ul {
-          margin: 0;
-          margin-top: 0;
-          padding-left: 20px;
-          height: calc(100% - 20px);
-          overflow-x: hidden;
-          overflow-y: auto;
-          white-space: nowrap;
-          li {
-            margin-top: 0.25em;
-            margin-right: 0.75em;
-            list-style-type: disc;
-            color: $white;
+      justify-content: center;
+      align-items: center;
+      width: $footer_toggle_button_size;
+      height: $footer_toggle_button_size;
+      background-color: $accent_color;
+      z-index: 100;
+      transition: 1s;
+      will-change: transform;
+      &:hover {
+        cursor: pointer;
+      }
+      svg {
+        width: 40px;
+        height: 40px;
+        color: $white;
+      }
+    }
+    #footer-background {
+      position: absolute;
+      bottom: 0;
+      border-radius: 30px 30px 0 0;
+      height: calc(
+        100% - #{$footer_toggle_button_top} - #{$footer_toggle_button_size / 2}
+      );
+      background-color: $main_color;
+      #footer-container {
+        position: relative;
+        display: flex;
+        padding: 37px 35px 10px 35px;
+        #like-article-area {
+          width: calc((100% - #{$profile_area_size}) / 2);
+          ul {
+            margin: 0;
+            margin-top: 0;
+            padding-left: 20px;
+            height: calc(100% - 20px);
             overflow-x: hidden;
-            transition: 0.4s;
-            will-change: color;
-            &:hover {
-              color: $accent_color;
+            overflow-y: auto;
+            white-space: nowrap;
+            li {
+              margin-top: 0.25em;
+              margin-right: 0.75em;
+              list-style-type: disc;
+              color: $white;
+              overflow-x: hidden;
+              transition: 0.4s;
+              will-change: color;
+              &:hover {
+                color: $accent_color;
+              }
+              &::before {
+                content: '◆ ';
+              }
             }
-            &::before {
-              content: '◆ ';
+            span {
+              line-height: 2.5rem;
+              color: $white;
+              white-space: normal;
             }
-          }
-          span {
-            line-height: 2.5rem;
-            color: $white;
-            white-space: normal;
           }
         }
-      }
-      .sub-title {
-        color: $white;
-        height: 20px;
-        font-weight: bold;
+        .sub-title {
+          color: $white;
+          height: 20px;
+          font-weight: bold;
+        }
       }
     }
   }
