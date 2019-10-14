@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import ProfileArea from '../molecules/profile-area'
-import CategoryArea from '../molecules/category-area'
-import LikeArticleArea from '../molecules/like-article-area'
+import ProfileArea from '../molecules/profileArea'
+import CategoryArea from '../molecules/categoryArea'
+import LikeArticleArea from '../molecules/likeArticleArea'
 import ArrowIcon from '../atoms/icons/arrowIcon'
 
 import '../../scss/footer.scss'
