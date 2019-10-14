@@ -3,6 +3,7 @@ import { createStore } from 'redux'
 const initialState = {
   likeMap: new Map(),
   articleList: [],
+  toggleFlag: true,
 }
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +33,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         articleList: action.articleList,
+      }
+    case 'SET_TOGGLE_FLAG':
+      return {
+        ...state,
+        toggleFlag: action.toggleFlag,
       }
     default:
       return state

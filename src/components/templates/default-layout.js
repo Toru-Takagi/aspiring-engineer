@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import PropTypes from 'prop-types'
 import ProfileArea from '../molecules/profile-area'
@@ -11,17 +11,23 @@ import '../../scss/default-layout.scss'
 
 const Layout = props => {
   const { children } = props
-  const [toggleFlag, setToggleFlag] = useState(true)
+  const toggleFlag = useSelector(state => state.toggleFlag, [])
   const dispatch = useDispatch()
   const toggle = () => {
     let flag = !toggleFlag
     localStorage.setItem('toggleFlag', flag)
-    setToggleFlag(flag)
+    dispatch({
+      type: 'SET_TOGGLE_FLAG',
+      toggleFlag: flag,
+    })
   }
-  const initToggleFlag = () => {
+  const initToggleFlag = useCallback(() => {
     let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
-    setToggleFlag(flag)
-  }
+    dispatch({
+      type: 'SET_TOGGLE_FLAG',
+      toggleFlag: flag,
+    })
+  }, [dispatch])
   const initLikeMap = useCallback(() => {
     let likeObject = localStorage.getItem('likeObject')
     dispatch({
@@ -34,7 +40,7 @@ const Layout = props => {
   useEffect(() => {
     initToggleFlag()
     initLikeMap()
-  }, [initLikeMap])
+  }, [initToggleFlag, initLikeMap])
   return (
     <div id='default-layout'>
       <main className={toggleFlag ? '' : 'footer-open'}>{children}</main>
