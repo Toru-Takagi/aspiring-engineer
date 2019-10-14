@@ -1,13 +1,8 @@
 import React from 'react'
 
-export default props => {
-  const iconStyle = {
-    width: props.size,
-    color: props.iconColor,
-  }
+export default () => {
   return (
     <svg
-      style={iconStyle}
       aria-hidden='true'
       focusable='false'
       className='arrow-down-svg'

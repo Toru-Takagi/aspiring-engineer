@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Image from '../atoms/gatsbyImage'
-import TwitterIcon from '../atoms/icons/twitterIcon'
-import NoteIcon from '../atoms/icons/noteIcon'
-import MailIcon from '../atoms/icons/mailIcon'
+import Image from '../atoms/GatsbyImage'
+import TwitterIcon from '../atoms/icons/TwitterIcon'
+import NoteIcon from '../atoms/icons/NoteIcon'
+import MailIcon from '../atoms/icons/MailIcon'
 
 import '../../scss/profile-area.scss'
 

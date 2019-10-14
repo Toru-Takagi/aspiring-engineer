@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { navigate, useStaticQuery, graphql } from 'gatsby'
 import algoliaSearch from 'algoliasearch'
 
-import Tag from '../atoms/tag'
+import Tag from '../atoms/Tag'
 
 import '../../scss/category-area.scss'
 

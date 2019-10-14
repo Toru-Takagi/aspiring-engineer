@@ -1,10 +1,8 @@
 import React from 'react'
 
 export default props => {
-  const style = { color: props.color }
   return (
     <svg
-      style={style}
       aria-hidden='true'
       focusable='false'
       role='img'

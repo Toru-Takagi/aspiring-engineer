@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import algoliaSearch from 'algoliasearch'
 import Img from 'gatsby-image'
 
-import Layout from '../components/templates/default-layout'
-import Image from '../components/atoms/gatsbyImage'
-import AspiringEngineer from '../components/atoms/aspiringEngineer'
-import SearchIcon from '../components/atoms/icons/searchIcon'
-import LikeIcon from '../components/atoms/icons/likeIcon'
-import NotLikeIcon from '../components/atoms/icons/notLikeIcon'
-import '../scss/index.scss'
+import Layout from '../components/templates/DefaultLayout'
+import Image from '../components/atoms/GatsbyImage'
+import AspiringEngineer from '../components/atoms/AspiringEngineer'
+import SearchIcon from '../components/atoms/icons/SearchIcon'
+import LikeIcon from '../components/atoms/icons/LikeIcon'
+import NotLikeIcon from '../components/atoms/icons/NotLikeIcon'
+import '../scss/Index.scss'
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -105,18 +105,18 @@ export default () => {
         .split('&')
         .forEach(parameter => {
           let parameterArray = parameter.split('=')
-          let value = parameterArray[1] === undefined ? '' : parameterArray[1].replace('%20', ' ')
+          let value =
+            parameterArray[1] === undefined
+              ? ''
+              : parameterArray[1].replace('%20', ' ')
           if (parameterArray[0] === 'word') {
-            document.querySelector('#search-area input').value =
-              value
-            algoliaIndex
-              .search({ query: value })
-              .then(searchResult => {
-                dispatch({
-                  type: 'SET_ARTICLE_LIST',
-                  articleList: searchResult.hits,
-                })
+            document.querySelector('#search-area input').value = value
+            algoliaIndex.search({ query: value }).then(searchResult => {
+              dispatch({
+                type: 'SET_ARTICLE_LIST',
+                articleList: searchResult.hits,
               })
+            })
           }
         })
     }
