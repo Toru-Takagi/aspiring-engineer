@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Link } from 'gatsby'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import PropTypes from 'prop-types'
 import ProfileArea from '../molecules/profile-area'
 import CategoryArea from '../molecules/category-area'
+import LikeArticleArea from '../molecules/like-article-area'
 import ArrowIcon from '../atoms/icons/arrowIcon'
 
 import '../../scss/default-layout.scss'
@@ -12,7 +12,6 @@ import '../../scss/default-layout.scss'
 const Layout = props => {
   const { children } = props
   const [toggleFlag, setToggleFlag] = useState(true)
-  const likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
   const toggle = () => {
     let flag = !toggleFlag
@@ -50,26 +49,7 @@ const Layout = props => {
           <div id='footer-container'>
             <ProfileArea />
             <CategoryArea />
-            <div id='like-article-area'>
-              <span className='sub-title'>お気に入り</span>
-              <ul>
-                {likeMap.keys === undefined ? (
-                  <span></span>
-                ) : Array.from(likeMap.keys()).length === 0 ? (
-                  <span>
-                    気に入っていただけるような記事を書けるように精進します。
-                  </span>
-                ) : (
-                  Array.from(likeMap.keys()).map(key => {
-                    return (
-                      <Link to={`/article/${key}`} key={key}>
-                        <li>{likeMap.get(key).title}</li>
-                      </Link>
-                    )
-                  })
-                )}
-              </ul>
-            </div>
+            <LikeArticleArea />
           </div>
         </div>
       </footer>
