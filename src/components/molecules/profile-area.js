@@ -8,12 +8,6 @@ import MailIcon from '../atoms/icons/mailIcon'
 import '../../scss/profile-area.scss'
 
 export default () => {
-  const styles = {
-    twitterColor: '#1da0f1',
-    noteColor: '#41c9b4',
-    white: '#f5f7fa',
-    snsIconSize: '20px',
-  }
   return (
     <div id='profile-area'>
       <div id='profile'>
@@ -30,10 +24,7 @@ export default () => {
             rel='noopener noreferrer'
           >
             <li className='twitter'>
-              <TwitterIcon
-                iconColor={styles.twitterColor}
-                size={styles.snsIconSize}
-              />
+              <TwitterIcon />
               <span>Twitter</span>
             </li>
           </a>
@@ -55,17 +46,13 @@ export default () => {
             rel='noopener noreferrer'
           >
             <li className='note'>
-              <NoteIcon
-                backgroundColor={styles.noteColor}
-                iconColor='#FFFFFF'
-                size={styles.snsIconSize}
-              />
+              <NoteIcon />
               <span>note</span>
             </li>
           </a>
           <a href='mailto:kurowasi2525@gmail.com'>
             <li className='mail'>
-              <MailIcon iconColor={styles.white} size={styles.snsIconSize} />
+              <MailIcon />
               <span>mail</span>
             </li>
           </a>

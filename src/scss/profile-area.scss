@@ -38,23 +38,39 @@
         svg {
           height: 25px;
         }
-        &.twitter span {
-          color: $twitter_color;
+        &.twitter {
+          svg {
+            width: $sns_icon_size;
+            fill: $twitter_color;
+          }
+          span {
+            color: $twitter_color;
+          }
         }
         &.qiita {
           div {
             width: $sns_icon_size;
-            height: $sns_icon_size;
           }
           span {
             color: $qiita_color;
           }
         }
-        &.note span {
-          color: #41c9b4;
+        &.note {
+          svg {
+            width: $sns_icon_size;
+          }
+          span {
+            color: #41c9b4;
+          }
         }
-        &.mail span {
-          color: $white;
+        &.mail {
+          svg {
+            width: $sns_icon_size;
+            fill: $white;
+          }
+          span {
+            color: $white;
+          }
         }
       }
     }
