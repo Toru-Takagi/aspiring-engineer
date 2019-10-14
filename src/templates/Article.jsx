@@ -16,9 +16,6 @@ import '../scss/prism.scss'
 
 export default props => {
   const data = props.pageContext.data
-  const styles = {
-    white: '#f5f7fa',
-  }
   let likeMap = useSelector(state => state.likeMap, [])
   const dispatch = useDispatch()
   const clickLike = e => {
@@ -54,7 +51,7 @@ export default props => {
           <div id='menu-bar'>
             <Link to='/'>
               <div className='menu-bar-item'>
-                <HomeIcon color={styles.white} />
+                <HomeIcon />
                 <span>Home</span>
               </div>
             </Link>
@@ -68,14 +65,14 @@ export default props => {
               onClick={clickLike}
             >
               {likeMap.get(data.createNumber.toString()) !== undefined ? (
-                <LikeIcon color={styles.white} />
+                <LikeIcon />
               ) : (
-                <NotLikeIcon color={styles.white} />
+                <NotLikeIcon />
               )}
               <span>Like</span>
             </div>
-            <div className='menu-bar-item'>
-              <TwitterIcon color={styles.white} />
+            <div className='menu-bar-item twitter-icon'>
+              <TwitterIcon />
               <span>Twitter</span>
             </div>
             <div className='menu-bar-item'>
