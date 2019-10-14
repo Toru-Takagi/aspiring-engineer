@@ -10,7 +10,7 @@ import AspiringEngineer from '../components/atoms/AspiringEngineer'
 import SearchIcon from '../components/atoms/icons/SearchIcon'
 import LikeIcon from '../components/atoms/icons/LikeIcon'
 import NotLikeIcon from '../components/atoms/icons/NotLikeIcon'
-import '../scss/Index.scss'
+import '../scss/index.scss'
 
 export default () => {
   const data = useStaticQuery(graphql`
