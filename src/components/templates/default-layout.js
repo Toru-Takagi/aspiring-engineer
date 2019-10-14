@@ -1,26 +1,15 @@
 import React, { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import PropTypes from 'prop-types'
-import ProfileArea from '../molecules/profile-area'
-import CategoryArea from '../molecules/category-area'
-import LikeArticleArea from '../molecules/like-article-area'
-import ArrowIcon from '../atoms/icons/arrowIcon'
+
+import Footer from '../organisms/footer'
 
 import '../../scss/default-layout.scss'
 
 const Layout = props => {
   const { children } = props
-  const toggleFlag = useSelector(state => state.toggleFlag, [])
   const dispatch = useDispatch()
-  const toggle = () => {
-    let flag = !toggleFlag
-    localStorage.setItem('toggleFlag', flag)
-    dispatch({
-      type: 'SET_TOGGLE_FLAG',
-      toggleFlag: flag,
-    })
-  }
+  const toggleFlag = useSelector(state => state.toggleFlag, [])
   const initToggleFlag = useCallback(() => {
     let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
     dispatch({
@@ -44,21 +33,7 @@ const Layout = props => {
   return (
     <div id='default-layout'>
       <main className={toggleFlag ? '' : 'footer-open'}>{children}</main>
-      <footer>
-        <div
-          className={'toggle-button' + (toggleFlag ? ' reverse' : '')}
-          onClick={toggle}
-        >
-          <ArrowIcon />
-        </div>
-        <div id='footer-background'>
-          <div id='footer-container'>
-            <ProfileArea />
-            <CategoryArea />
-            <LikeArticleArea />
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
