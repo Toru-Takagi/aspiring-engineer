@@ -85,7 +85,10 @@
       font-size: 1.1rem;
     }
     img {
+      margin-top: 10px;
+      border-radius: 10px;
       max-width: 80%;
+      box-shadow: 0px 0px 16px 8px rgba(0, 0, 0, 0.3);
     }
     strong {
       color: $qiita_color;
@@ -97,6 +100,8 @@
     }
     pre {
       margin-left: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.3);
     }
     .twitter-tweet {
       margin-left: 20px;
