@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { navigate, useStaticQuery, graphql } from 'gatsby'
-import algoliaSearch from 'algoliasearch'
+
+import Algolia from '../../mixins/algolia'
 
 import Tag from '../atoms/Tag'
 
@@ -24,18 +25,9 @@ export default () => {
   const clickCategory = e => {
     const word = e.currentTarget.getAttribute('data-category')
     const searchInputElm = document.getElementById('search-area')
-    const algoliaIndex = algoliaSearch(
-      'BJI7EFTZSF',
-      'b83625cbd299d487bcfe32e93c6671d3'
-    ).initIndex('aspiring-engineer')
     if (searchInputElm !== null) {
       searchInputElm.querySelector('input').value = word
-      algoliaIndex.search({ query: word }).then(searchResult => {
-        dispatch({
-          type: 'SET_ARTICLE_LIST',
-          articleList: searchResult.hits,
-        })
-      })
+      new Algolia().searchAllAndSetArticleList(word, dispatch)
     }
     navigate('/?word=' + word)
   }
