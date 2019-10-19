@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import algoliaSearch from 'algoliasearch'
 import Img from 'gatsby-image'
 
-import Layout from '../components/templates/DefaultLayout'
+import Layout from '../templates/DefaultLayout'
 import Image from '../components/atoms/GatsbyImage'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
 import SearchIcon from '../components/atoms/icons/SearchIcon'

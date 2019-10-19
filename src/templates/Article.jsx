@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Layout from '../components/templates/DefaultLayout'
+import Layout from '../templates/DefaultLayout'
 import Tag from '../components/atoms/Tag'
 import HomeIcon from '../components/atoms/icons/HomeIcon'
 import LikeIcon from '../components/atoms/icons/LikeIcon'

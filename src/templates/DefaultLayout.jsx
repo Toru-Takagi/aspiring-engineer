@@ -2,9 +2,9 @@ import React, { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import Footer from '../organisms/Footer'
+import Footer from '../components/organisms/Footer'
 
-import '../../scss/default-layout.scss'
+import '../scss/default-layout.scss'
 
 const Layout = props => {
   const { children } = props
