@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import Img from 'gatsby-image'
 
 import Algolia from '../mixins/algolia'
+import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
+import { IState } from '../state/state'
 
 import Layout from '../templates/DefaultLayout'
 import Image from '../components/atoms/GatsbyImage'
@@ -14,7 +16,7 @@ import NotLikeIcon from '../components/atoms/icons/NotLikeIcon'
 import '../scss/index.scss'
 
 export default () => {
-  const data = useStaticQuery(graphql`
+  const data: IAllContentfulArticle = useStaticQuery(graphql`
     query IndexQuery {
       allContentfulArticle(sort: { order: DESC, fields: createdAt }) {
         nodes {
@@ -34,45 +36,68 @@ export default () => {
       }
     }
   `)
-  const likeMap = useSelector(state => state.likeMap, [])
-  const articleList = useSelector(state => state.articleList, [])
-  const dispatch = useDispatch()
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [scrollFlag, setScrollFlag] = useState(false)
-  let timer
-  const clickLike = e => {
+  const likeMap: Map<
+    string,
+    { createNumber: string; title: string }
+  > = useSelector(
+    (state: IState) => state.likeMap,
+    (
+      left: Map<string, { createNumber: string; title: string }>,
+      right: Map<string, { createNumber: string; title: string }>
+    ) => {
+      return false
+    }
+  )
+  const articleList: IArticle[] = useSelector(
+    (state: IState) => state.articleList
+  )
+  const dispatch: React.Dispatch<any> = useDispatch()
+  const [isLoaded, setIsLoaded]: any[] = useState(false)
+  const [scrollFlag, setScrollFlag]: any[] = useState(false)
+  let timer: NodeJS.Timeout
+  const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
     let createNumber = e.currentTarget.getAttribute('data-create-number')
-    let title = e.currentTarget.getAttribute('data-title')
+    let title: string = e.currentTarget.getAttribute('data-title')
+    let likeFlag: boolean = e.currentTarget.getAttribute('data-like') === 'true'
 
     dispatch({
       type: 'CLICK_LIKE',
-      likeFlag: e.currentTarget.getAttribute('data-like') === 'true',
+      likeFlag: likeFlag,
       likeMap: likeMap,
       createNumber: createNumber,
       title: title,
     })
     e.preventDefault()
   }
-  const clickHeader = () => {
-    document.querySelector('#search-area input').value = ''
+  const clickHeader: () => void = () => {
+    let searchInputElm: HTMLInputElement = document.querySelector(
+      '#search-area input'
+    )
+    searchInputElm.value = ''
     new Algolia().searchAllAndSetArticleList('', dispatch)
     navigate('/')
   }
-  const scrollArticleArea = e => {
-    let isScrollTop = e.currentTarget.scrollTop === 0
+  const scrollArticleArea: (e: React.UIEvent<HTMLDivElement>) => void = (
+    e: React.UIEvent<HTMLDivElement>
+  ) => {
+    let isScrollTop: boolean = e.currentTarget.scrollTop === 0
     if (!isScrollTop && !scrollFlag) {
       setScrollFlag(true)
     }
   }
-  const inputSearchKeyword = e => {
-    let value = e.currentTarget.value.toString()
+  const inputSearchKeyword: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    let value: string = e.currentTarget.value.toString()
     clearTimeout(timer)
     timer = setTimeout(() => {
       new Algolia().searchAllAndSetArticleList(value, dispatch)
     }, 500)
   }
-  const showArticle = () => {
-    let time = 300
+  const showArticle: () => void = () => {
+    let time: number = 300
     document.querySelectorAll('.article-animation').forEach(elm => {
       setTimeout(() => {
         elm.classList.add('show-animation')
@@ -90,14 +115,17 @@ export default () => {
       window.location.search
         .slice(1)
         .split('&')
-        .forEach(parameter => {
+        .forEach((parameter: string) => {
           let parameterArray = parameter.split('=')
           let value =
             parameterArray[1] === undefined
               ? ''
               : parameterArray[1].replace('%20', ' ')
           if (parameterArray[0] === 'word') {
-            document.querySelector('#search-area input').value = value
+            let searchInputElm: HTMLInputElement = document.querySelector(
+              '#search-area input'
+            )
+            searchInputElm.value = value
             new Algolia().searchAllAndSetArticleList(value, dispatch)
           }
         })
@@ -143,15 +171,16 @@ export default () => {
                       <h1>{article.title}</h1>
                       <div className='article-tag'>
                         {(() => {
-                          const date = new Date(article.createdAt)
-                          let month = date.getMonth() + 1
-                          month = month > 9 ? month : '0' + month
-                          const day =
+                          const date: Date = new Date(article.createdAt)
+                          let month: number = date.getMonth() + 1
+                          let monthStr: string =
+                            month > 9 ? month.toString() : '0' + month
+                          const dayStr: string =
                             date.getDate() > 9
-                              ? date.getDate()
-                              : '0' + date.getDate()
-                          const result =
-                            date.getFullYear() + '/' + month + '/' + day
+                              ? date.getDate().toString()
+                              : '0' + date.getDate().toString()
+                          const result: string =
+                            date.getFullYear() + '/' + monthStr + '/' + dayStr
                           return result
                         })()}
                       </div>
