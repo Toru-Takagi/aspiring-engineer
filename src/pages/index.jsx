@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useStaticQuery, graphql, navigate } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
-import algoliaSearch from 'algoliasearch'
 import Img from 'gatsby-image'
+
+import Algolia from '../mixins/algolia'
 
 import Layout from '../templates/DefaultLayout'
 import Image from '../components/atoms/GatsbyImage'
@@ -39,10 +40,6 @@ export default () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [scrollFlag, setScrollFlag] = useState(false)
   let timer
-  const algoliaIndex = algoliaSearch(
-    'BJI7EFTZSF',
-    'b83625cbd299d487bcfe32e93c6671d3'
-  ).initIndex('aspiring-engineer')
   const clickLike = e => {
     let createNumber = e.currentTarget.getAttribute('data-create-number')
     let title = e.currentTarget.getAttribute('data-title')
@@ -58,12 +55,7 @@ export default () => {
   }
   const clickHeader = () => {
     document.querySelector('#search-area input').value = ''
-    algoliaIndex.search({ query: '' }).then(searchResult => {
-      dispatch({
-        type: 'SET_ARTICLE_LIST',
-        articleList: searchResult.hits,
-      })
-    })
+    new Algolia().searchAllAndSetArticleList('', dispatch)
     navigate('/')
   }
   const scrollArticleArea = e => {
@@ -76,12 +68,7 @@ export default () => {
     let value = e.currentTarget.value.toString()
     clearTimeout(timer)
     timer = setTimeout(() => {
-      algoliaIndex.search({ query: value }).then(searchResult => {
-        dispatch({
-          type: 'SET_ARTICLE_LIST',
-          articleList: searchResult.hits,
-        })
-      })
+      new Algolia().searchAllAndSetArticleList(value, dispatch)
     }, 500)
   }
   const showArticle = () => {
@@ -111,16 +98,11 @@ export default () => {
               : parameterArray[1].replace('%20', ' ')
           if (parameterArray[0] === 'word') {
             document.querySelector('#search-area input').value = value
-            algoliaIndex.search({ query: value }).then(searchResult => {
-              dispatch({
-                type: 'SET_ARTICLE_LIST',
-                articleList: searchResult.hits,
-              })
-            })
+            new Algolia().searchAllAndSetArticleList(value, dispatch)
           }
         })
     }
-  }, [isLoaded, algoliaIndex, dispatch, data.allContentfulArticle.nodes])
+  }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
   useEffect(() => {
     showArticle()
   }, [articleList])
