@@ -25,7 +25,6 @@ export default () => {
             return (
               <Link to={`/article/${value}`} key={value}>
                 <li>{likeMap.get(value).title}</li>
-                {console.log(likeMap)}
               </Link>
             )
           })

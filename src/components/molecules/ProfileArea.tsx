@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import Image from '../atoms/GatsbyImage'
 import TwitterIcon from '../atoms/icons/TwitterIcon'
