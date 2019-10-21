@@ -1,24 +1,31 @@
-import React, { useEffect, useCallback } from 'react'
+import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
+
+import { IState } from '../state/state'
 
 import Footer from '../components/organisms/Footer'
 
 import '../scss/default-layout.scss'
 
-const Layout = props => {
+interface IProps {
+  children: PropTypes.ReactNodeLike
+}
+
+const Layout: React.FunctionComponent<IProps> = (props: IProps) => {
   const { children } = props
-  const dispatch = useDispatch()
-  const toggleFlag = useSelector(state => state.toggleFlag, [])
-  const initToggleFlag = useCallback(() => {
-    let flag = localStorage.getItem('toggleFlag') === 'true' ? true : false
+  const dispatch: React.Dispatch<any> = useDispatch()
+  const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
+  const initToggleFlag: () => void = React.useCallback(() => {
+    let flag: boolean =
+      localStorage.getItem('toggleFlag') === 'true' ? true : false
     dispatch({
       type: 'SET_TOGGLE_FLAG',
       toggleFlag: flag,
     })
   }, [dispatch])
-  const initLikeMap = useCallback(() => {
-    let likeObject = localStorage.getItem('likeObject')
+  const initLikeMap: () => void = React.useCallback(() => {
+    let likeObject: string = localStorage.getItem('likeObject')
     dispatch({
       type: 'SET_LIKE_MAP',
       likeMap: new Map(
@@ -26,7 +33,7 @@ const Layout = props => {
       ),
     })
   }, [dispatch])
-  useEffect(() => {
+  React.useEffect(() => {
     initToggleFlag()
     initLikeMap()
   }, [initToggleFlag, initLikeMap])

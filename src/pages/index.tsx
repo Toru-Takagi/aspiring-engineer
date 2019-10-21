@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import * as React from 'react'
 import { Link, useStaticQuery, graphql, navigate } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
 import Img from 'gatsby-image'
@@ -52,8 +52,8 @@ export default () => {
     (state: IState) => state.articleList
   )
   const dispatch: React.Dispatch<any> = useDispatch()
-  const [isLoaded, setIsLoaded]: any[] = useState(false)
-  const [scrollFlag, setScrollFlag]: any[] = useState(false)
+  const [isLoaded, setIsLoaded]: any[] = React.useState(false)
+  const [scrollFlag, setScrollFlag]: any[] = React.useState(false)
   let timer: NodeJS.Timeout
   const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
     e: React.MouseEvent<HTMLElement, MouseEvent>
@@ -105,7 +105,7 @@ export default () => {
       time += 200
     })
   }
-  useEffect(() => {
+  React.useEffect(() => {
     if (!isLoaded) {
       setIsLoaded(true)
       dispatch({
@@ -131,7 +131,7 @@ export default () => {
         })
     }
   }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
-  useEffect(() => {
+  React.useEffect(() => {
     showArticle()
   }, [articleList])
   return (
