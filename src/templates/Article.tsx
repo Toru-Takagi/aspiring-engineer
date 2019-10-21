@@ -1,9 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Layout from '../templates/DefaultLayout'
+import { IState } from '../state/state'
+
+import Layout from './DefaultLayout'
 import Tag from '../components/atoms/Tag'
 import HomeIcon from '../components/atoms/icons/HomeIcon'
 import LikeIcon from '../components/atoms/icons/LikeIcon'
@@ -14,11 +16,41 @@ import HatenaBookmarkIcon from '../components/atoms/icons/HatenaBookmarkIcon'
 import '../scss/article.scss'
 import '../scss/prism.scss'
 
-export default props => {
-  const data = props.pageContext.data
-  let likeMap = useSelector(state => state.likeMap, [])
-  const dispatch = useDispatch()
-  const clickLike = e => {
+interface IProps {
+  pageContext: {
+    data: IData
+  }
+}
+
+interface IData {
+  title: string
+  id: number
+  createdAt: Date
+  createNumber: number
+  content: {
+    content: string
+    childMarkdownRemark: {
+      html: string
+    }
+  }
+  category: {
+    name: string
+  }[]
+  coverImage: {
+    sizes: FluidObject
+  }
+}
+
+export default (props: IProps) => {
+  const data: IData = props.pageContext.data
+  let likeMap: Map<
+    string,
+    { createNumber: string; title: string }
+  > = useSelector((state: IState) => state.likeMap)
+  const dispatch: React.Dispatch<any> = useDispatch()
+  const clickLike: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     dispatch({
       type: 'CLICK_LIKE',
       likeFlag: e.currentTarget.getAttribute('data-like') === 'true',
@@ -36,12 +68,16 @@ export default props => {
             <h1 className='article-title'>{data.title}</h1>
             <span className='date'>
               {(() => {
-                const date = new Date(data.createdAt)
-                let month = date.getMonth() + 1
-                month = month > 9 ? month : '0' + month
-                const day =
-                  date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
-                const result = date.getFullYear() + '/' + month + '/' + day
+                const date: Date = new Date(data.createdAt)
+                let month: number = date.getMonth() + 1
+                let monthStr: string =
+                  month > 9 ? month.toString() : '0' + month.toString()
+                const dayStr: string =
+                  date.getDate() > 9
+                    ? date.getDate().toString()
+                    : '0' + date.getDate().toString()
+                const result =
+                  date.getFullYear() + '/' + monthStr + '/' + dayStr
                 return result
               })()}
             </span>
