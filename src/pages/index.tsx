@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Img from 'gatsby-image'
 
 import Algolia from '../mixins/algolia'
+import Converter from '../mixins/converter'
 import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
 import { IState } from '../state/state'
 
@@ -170,19 +171,9 @@ export default () => {
                       />
                       <h1>{article.title}</h1>
                       <div className='article-tag'>
-                        {(() => {
-                          const date: Date = new Date(article.createdAt)
-                          let month: number = date.getMonth() + 1
-                          let monthStr: string =
-                            month > 9 ? month.toString() : '0' + month
-                          const dayStr: string =
-                            date.getDate() > 9
-                              ? date.getDate().toString()
-                              : '0' + date.getDate().toString()
-                          const result: string =
-                            date.getFullYear() + '/' + monthStr + '/' + dayStr
-                          return result
-                        })()}
+                        {new Converter().changeTimestampToDateString(
+                          article.createdAt
+                        )}
                       </div>
                       <div
                         className='like-icon-area'

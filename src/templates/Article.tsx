@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import Img, { FluidObject } from 'gatsby-image'
 import { useSelector, useDispatch } from 'react-redux'
 
+import Converter from '../mixins/converter'
 import { IState } from '../state/state'
 
 import Layout from './DefaultLayout'
@@ -25,7 +26,7 @@ interface IProps {
 interface IData {
   title: string
   id: number
-  createdAt: Date
+  createdAt: string
   createNumber: number
   content: {
     content: string
@@ -67,19 +68,7 @@ export default (props: IProps) => {
           <div className='article-title-area'>
             <h1 className='article-title'>{data.title}</h1>
             <span className='date'>
-              {(() => {
-                const date: Date = new Date(data.createdAt)
-                let month: number = date.getMonth() + 1
-                let monthStr: string =
-                  month > 9 ? month.toString() : '0' + month.toString()
-                const dayStr: string =
-                  date.getDate() > 9
-                    ? date.getDate().toString()
-                    : '0' + date.getDate().toString()
-                const result =
-                  date.getFullYear() + '/' + monthStr + '/' + dayStr
-                return result
-              })()}
+              {new Converter().changeTimestampToDateString(data.createdAt)}
             </span>
           </div>
         </header>
