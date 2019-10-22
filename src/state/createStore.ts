@@ -1,12 +1,25 @@
-import { createStore } from 'redux'
+import { createStore, StoreEnhancer } from 'redux'
 
-const initialState = {
+import { IState, ILikeMapValue } from './state'
+import { IArticle } from '../model/allContentfulArticle'
+
+interface IAction {
+  type: 'CLICK_LIKE' | 'SET_LIKE_MAP' | 'SET_ARTICLE_LIST' | 'SET_TOGGLE_FLAG'
+  likeFlag: boolean
+  likeMap: Map<string, ILikeMapValue>
+  createNumber: string
+  title: string
+  articleList: IArticle[]
+  toggleFlag: boolean
+}
+
+const initialState: IState = {
   likeMap: new Map(),
   articleList: [],
   toggleFlag: true,
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state: IState = initialState, action: IAction) => {
   switch (action.type) {
     case 'CLICK_LIKE':
       action.likeFlag
@@ -15,7 +28,7 @@ const reducer = (state = initialState, action) => {
             createNumber: action.createNumber,
             title: action.title,
           })
-      let likeObject = {}
+      let likeObject: { [key: string]: ILikeMapValue } = {}
       action.likeMap.forEach((value, key) => {
         likeObject[key] = value
       })
@@ -45,6 +58,6 @@ const reducer = (state = initialState, action) => {
 }
 
 // preloadedState will be passed in by the plugin
-export default preloadedState => {
+export default (preloadedState?: StoreEnhancer) => {
   return createStore(reducer, preloadedState)
 }
