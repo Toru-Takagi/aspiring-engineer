@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import Img from 'gatsby-image'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Converter from '../mixins/converter'
-import { IState } from '../state/state'
+import { IState, ILikeMapValue } from '../state/state'
+import { IArticleAndCategory } from '../model/allContentfulArticle'
 
 import Layout from './DefaultLayout'
 import Tag from '../components/atoms/Tag'
@@ -19,35 +20,15 @@ import '../scss/prism.scss'
 
 interface IProps {
   pageContext: {
-    data: IData
-  }
-}
-
-interface IData {
-  title: string
-  id: number
-  createdAt: string
-  createNumber: number
-  content: {
-    content: string
-    childMarkdownRemark: {
-      html: string
-    }
-  }
-  category: {
-    name: string
-  }[]
-  coverImage: {
-    sizes: FluidObject
+    data: IArticleAndCategory
   }
 }
 
 export default (props: IProps) => {
-  const data: IData = props.pageContext.data
-  let likeMap: Map<
-    string,
-    { createNumber: string; title: string }
-  > = useSelector((state: IState) => state.likeMap)
+  const data: IArticleAndCategory = props.pageContext.data
+  let likeMap: Map<string, ILikeMapValue> = useSelector(
+    (state: IState) => state.likeMap
+  )
   const dispatch: React.Dispatch<any> = useDispatch()
   const clickLike: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>

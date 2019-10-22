@@ -19,3 +19,22 @@ export interface IArticle {
   }
   sizes: FluidObject
 }
+
+export interface IArticleAndCategory {
+  id: string
+  title: string
+  content: {
+    content: string
+    childMarkdownRemark: {
+      html: string
+    }
+  }
+  createNumber: string
+  createdAt: string
+  category: {
+    name: string
+  }[]
+  coverImage: {
+    sizes: FluidObject
+  }
+}

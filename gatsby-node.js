@@ -7,16 +7,16 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulArticle(sort: { fields: createdAt, order: DESC }) {
         edges {
           node {
-            title
             id
-            createdAt
-            createNumber
+            title
             content {
               content
               childMarkdownRemark {
                 html
               }
             }
+            createNumber
+            createdAt
             category {
               name
             }
