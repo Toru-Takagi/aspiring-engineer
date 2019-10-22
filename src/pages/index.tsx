@@ -1,19 +1,17 @@
 import * as React from 'react'
-import { Link, useStaticQuery, graphql, navigate } from 'gatsby'
+import { useStaticQuery, graphql, navigate } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
-import Img from 'gatsby-image'
 
 import Algolia from '../mixins/algolia'
-import Converter from '../mixins/converter'
 import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
 import { IState } from '../state/state'
 
 import Layout from '../templates/DefaultLayout'
+import ArticleCard from '../components/molecules/ArticleCard'
 import Image from '../components/atoms/GatsbyImage'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
 import SearchIcon from '../components/atoms/icons/SearchIcon'
-import LikeIcon from '../components/atoms/icons/LikeIcon'
-import NotLikeIcon from '../components/atoms/icons/NotLikeIcon'
+
 import '../scss/index.scss'
 
 export default () => {
@@ -37,18 +35,6 @@ export default () => {
       }
     }
   `)
-  const likeMap: Map<
-    string,
-    { createNumber: string; title: string }
-  > = useSelector(
-    (state: IState) => state.likeMap,
-    (
-      left: Map<string, { createNumber: string; title: string }>,
-      right: Map<string, { createNumber: string; title: string }>
-    ) => {
-      return false
-    }
-  )
   const articleList: IArticle[] = useSelector(
     (state: IState) => state.articleList
   )
@@ -56,22 +42,6 @@ export default () => {
   const [isLoaded, setIsLoaded]: any[] = React.useState(false)
   const [scrollFlag, setScrollFlag]: any[] = React.useState(false)
   let timer: NodeJS.Timeout
-  const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
-    let createNumber = e.currentTarget.getAttribute('data-create-number')
-    let title: string = e.currentTarget.getAttribute('data-title')
-    let likeFlag: boolean = e.currentTarget.getAttribute('data-like') === 'true'
-
-    dispatch({
-      type: 'CLICK_LIKE',
-      likeFlag: likeFlag,
-      likeMap: likeMap,
-      createNumber: createNumber,
-      title: title,
-    })
-    e.preventDefault()
-  }
   const clickHeader: () => void = () => {
     let searchInputElm: HTMLInputElement = document.querySelector(
       '#search-area input'
@@ -158,46 +128,7 @@ export default () => {
             </div>
           ) : (
             articleList.map((article, index) => {
-              return (
-                <div className='article-bg' key={index}>
-                  <Link to={`/article/${article.createNumber}`}>
-                    <article className='article-animation'>
-                      <Img
-                        sizes={
-                          article.sizes === undefined
-                            ? article.coverImage.sizes
-                            : article.sizes
-                        }
-                      />
-                      <h1>{article.title}</h1>
-                      <div className='article-tag'>
-                        {new Converter().changeTimestampToDateString(
-                          article.createdAt
-                        )}
-                      </div>
-                      <div
-                        className='like-icon-area'
-                        data-like={
-                          likeMap.get(article.createNumber.toString()) !==
-                          undefined
-                            ? true
-                            : false
-                        }
-                        data-create-number={article.createNumber}
-                        data-title={article.title}
-                        onClick={clickLike}
-                      >
-                        {likeMap.get(article.createNumber.toString()) !==
-                        undefined ? (
-                          <LikeIcon />
-                        ) : (
-                          <NotLikeIcon />
-                        )}
-                      </div>
-                    </article>
-                  </Link>
-                </div>
-              )
+              return <ArticleCard article={article} key={index} />
             })
           )}
         </div>

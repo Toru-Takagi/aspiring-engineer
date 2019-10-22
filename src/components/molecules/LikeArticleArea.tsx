@@ -2,15 +2,15 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import { useSelector } from 'react-redux'
 
-import { IState } from '../../state/state'
+import { IState, ILikeMapValue } from '../../state/state'
 
 import '../../scss/like-article-area.scss'
 
 export default () => {
-  const likeMap: Map<
-    string,
-    { createNumber: string; title: string }
-  > = useSelector((state: IState) => state.likeMap)
+  const likeMap: Map<string, ILikeMapValue> = useSelector(
+    (state: IState) => state.likeMap,
+    () => false
+  )
 
   return (
     <div id='like-article-area'>
