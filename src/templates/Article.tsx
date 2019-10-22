@@ -26,7 +26,7 @@ interface IProps {
 
 export default (props: IProps) => {
   const data: IArticleAndCategory = props.pageContext.data
-  let likeMap: Map<string, ILikeMapValue> = useSelector(
+  const likeMap: Map<string, ILikeMapValue> = useSelector(
     (state: IState) => state.likeMap
   )
   const dispatch: React.Dispatch<any> = useDispatch()

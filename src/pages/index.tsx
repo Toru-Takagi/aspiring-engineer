@@ -43,7 +43,7 @@ export default () => {
   const [scrollFlag, setScrollFlag]: any[] = React.useState(false)
   let timer: NodeJS.Timeout
   const clickHeader: () => void = () => {
-    let searchInputElm: HTMLInputElement = document.querySelector(
+    const searchInputElm: HTMLInputElement = document.querySelector(
       '#search-area input'
     )
     searchInputElm.value = ''
@@ -53,7 +53,7 @@ export default () => {
   const scrollArticleArea: (e: React.UIEvent<HTMLDivElement>) => void = (
     e: React.UIEvent<HTMLDivElement>
   ) => {
-    let isScrollTop: boolean = e.currentTarget.scrollTop === 0
+    const isScrollTop: boolean = e.currentTarget.scrollTop === 0
     if (!isScrollTop && !scrollFlag) {
       setScrollFlag(true)
     }
@@ -61,7 +61,7 @@ export default () => {
   const inputSearchKeyword: (e: React.ChangeEvent<HTMLInputElement>) => void = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    let value: string = e.currentTarget.value.toString()
+    const value: string = e.currentTarget.value.toString()
     clearTimeout(timer)
     timer = setTimeout(() => {
       new Algolia().searchAllAndSetArticleList(value, dispatch)
@@ -87,13 +87,13 @@ export default () => {
         .slice(1)
         .split('&')
         .forEach((parameter: string) => {
-          let parameterArray = parameter.split('=')
-          let value =
+          const parameterArray = parameter.split('=')
+          const value =
             parameterArray[1] === undefined
               ? ''
               : parameterArray[1].replace('%20', ' ')
           if (parameterArray[0] === 'word') {
-            let searchInputElm: HTMLInputElement = document.querySelector(
+            const searchInputElm: HTMLInputElement = document.querySelector(
               '#search-area input'
             )
             searchInputElm.value = value

@@ -14,7 +14,7 @@ export default () => {
   const dispatch: React.Dispatch<any> = useDispatch()
   const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
   const toggle: () => void = () => {
-    let flag: boolean = !toggleFlag
+    const flag: boolean = !toggleFlag
     localStorage.setItem('toggleFlag', flag.toString())
     dispatch({
       type: 'SET_TOGGLE_FLAG',

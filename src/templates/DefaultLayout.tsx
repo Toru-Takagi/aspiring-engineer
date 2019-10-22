@@ -17,7 +17,7 @@ const Layout: React.FunctionComponent<IProps> = (props: IProps) => {
   const dispatch: React.Dispatch<any> = useDispatch()
   const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
   const initToggleFlag: () => void = React.useCallback(() => {
-    let flag: boolean =
+    const flag: boolean =
       localStorage.getItem('toggleFlag') === 'true' ? true : false
     dispatch({
       type: 'SET_TOGGLE_FLAG',
@@ -25,7 +25,7 @@ const Layout: React.FunctionComponent<IProps> = (props: IProps) => {
     })
   }, [dispatch])
   const initLikeMap: () => void = React.useCallback(() => {
-    let likeObject: string = localStorage.getItem('likeObject')
+    const likeObject: string = localStorage.getItem('likeObject')
     dispatch({
       type: 'SET_LIKE_MAP',
       likeMap: new Map(

@@ -25,9 +25,10 @@ export default (props: IProps) => {
   const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
-    let createNumber = e.currentTarget.getAttribute('data-create-number')
-    let title: string = e.currentTarget.getAttribute('data-title')
-    let likeFlag: boolean = e.currentTarget.getAttribute('data-like') === 'true'
+    const createNumber = e.currentTarget.getAttribute('data-create-number')
+    const title: string = e.currentTarget.getAttribute('data-title')
+    const likeFlag: boolean =
+      e.currentTarget.getAttribute('data-like') === 'true'
 
     dispatch({
       type: 'CLICK_LIKE',

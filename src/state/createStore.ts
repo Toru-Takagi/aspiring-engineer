@@ -28,7 +28,7 @@ const reducer = (state: IState = initialState, action: IAction) => {
             createNumber: action.createNumber,
             title: action.title,
           })
-      let likeObject: { [key: string]: ILikeMapValue } = {}
+      const likeObject: { [key: string]: ILikeMapValue } = {}
       action.likeMap.forEach((value, key) => {
         likeObject[key] = value
       })
