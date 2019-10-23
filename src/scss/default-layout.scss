@@ -24,3 +24,9 @@
     background-color: $main_color;
   }
 }
+
+@include sp {
+  html {
+    font-size: 12px;
+  }
+}

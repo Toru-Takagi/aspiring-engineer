@@ -1,3 +1,5 @@
+@import 'mixin.scss';
+
 .article-bg {
   flex-basis: 33%;
   height: 300px;
@@ -33,7 +35,7 @@
         padding: 15px;
         width: 100%;
         height: calc(100% - 100px);
-        font-size: 22px;
+        font-size: 1.6rem;
         text-align: center;
       }
       .article-tag {
@@ -58,6 +60,25 @@
         svg {
           height: 30px;
           color: #ca3e47;
+        }
+      }
+    }
+  }
+  @include pc {
+    flex-basis: 50%;
+  }
+  @include tablet {
+    flex-basis: 100%;
+  }
+  @include sp {
+    height: 230px;
+    a {
+      width: 230px;
+      article {
+        width: 230px;
+        height: 200px;
+        h1 {
+          font-size: 1.2rem;
         }
       }
     }

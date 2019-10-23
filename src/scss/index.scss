@@ -41,6 +41,7 @@ $on_scroll_transition: 1s;
       left: 0;
       right: 0;
       margin: 15px auto;
+      max-width: 90%;
       height: calc(200px - 30px);
       will-change: transform;
       transition: $on_scroll_transition;
@@ -108,6 +109,33 @@ $on_scroll_transition: 1s;
     }
     #article-area {
       transform: translateY(-100px);
+    }
+  }
+  @include tablet {
+    #search-area {
+      width: 80%;
+    }
+  }
+  @include sp {
+    header {
+      height: calc(100px);
+      svg {
+        height: calc(100px - 30px);
+      }
+    }
+    &.on-scroll {
+      header {
+        transform: translate(0);
+        svg {
+          transform: scale(1) translate(0);
+        }
+      }
+      #search-area {
+        transform: translate(0);
+      }
+      #article-area {
+        transform: translate(0);
+      }
     }
   }
 }
