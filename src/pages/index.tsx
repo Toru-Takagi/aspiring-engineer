@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Algolia from '../mixins/algolia'
 import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
 import { IState } from '../state/state'
+import { IScrollFlag, useScrollFlag } from '../modules/useScrollFlag'
 
 import Layout from '../templates/DefaultLayout'
 import ArticleCard from '../components/molecules/ArticleCard'
@@ -39,8 +40,13 @@ export default () => {
     (state: IState) => state.articleList
   )
   const dispatch: React.Dispatch<any> = useDispatch()
-  const [isLoaded, setIsLoaded]: any[] = React.useState(false)
-  const [scrollFlag, setScrollFlag]: any[] = React.useState(false)
+  const [isLoaded, setIsLoaded]: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>>
+  ] = React.useState(false)
+  const [scrollFlag, { scroll }]: [boolean, IScrollFlag] = useScrollFlag({
+    flag: false,
+  })
   let timer: NodeJS.Timeout
   const clickHeader: () => void = () => {
     const searchInputElm: HTMLInputElement = document.querySelector(
@@ -49,14 +55,6 @@ export default () => {
     searchInputElm.value = ''
     new Algolia().searchAllAndSetArticleList('', dispatch)
     navigate('/')
-  }
-  const scrollArticleArea: (e: React.UIEvent<HTMLDivElement>) => void = (
-    e: React.UIEvent<HTMLDivElement>
-  ) => {
-    const isScrollTop: boolean = e.currentTarget.scrollTop === 0
-    if (!isScrollTop && !scrollFlag) {
-      setScrollFlag(true)
-    }
   }
   const inputSearchKeyword: (e: React.ChangeEvent<HTMLInputElement>) => void = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -120,7 +118,7 @@ export default () => {
           ></input>
           <SearchIcon />
         </div>
-        <div id='article-area' onScroll={scrollArticleArea}>
+        <div id='article-area' onScroll={scroll}>
           {articleList.length === 0 ? (
             <div className='not-found-area'>
               <p>該当の記事は存在しません。</p>
