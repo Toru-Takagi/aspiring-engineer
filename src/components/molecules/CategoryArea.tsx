@@ -27,8 +27,8 @@ export default () => {
   `)
   const dispatch: React.Dispatch<any> = useDispatch()
   const clickCategory: (
-    e: React.MouseEvent<HTMLLIElement, MouseEvent>
-  ) => void = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    e: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => void = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const word: string = e.currentTarget.getAttribute('data-category')
     const searchInputElm: HTMLElement = document.getElementById('search-area')
     if (searchInputElm !== null) {

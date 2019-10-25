@@ -23,8 +23,8 @@ export default (props: IProps) => {
     (state: IState) => state.likeMap,
     () => false
   )
-  const clickLike: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
     dispatch({
       type: 'CLICK_LIKE',

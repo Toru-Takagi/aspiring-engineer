@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 import Converter from '../../mixins/converter'
 import { IArticle } from '../../model/allContentfulArticle'
-import { IState } from '../../state/state'
+import { IState, ILikeMapValue } from '../../state/state'
 
 import LikeIcon from '../atoms/icons/LikeIcon'
 import NotLikeIcon from '../atoms/icons/NotLikeIcon'
@@ -18,10 +18,10 @@ interface IProps {
 
 export default (props: IProps) => {
   const dispatch: React.Dispatch<any> = useDispatch()
-  const likeMap: Map<
-    string,
-    { createNumber: string; title: string }
-  > = useSelector((state: IState) => state.likeMap, () => false)
+  const likeMap: Map<string, ILikeMapValue> = useSelector(
+    (state: IState) => state.likeMap,
+    () => false
+  )
   const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
     e: React.MouseEvent<HTMLElement, MouseEvent>
   ) => {
