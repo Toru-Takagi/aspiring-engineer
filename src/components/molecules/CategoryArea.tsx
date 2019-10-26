@@ -13,6 +13,7 @@ import Tag from '../atoms/Tag'
 import '../../scss/category-area.scss'
 
 export default (): React.ReactElement => {
+  // Contentfullからカテゴリー情報を取得して格納
   const data: IAllContentfulCategory = useStaticQuery(graphql`
     query CategoryQuery {
       allContentfulCategory {
@@ -25,10 +26,16 @@ export default (): React.ReactElement => {
       }
     }
   `)
+  // Storeに格納するdispatchの取得
   const dispatch: React.Dispatch<any> = useDispatch()
-  const clickCategory = (
+
+  /**
+   * 検索エリアが存在すればAlgoliaで検索し、存在しなければGet情報を付与してページ遷移するメソッド
+   * @param e
+   */
+  const clickCategory: (
     e: React.MouseEvent<HTMLElement, MouseEvent>
-  ): void => {
+  ) => void = e => {
     const word: string = e.currentTarget.getAttribute('data-category')
       ? e.currentTarget.getAttribute('data-category')!
       : ''
@@ -44,6 +51,8 @@ export default (): React.ReactElement => {
     }
     navigate('/?word=' + word)
   }
+
+  // カテゴリ一覧を描画する
   return (
     <div id='category-area'>
       <span className='sub-title'>カテゴリ一覧</span>

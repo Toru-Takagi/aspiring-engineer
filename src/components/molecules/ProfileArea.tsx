@@ -8,6 +8,7 @@ import MailIcon from '../atoms/icons/MailIcon'
 import '../../scss/profile-area.scss'
 
 export default (): React.ReactElement => {
+  // プロフィール情報を描画
   return (
     <div id='profile-area'>
       <div id='profile'>

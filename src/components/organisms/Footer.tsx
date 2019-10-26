@@ -11,9 +11,14 @@ import { IState } from '../../state/state'
 import '../../scss/footer.scss'
 
 export default (): React.ReactElement => {
+  // Storeに格納するためのdispatchを取得
   const dispatch: React.Dispatch<any> = useDispatch()
+
+  // toggleボタンの開閉状態を保持するフラグを格納
   const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
-  const toggle = (): void => {
+
+  // 開閉状態を変更するメソッド
+  const toggle: () => void = () => {
     const flag: boolean = !toggleFlag
     localStorage.setItem('toggleFlag', flag.toString())
     dispatch({
@@ -22,6 +27,7 @@ export default (): React.ReactElement => {
     })
   }
 
+  // ページのフッターを描画
   return (
     <footer>
       <div

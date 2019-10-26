@@ -19,7 +19,15 @@ const initialState: IState = {
   toggleFlag: true,
 }
 
-const reducer = (state: IState = initialState, action: IAction) => {
+/**
+ * actionの中身によって、storeの中身を変更して、storeを返すメソッド
+ * @param state
+ * @param action
+ */
+const reducer: (state: IState | undefined, action: IAction) => IState = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case 'CLICK_LIKE':
       action.likeFlag

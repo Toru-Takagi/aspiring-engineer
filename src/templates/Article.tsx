@@ -18,9 +18,11 @@ interface IProps {
   }
 }
 
-export default (props: IProps) => {
+export default (props: IProps): React.ReactElement => {
+  // 記事と紐付くカテゴリー情報を保持する
   const data: IArticleAndCategory = props.pageContext.data
 
+  // 記事詳細ページを描画
   return (
     <Layout>
       <div id='article'>

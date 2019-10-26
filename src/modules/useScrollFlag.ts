@@ -8,17 +8,20 @@ interface IInitState {
   flag: boolean
 }
 
-export const useScrollFlag = (
+export const useScrollFlag: (
   initState: IInitState
-): [boolean, IScrollFlag] => {
+) => [boolean, IScrollFlag] = initState => {
+  // 一度でもスクロールされたかをフラグを保持する
   const [scrollFlag, setScrollFlag]: [
     boolean,
     Dispatch<SetStateAction<boolean>>
   ] = useState<boolean>(initState.flag)
 
-  const scroll: (e: UIEvent<HTMLElement>) => void = (
-    e: UIEvent<HTMLElement>
-  ) => {
+  /**
+   * 初めてスクロールされた時だけ、スクロールされたかのフラグを変更するメソッド
+   * @param e
+   */
+  const scroll: (e: UIEvent<HTMLElement>) => void = e => {
     const isScrollTop: boolean = e.currentTarget.scrollTop === 0
     if (!isScrollTop && !scrollFlag) {
       setScrollFlag(true)

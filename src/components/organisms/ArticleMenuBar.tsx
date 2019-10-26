@@ -18,11 +18,19 @@ interface IProps {
 }
 
 export default (props: IProps): React.ReactElement => {
+  // Storeに情報を送るdispatchを格納
   const dispatch: React.Dispatch<any> = useDispatch()
+
+  // お気に入りの記事情報を格納
   const likeMap: Map<string, ILikeMapValue> = useSelector(
     (state: IState) => state.likeMap,
     () => false
   )
+
+  /**
+   * お気に入りした記事情報をstoreに格納するメソッド
+   * @param e
+   */
   const clickLike = (e: React.MouseEvent<HTMLElement, MouseEvent>): void => {
     dispatch({
       type: 'CLICK_LIKE',
@@ -32,6 +40,8 @@ export default (props: IProps): React.ReactElement => {
       title: props.title,
     })
   }
+
+  // 記事詳細ページのメニューバーを描画
   return (
     <div id='menu-bar-bg'>
       <div id='menu-bar'>

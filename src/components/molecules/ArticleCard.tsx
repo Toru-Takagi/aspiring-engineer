@@ -22,7 +22,14 @@ export default (props: IProps): React.ReactElement => {
     (state: IState) => state.likeMap,
     () => false
   )
-  const clickLike = (e: React.MouseEvent<HTMLElement, MouseEvent>): void => {
+
+  /**
+   * Likeアイコンを押下した際に、Storeに好きな記事の情報を格納する
+   * @param e
+   */
+  const clickLike: (
+    e: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => void = e => {
     const createNumber = e.currentTarget.getAttribute('data-create-number')
     const title: string | null = e.currentTarget.getAttribute('data-title')
     const likeFlag: boolean =
@@ -37,6 +44,8 @@ export default (props: IProps): React.ReactElement => {
     })
     e.preventDefault()
   }
+
+  // TOPページの記事一覧の記事カードを返す
   return (
     <div className='article-bg'>
       <Link to={`/article/${props.article.createNumber}`}>
