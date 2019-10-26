@@ -3,14 +3,14 @@ import { createStore, StoreEnhancer } from 'redux'
 import { IState, ILikeMapValue } from './state'
 import { IArticle } from '../model/allContentfulArticle'
 
-interface IAction {
+export interface IAction {
   type: 'CLICK_LIKE' | 'SET_LIKE_MAP' | 'SET_ARTICLE_LIST' | 'SET_TOGGLE_FLAG'
-  likeFlag: boolean
-  likeMap: Map<string, ILikeMapValue>
-  createNumber: string
-  title: string
-  articleList: IArticle[]
-  toggleFlag: boolean
+  likeFlag?: boolean
+  likeMap?: Map<string, ILikeMapValue>
+  createNumber?: string
+  title?: string
+  articleList?: IArticle[]
+  toggleFlag?: boolean
 }
 
 const initialState: IState = {
@@ -30,17 +30,23 @@ const reducer: (state: IState | undefined, action: IAction) => IState = (
 ) => {
   switch (action.type) {
     case 'CLICK_LIKE':
-      action.likeFlag
-        ? action.likeMap.delete(action.createNumber)
-        : action.likeMap.set(action.createNumber, {
-            createNumber: action.createNumber,
-            title: action.title,
-          })
-      const likeObject: { [key: string]: ILikeMapValue } = {}
-      action.likeMap.forEach((value, key) => {
-        likeObject[key] = value
-      })
-      localStorage.setItem('likeObject', JSON.stringify(likeObject))
+      if (
+        action.likeMap !== undefined &&
+        action.createNumber !== undefined &&
+        action.title !== undefined
+      ) {
+        action.likeFlag
+          ? action.likeMap.delete(action.createNumber)
+          : action.likeMap.set(action.createNumber, {
+              createNumber: action.createNumber,
+              title: action.title,
+            })
+        const likeObject: { [key: string]: ILikeMapValue } = {}
+        action.likeMap.forEach((value, key) => {
+          likeObject[key] = value
+        })
+        localStorage.setItem('likeObject', JSON.stringify(likeObject))
+      }
       return {
         ...state,
         likeMap: action.likeMap,

@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as PropTypes from 'prop-types'
 
-import { IState } from '../state/state'
+import { useToggleFlag, IToggleFlag } from '../modules/useToggleFlag'
+
+import { IAction } from '../state/createStore'
 
 import Footer from '../components/organisms/Footer'
 
@@ -17,25 +19,12 @@ const Layout: (props: IProps) => React.ReactElement = props => {
   const { children } = props
 
   // Storeの中身を変更するdispatchを保持
-  const dispatch: React.Dispatch<any> = useDispatch()
+  const dispatch: React.Dispatch<IAction> = useDispatch()
 
   // フッターの開閉状態を保持する
-  const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
-
-  /**
-   * ブラウザに保存されているフッターの開閉状態に格納するメソッド
-   */
-  const initToggleFlag: () => void = React.useCallback(() => {
-    // ブラウザに保存されているフッターの開閉状態を取得
-    const flag: boolean =
-      localStorage.getItem('toggleFlag') === 'true' ? true : false
-
-    // ブラウザから取得した開閉状態をStoreに格納
-    dispatch({
-      type: 'SET_TOGGLE_FLAG',
-      toggleFlag: flag,
-    })
-  }, [dispatch])
+  const [toggleFlag]: [boolean | undefined, IToggleFlag] = useToggleFlag(
+    dispatch
+  )
 
   /**
    * ブラウザに保存されているお気に入り記事情報をStoreに格納するメソッド
@@ -55,9 +44,8 @@ const Layout: (props: IProps) => React.ReactElement = props => {
 
   // コンポーネント読み込み時に呼び出される
   React.useEffect(() => {
-    initToggleFlag()
     initLikeMap()
-  }, [initToggleFlag, initLikeMap])
+  }, [initLikeMap])
 
   // デフォルトのレイアウトを描画する
   return (
