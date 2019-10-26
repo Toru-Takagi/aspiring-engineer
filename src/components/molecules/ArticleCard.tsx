@@ -16,17 +16,15 @@ interface IProps {
   article: IArticle
 }
 
-export default (props: IProps) => {
+export default (props: IProps): React.ReactElement => {
   const dispatch: React.Dispatch<any> = useDispatch()
   const likeMap: Map<string, ILikeMapValue> = useSelector(
     (state: IState) => state.likeMap,
     () => false
   )
-  const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
+  const clickLike = (e: React.MouseEvent<HTMLElement, MouseEvent>): void => {
     const createNumber = e.currentTarget.getAttribute('data-create-number')
-    const title: string = e.currentTarget.getAttribute('data-title')
+    const title: string | null = e.currentTarget.getAttribute('data-title')
     const likeFlag: boolean =
       e.currentTarget.getAttribute('data-like') === 'true'
 

@@ -6,7 +6,7 @@ import { IState, ILikeMapValue } from '../../state/state'
 
 import '../../scss/like-article-area.scss'
 
-export default () => {
+export default (): React.ReactElement => {
   const likeMap: Map<string, ILikeMapValue> = useSelector(
     (state: IState) => state.likeMap,
     () => false
@@ -24,7 +24,11 @@ export default () => {
           Array.from(likeMap.keys()).map((value: string) => {
             return (
               <Link to={`/article/${value}`} key={value}>
-                <li>{likeMap.get(value).title}</li>
+                <li>
+                  {likeMap.get(value) !== undefined
+                    ? likeMap.get(value)!.title
+                    : ''}
+                </li>
               </Link>
             )
           })

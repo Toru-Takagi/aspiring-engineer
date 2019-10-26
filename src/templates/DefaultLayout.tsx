@@ -12,11 +12,11 @@ interface IProps {
   children: PropTypes.ReactNodeLike
 }
 
-const Layout: React.FunctionComponent<IProps> = (props: IProps) => {
+const Layout = (props: IProps) => {
   const { children } = props
   const dispatch: React.Dispatch<any> = useDispatch()
   const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
-  const initToggleFlag: () => void = React.useCallback(() => {
+  const initToggleFlag = React.useCallback(() => {
     const flag: boolean =
       localStorage.getItem('toggleFlag') === 'true' ? true : false
     dispatch({
@@ -24,8 +24,8 @@ const Layout: React.FunctionComponent<IProps> = (props: IProps) => {
       toggleFlag: flag,
     })
   }, [dispatch])
-  const initLikeMap: () => void = React.useCallback(() => {
-    const likeObject: string = localStorage.getItem('likeObject')
+  const initLikeMap = React.useCallback(() => {
+    const likeObject: string | null = localStorage.getItem('likeObject')
     dispatch({
       type: 'SET_LIKE_MAP',
       likeMap: new Map(

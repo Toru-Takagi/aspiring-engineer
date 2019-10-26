@@ -7,7 +7,7 @@ import MailIcon from '../atoms/icons/MailIcon'
 
 import '../../scss/profile-area.scss'
 
-export default () => {
+export default (): React.ReactElement => {
   return (
     <div id='profile-area'>
       <div id='profile'>

@@ -12,7 +12,7 @@ import Tag from '../atoms/Tag'
 
 import '../../scss/category-area.scss'
 
-export default () => {
+export default (): React.ReactElement => {
   const data: IAllContentfulCategory = useStaticQuery(graphql`
     query CategoryQuery {
       allContentfulCategory {
@@ -26,13 +26,20 @@ export default () => {
     }
   `)
   const dispatch: React.Dispatch<any> = useDispatch()
-  const clickCategory: (
+  const clickCategory = (
     e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => void = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  ): void => {
     const word: string = e.currentTarget.getAttribute('data-category')
-    const searchInputElm: HTMLElement = document.getElementById('search-area')
-    if (searchInputElm !== null) {
-      searchInputElm.querySelector('input').value = word
+      ? e.currentTarget.getAttribute('data-category')!
+      : ''
+    const searchAreaElm: HTMLElement | null = document.getElementById(
+      'search-area'
+    )
+    if (searchAreaElm !== null) {
+      const searchInputElm: HTMLInputElement | null = searchAreaElm.querySelector(
+        'input'
+      )
+      if (searchInputElm !== null) searchInputElm.value = word
       new Algolia().searchAllAndSetArticleList(word, dispatch)
     }
     navigate('/?word=' + word)

@@ -10,10 +10,10 @@ import { IState } from '../../state/state'
 
 import '../../scss/footer.scss'
 
-export default () => {
+export default (): React.ReactElement => {
   const dispatch: React.Dispatch<any> = useDispatch()
   const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
-  const toggle: () => void = () => {
+  const toggle = (): void => {
     const flag: boolean = !toggleFlag
     localStorage.setItem('toggleFlag', flag.toString())
     dispatch({

@@ -17,15 +17,13 @@ interface IProps {
   title: string
 }
 
-export default (props: IProps) => {
+export default (props: IProps): React.ReactElement => {
   const dispatch: React.Dispatch<any> = useDispatch()
   const likeMap: Map<string, ILikeMapValue> = useSelector(
     (state: IState) => state.likeMap,
     () => false
   )
-  const clickLike: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void = (
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
+  const clickLike = (e: React.MouseEvent<HTMLElement, MouseEvent>): void => {
     dispatch({
       type: 'CLICK_LIKE',
       likeFlag: e.currentTarget.getAttribute('data-like') === 'true',

@@ -42,30 +42,28 @@ export default () => {
   const dispatch: React.Dispatch<any> = useDispatch()
   const [isLoaded, setIsLoaded]: [
     boolean,
-    React.Dispatch<React.SetStateAction<boolean>>
+    React.Dispatch<React.SetStateAction<any>>
   ] = React.useState(false)
   const [scrollFlag, { scroll }]: [boolean, IScrollFlag] = useScrollFlag({
     flag: false,
   })
   let timer: NodeJS.Timeout
-  const clickHeader: () => void = () => {
-    const searchInputElm: HTMLInputElement = document.querySelector(
+  const clickHeader = () => {
+    const searchInputElm: HTMLInputElement | null = document.querySelector(
       '#search-area input'
     )
-    searchInputElm.value = ''
+    if (searchInputElm !== null) searchInputElm.value = ''
     new Algolia().searchAllAndSetArticleList('', dispatch)
     navigate('/')
   }
-  const inputSearchKeyword: (e: React.ChangeEvent<HTMLInputElement>) => void = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const inputSearchKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.currentTarget.value.toString()
     clearTimeout(timer)
     timer = setTimeout(() => {
       new Algolia().searchAllAndSetArticleList(value, dispatch)
     }, 500)
   }
-  const showArticle: () => void = () => {
+  const showArticle = () => {
     let time: number = 300
     document.querySelectorAll('.article-animation').forEach(elm => {
       setTimeout(() => {
@@ -91,10 +89,10 @@ export default () => {
               ? ''
               : parameterArray[1].replace('%20', ' ')
           if (parameterArray[0] === 'word') {
-            const searchInputElm: HTMLInputElement = document.querySelector(
+            const searchInputElm: HTMLInputElement | null = document.querySelector(
               '#search-area input'
             )
-            searchInputElm.value = value
+            if (searchInputElm !== null) searchInputElm.value = value
             new Algolia().searchAllAndSetArticleList(value, dispatch)
           }
         })

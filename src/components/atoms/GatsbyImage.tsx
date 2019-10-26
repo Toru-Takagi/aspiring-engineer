@@ -6,7 +6,7 @@ interface Props {
   filename: string
 }
 
-export default (props: Props) => {
+export default (props: Props): React.ReactElement => {
   return (
     <StaticQuery
       query={graphql`

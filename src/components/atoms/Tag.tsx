@@ -8,7 +8,7 @@ interface Props {
   itemName: string
 }
 
-export default (props: Props) => {
+export default (props: Props): React.ReactElement => {
   const style = {
     backgroundColor: props.bgColor,
     color: props.color,
