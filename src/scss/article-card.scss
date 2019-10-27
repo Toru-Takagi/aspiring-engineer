@@ -1,0 +1,95 @@
+@import 'mixin.scss';
+
+$article_bg_height_pc: 300px;
+$article_bg_height_sp: 230px;
+$article_width_pc: 300px;
+$article_width_sp: 230px;
+$article_height_pc: 250px;
+$article_height_sp: 200px;
+$article_image_height: 100px;
+$article_tag_height: 30px;
+
+.article-bg {
+  flex-basis: 33%;
+  height: $article_bg_height_pc;
+  display: flex;
+  justify-content: center;
+  a {
+    width: $article_width_pc;
+    article {
+      border-radius: 15px;
+      width: $article_width_pc;
+      height: $article_height_pc;
+      position: relative;
+      box-shadow: 4px 8px 8px 4px rgba(0, 0, 0, 0.3);
+      transition: 0.2s;
+      opacity: 0;
+      transform: scale(0);
+      will-change: opacity transform;
+      background-color: #f5f7fa;
+      &:hover {
+        box-shadow: 8px 16px 8px 4px rgba(0, 0, 0, 0.5);
+      }
+      &.show-animation {
+        animation: showAnimation 1s, expansionAnimation 1s;
+        animation-fill-mode: forwards;
+      }
+      .gatsby-image-wrapper {
+        width: 100%;
+        height: $article_image_height;
+        border-radius: 15px 15px 0 0;
+      }
+      h1 {
+        box-sizing: border-box;
+        padding: 15px;
+        width: 100%;
+        height: calc(100% - #{$article_image_height});
+        font-size: 1.6rem;
+        text-align: center;
+      }
+      .article-tag {
+        width: 80px;
+        height: $article_tag_height;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        background-color: #ca3e47;
+        color: #f5f7fa;
+        line-height: $article_tag_height;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+      .like-icon-area {
+        width: auto;
+        height: auto;
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+        z-index: 100;
+        svg {
+          height: 30px;
+          color: #ca3e47;
+        }
+      }
+    }
+  }
+  @include pc {
+    flex-basis: 50%;
+  }
+  @include tablet {
+    flex-basis: 100%;
+  }
+  @include sp {
+    height: $article_bg_height_sp;
+    a {
+      width: $article_width_sp;
+      article {
+        width: $article_width_sp;
+        height: $article_height_sp;
+        h1 {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

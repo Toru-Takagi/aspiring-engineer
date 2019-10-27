@@ -1,6 +1,6 @@
-import React from 'react'
+import * as React from 'react'
 
-export default () => {
+export default (): React.ReactElement => {
   return (
     <svg
       aria-hidden='true'

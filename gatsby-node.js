@@ -7,16 +7,16 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulArticle(sort: { fields: createdAt, order: DESC }) {
         edges {
           node {
-            title
             id
-            createdAt
-            createNumber
+            title
             content {
               content
               childMarkdownRemark {
                 html
               }
             }
+            createNumber
+            createdAt
             category {
               name
             }
@@ -37,7 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data.allContentfulArticle.edges.map(edge => {
     createPage({
       path: `/article/${edge.node.createNumber}`,
-      component: path.resolve('./src/templates/Article.jsx'),
+      component: path.resolve('./src/templates/Article.tsx'),
       context: {
         data: edge.node,
       },

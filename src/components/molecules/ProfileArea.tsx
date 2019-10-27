@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import Image from '../atoms/GatsbyImage'
 import TwitterIcon from '../atoms/icons/TwitterIcon'
@@ -7,7 +7,8 @@ import MailIcon from '../atoms/icons/MailIcon'
 
 import '../../scss/profile-area.scss'
 
-export default () => {
+export default (): React.ReactElement => {
+  // プロフィール情報を描画
   return (
     <div id='profile-area'>
       <div id='profile'>

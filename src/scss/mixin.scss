@@ -13,3 +13,25 @@ $footer_toggle_button_size: 70px;
 $profile_area_size: 250px;
 $profile_icon_size: 100px;
 $sns_icon_size: 20px;
+
+$pc_width: 1024px;
+$tablet_width: 896px;
+$sp_width: 480px;
+
+@mixin pc {
+  @media screen and (max-width: $pc_width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: $tablet_width) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: $sp_width) {
+    @content;
+  }
+}

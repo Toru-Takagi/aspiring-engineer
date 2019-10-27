@@ -25,35 +25,6 @@
       }
     }
   }
-  #menu-bar-bg {
-    background-color: $accent_color;
-    height: auto;
-    #menu-bar {
-      margin: 0 auto;
-      padding: 5px;
-      display: flex;
-      justify-content: space-around;
-      width: 980px;
-      color: $white;
-      text-align: center;
-      font-weight: bold;
-      line-height: 1.5rem;
-      a {
-        color: $white;
-      }
-      .menu-bar-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: auto;
-        cursor: pointer;
-        svg {
-          height: 25px;
-          fill: $white;
-        }
-      }
-    }
-  }
   .article-main {
     margin: 0 auto;
     padding: 50px 20px 20px 20px;
@@ -85,7 +56,10 @@
       font-size: 1.1rem;
     }
     img {
+      margin-top: 10px;
+      border-radius: 10px;
       max-width: 80%;
+      box-shadow: 0px 0px 16px 8px rgba(0, 0, 0, 0.3);
     }
     strong {
       color: $qiita_color;
@@ -97,6 +71,8 @@
     }
     pre {
       margin-left: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 16px 8px rgba(0, 0, 0, 0.3);
     }
     .twitter-tweet {
       margin-left: 20px;

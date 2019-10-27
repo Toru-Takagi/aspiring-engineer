@@ -1,25 +1,25 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import * as React from 'react'
+import { useDispatch } from 'react-redux'
 
 import ProfileArea from '../molecules/ProfileArea'
 import CategoryArea from '../molecules/CategoryArea'
 import LikeArticleArea from '../molecules/LikeArticleArea'
 import ArrowIcon from '../atoms/icons/ArrowIcon'
 
+import { useToggleFlag, IToggleFlag } from '../../modules/useToggleFlag'
+
 import '../../scss/footer.scss'
 
-export default () => {
-  const dispatch = useDispatch()
-  const toggleFlag = useSelector(state => state.toggleFlag, [])
-  const toggle = () => {
-    let flag = !toggleFlag
-    localStorage.setItem('toggleFlag', flag)
-    dispatch({
-      type: 'SET_TOGGLE_FLAG',
-      toggleFlag: flag,
-    })
-  }
+export default (): React.ReactElement => {
+  // Storeに格納するためのdispatchを取得
+  const dispatch: React.Dispatch<any> = useDispatch()
 
+  // toggleボタンの開閉状態を保持するフラグを格納
+  const [toggleFlag, { toggle }]: [boolean, IToggleFlag] = useToggleFlag(
+    dispatch
+  )
+
+  // ページのフッターを描画
   return (
     <footer>
       <div

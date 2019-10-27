@@ -1,0 +1,31 @@
+@import 'mixin.scss';
+
+#menu-bar-bg {
+  background-color: $accent_color;
+  height: auto;
+  #menu-bar {
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    width: 980px;
+    color: $white;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.5rem;
+    a {
+      color: $white;
+    }
+    .menu-bar-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: auto;
+      cursor: pointer;
+      svg {
+        height: 25px;
+        fill: $white;
+      }
+    }
+  }
+}
