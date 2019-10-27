@@ -11,12 +11,9 @@ import { useToggleFlag, IToggleFlag } from '../../modules/useToggleFlag'
 import '../../scss/footer.scss'
 
 export default (): React.ReactElement => {
-  // Storeに格納するためのdispatchを取得
-  const dispatch: React.Dispatch<any> = useDispatch()
-
   // toggleボタンの開閉状態を保持するフラグを格納
   const [toggleFlag, { toggle }]: [boolean, IToggleFlag] = useToggleFlag(
-    dispatch
+    useDispatch()
   )
 
   // ページのフッターを描画

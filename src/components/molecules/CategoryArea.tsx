@@ -26,8 +26,6 @@ export default (): React.ReactElement => {
       }
     }
   `)
-  // Storeに格納するdispatchの取得
-  const dispatch: React.Dispatch<any> = useDispatch()
 
   /**
    * 検索エリアが存在すればAlgoliaで検索し、存在しなければGet情報を付与してページ遷移するメソッド
@@ -47,7 +45,7 @@ export default (): React.ReactElement => {
         'input'
       )
       if (searchInputElm !== null) searchInputElm.value = word
-      new Algolia().searchAllAndSetArticleList(word, dispatch)
+      new Algolia().searchAllAndSetArticleList(word, useDispatch())
     }
     navigate('/?word=' + word)
   }
