@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Converter from '../../mixins/converter'
 import { IArticle } from '../../model/allContentfulArticle'
-import { IState, ILikeMapValue } from '../../state/state'
+import { ILikeMapValue } from '../../state/state'
+import { useLikeMap, ILikeMap } from '../../modules/useLikeMap'
 
 import LikeIcon from '../atoms/icons/LikeIcon'
 import NotLikeIcon from '../atoms/icons/NotLikeIcon'
@@ -17,33 +18,11 @@ interface IProps {
 }
 
 export default (props: IProps): React.ReactElement => {
-  const dispatch: React.Dispatch<any> = useDispatch()
-  const likeMap: Map<string, ILikeMapValue> = useSelector(
-    (state: IState) => state.likeMap,
-    () => false
-  )
-
-  /**
-   * Likeアイコンを押下した際に、Storeに好きな記事の情報を格納する
-   * @param e
-   */
-  const clickLike: (
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => void = e => {
-    const createNumber = e.currentTarget.getAttribute('data-create-number')
-    const title: string | null = e.currentTarget.getAttribute('data-title')
-    const likeFlag: boolean =
-      e.currentTarget.getAttribute('data-like') === 'true'
-
-    dispatch({
-      type: 'CLICK_LIKE',
-      likeFlag: likeFlag,
-      likeMap: likeMap,
-      createNumber: createNumber,
-      title: title,
-    })
-    e.preventDefault()
-  }
+  // お気に入りの記事情報を取得
+  const [likeMap, { clickLike }]: [
+    Map<string, ILikeMapValue>,
+    ILikeMap
+  ] = useLikeMap(useDispatch())
 
   // TOPページの記事一覧の記事カードを返す
   return (

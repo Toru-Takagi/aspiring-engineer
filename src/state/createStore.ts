@@ -4,7 +4,7 @@ import { IState, ILikeMapValue } from './state'
 import { IArticle } from '../model/allContentfulArticle'
 
 export interface IAction {
-  type: 'CLICK_LIKE' | 'SET_LIKE_MAP' | 'SET_ARTICLE_LIST' | 'SET_TOGGLE_FLAG'
+  type: 'SET_LIKE_MAP' | 'SET_ARTICLE_LIST' | 'SET_TOGGLE_FLAG'
   likeFlag?: boolean
   likeMap?: Map<string, ILikeMapValue>
   createNumber?: string
@@ -29,29 +29,6 @@ const reducer: (state: IState | undefined, action: IAction) => IState = (
   action
 ) => {
   switch (action.type) {
-    case 'CLICK_LIKE':
-      if (
-        action.likeMap !== undefined &&
-        action.createNumber !== undefined &&
-        action.title !== undefined
-      ) {
-        action.likeFlag
-          ? action.likeMap.delete(action.createNumber)
-          : action.likeMap.set(action.createNumber, {
-              createNumber: action.createNumber,
-              title: action.title,
-            })
-        const likeObject: { [key: string]: ILikeMapValue } = {}
-        action.likeMap.forEach((value, key) => {
-          likeObject[key] = value
-        })
-        localStorage.setItem('likeObject', JSON.stringify(likeObject))
-      }
-      return {
-        ...state,
-        likeMap:
-          action.likeMap !== undefined ? action.likeMap : initialState.likeMap,
-      }
     case 'SET_LIKE_MAP':
       return {
         ...state,
