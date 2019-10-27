@@ -10,15 +10,12 @@ export interface IToggleFlag {
 
 export const useToggleFlag: (
   dispatch: Dispatch<IAction>
-) => [boolean | undefined, IToggleFlag] = dispatch => {
+) => [boolean, IToggleFlag] = dispatch => {
   // StoreからtoggleFlagを取得
-  const toggleFlag: boolean | undefined = useSelector(
-    (state: IState) => state.toggleFlag
-  )
+  const toggleFlag: boolean = useSelector((state: IState) => state.toggleFlag)
 
   // 初回読み込み時に呼び出される
   useEffect(() => {
-    console.log('useToggleFlag')
     // ブラウザに保存されているフッターの開閉状態を取得
     const flag: boolean =
       localStorage.getItem('toggleFlag') === 'true' ? true : false

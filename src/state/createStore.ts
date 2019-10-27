@@ -49,22 +49,30 @@ const reducer: (state: IState | undefined, action: IAction) => IState = (
       }
       return {
         ...state,
-        likeMap: action.likeMap,
+        likeMap:
+          action.likeMap !== undefined ? action.likeMap : initialState.likeMap,
       }
     case 'SET_LIKE_MAP':
       return {
         ...state,
-        likeMap: action.likeMap,
+        likeMap:
+          action.likeMap !== undefined ? action.likeMap : initialState.likeMap,
       }
     case 'SET_ARTICLE_LIST':
       return {
         ...state,
-        articleList: action.articleList,
+        articleList:
+          action.articleList !== undefined
+            ? action.articleList
+            : initialState.articleList,
       }
     case 'SET_TOGGLE_FLAG':
       return {
         ...state,
-        toggleFlag: action.toggleFlag,
+        toggleFlag:
+          action.toggleFlag !== undefined
+            ? action.toggleFlag
+            : initialState.toggleFlag,
       }
     default:
       return state

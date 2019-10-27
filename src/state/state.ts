@@ -1,9 +1,9 @@
 import { IArticle } from '../model/allContentfulArticle'
 
 export interface IState {
-  likeMap: Map<string, ILikeMapValue> | undefined
-  articleList: IArticle[] | undefined
-  toggleFlag: boolean | undefined
+  likeMap: Map<string, ILikeMapValue>
+  articleList: IArticle[]
+  toggleFlag: boolean
 }
 
 export interface ILikeMapValue {

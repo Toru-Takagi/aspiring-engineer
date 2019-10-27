@@ -15,10 +15,9 @@ export default (): React.ReactElement => {
   const dispatch: React.Dispatch<any> = useDispatch()
 
   // toggleボタンの開閉状態を保持するフラグを格納
-  const [toggleFlag, { toggle }]: [
-    boolean | undefined,
-    IToggleFlag
-  ] = useToggleFlag(dispatch)
+  const [toggleFlag, { toggle }]: [boolean, IToggleFlag] = useToggleFlag(
+    dispatch
+  )
 
   // ページのフッターを描画
   return (

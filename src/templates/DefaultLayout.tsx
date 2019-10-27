@@ -22,9 +22,7 @@ const Layout: (props: IProps) => React.ReactElement = props => {
   const dispatch: React.Dispatch<IAction> = useDispatch()
 
   // フッターの開閉状態を保持する
-  const [toggleFlag]: [boolean | undefined, IToggleFlag] = useToggleFlag(
-    dispatch
-  )
+  const [toggleFlag]: [boolean, IToggleFlag] = useToggleFlag(dispatch)
 
   /**
    * ブラウザに保存されているお気に入り記事情報をStoreに格納するメソッド
