@@ -67,7 +67,12 @@ export default (): React.ReactElement => {
               >
                 <Tag
                   itemName={
-                    category.name + ' (' + category.article.length + ')'
+                    category.name +
+                    ' (' +
+                    (category.article !== null
+                      ? String(category.article.length)
+                      : '0') +
+                    ')'
                   }
                   bgColor='#3D3D3D'
                   color='#CA3E47'
