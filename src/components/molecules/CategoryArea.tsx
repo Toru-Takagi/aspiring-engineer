@@ -11,6 +11,7 @@ import {
 import Tag from '../atoms/Tag'
 
 import '../../scss/category-area.scss'
+import { IAction } from '../../state/createStore'
 
 export default (): React.ReactElement => {
   // Contentfullからカテゴリー情報を取得して格納
@@ -26,6 +27,9 @@ export default (): React.ReactElement => {
       }
     }
   `)
+
+  // Storeを変更するdispatchを取得
+  const dispatch: React.Dispatch<IAction> = useDispatch()
 
   /**
    * 検索エリアが存在すればAlgoliaで検索し、存在しなければGet情報を付与してページ遷移するメソッド
@@ -45,7 +49,7 @@ export default (): React.ReactElement => {
         'input'
       )
       if (searchInputElm !== null) searchInputElm.value = word
-      new Algolia().searchAllAndSetArticleList(word, useDispatch())
+      new Algolia().searchAllAndSetArticleList(word, dispatch)
     }
     navigate('/?word=' + word)
   }
