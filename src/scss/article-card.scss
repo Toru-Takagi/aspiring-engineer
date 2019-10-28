@@ -76,7 +76,7 @@ $article_tag_height: 30px;
   @include pc {
     flex-basis: 50%;
   }
-  @include tablet {
+  @media screen and (max-width: 700px) {
     flex-basis: 100%;
   }
   @include sp {
