@@ -1,18 +1,35 @@
 @import './profile-area.scss';
 
 #category-area {
-  padding: 0 20px;
+  padding: $footer_contents_basic_padding;
   width: calc((100% - #{$profile_area_size}) / 2);
   #category-list {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 20px;
     height: calc(100% - 20px);
     overflow: auto;
     li {
       margin: 0.25em;
+      height: 2.3rem;
       cursor: pointer;
+    }
+  }
+  @include tablet {
+    margin-top: calc(#{$footer_contents_basic_margin_top} * 2);
+    width: 100%;
+    height: calc(100% - #{$footer_contents_basic_height});
+    order: 2;
+  }
+  @include sp {
+    margin-top: $footer_contents_basic_margin_top;
+    height: auto;
+    .sub-title {
+      display: block;
+      width: 100%;
+      text-align: center;
     }
   }
 }

@@ -115,17 +115,15 @@ $scroll_translate_y: 100px;
       transform: translateY(calc(-1 * #{$scroll_translate_y}));
     }
   }
-  @include tablet {
-    #search-area {
-      width: 80%;
-    }
-  }
   @include sp {
     header {
       height: $header_height_sp;
       svg {
         height: calc(#{$header_height_sp} - #{$header_margin_horizontal} * 2);
       }
+    }
+    #search-area {
+      width: 80%;
     }
     &.on-scroll {
       header {
