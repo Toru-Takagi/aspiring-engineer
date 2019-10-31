@@ -139,4 +139,45 @@
       margin-right: 3px;
     }
   }
+  @include sp {
+    header {
+      height: 150px;
+      .article-title-area {
+        padding: 0 10px;
+        .article-title {
+          font-size: 1.7rem;
+        }
+      }
+    }
+    .article-main {
+      width: 100%;
+      padding: 15px 10px;
+      h2 {
+        margin: 15px 0 10px 0;
+      }
+      iframe {
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      p {
+        padding-left: 10px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 30px;
+      }
+      img {
+        max-width: 100%;
+      }
+      pre {
+        margin-left: 10px;
+      }
+      .twitter-tweet {
+        margin-left: 10px;
+        width: calc(100% - 10px) !important;
+        min-width: auto !important;
+      }
+    }
+  }
 }

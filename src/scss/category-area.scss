@@ -26,6 +26,9 @@
   @include sp {
     margin-top: $footer_contents_basic_margin_top;
     height: auto;
+    #category-list {
+      padding-left: 0;
+    }
     .sub-title {
       display: block;
       width: 100%;
