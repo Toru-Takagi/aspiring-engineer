@@ -28,4 +28,15 @@
       }
     }
   }
+  @include sp {
+    #menu-bar {
+      width: 100%;
+      .menu-bar-item {
+        font-size: 1rem;
+        svg {
+          height: 17px;
+        }
+      }
+    }
+  }
 }
