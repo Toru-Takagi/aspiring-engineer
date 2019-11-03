@@ -21,18 +21,18 @@ export default (props: IProps) => {
     ILikeMap
   ] = useLikeMap(useDispatch())
 
-  const IconContainer: StyledComponent<any, any, any> = styled.div`
-    width: auto;
-    height: auto;
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    z-index: 100;
-    svg {
-      height: 30px;
-      color: ${cssProperties.accentColor};
-    }
-  `
+  const IconContainer: StyledComponent<any, any, any> = styled.div({
+    width: 'auto',
+    height: 'auto',
+    position: 'absolute',
+    bottom: '5px',
+    right: '10px',
+    zIndex: 100,
+    svg: {
+      height: '30px',
+      color: cssProperties.accentColor,
+    },
+  })
 
   return (
     <IconContainer
