@@ -8,6 +8,7 @@ import { IArticle } from '../../model/allContentfulArticle'
 import { ILikeMapValue } from '../../state/state'
 import { useLikeMap, ILikeMap } from '../../modules/useLikeMap'
 
+import Label from '../atoms/Label'
 import LikeIcon from '../atoms/icons/LikeIcon'
 import NotLikeIcon from '../atoms/icons/NotLikeIcon'
 
@@ -37,11 +38,11 @@ export default (props: IProps): React.ReactElement => {
             }
           />
           <h1>{props.article.title}</h1>
-          <div className='article-tag'>
-            {new Converter().changeTimestampToDateString(
+          <Label
+            name={new Converter().changeTimestampToDateString(
               props.article.createdAt
             )}
-          </div>
+          ></Label>
           <div
             className='like-icon-area'
             data-like={
