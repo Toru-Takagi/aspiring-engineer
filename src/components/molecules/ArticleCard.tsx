@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import styled, { StyledComponent } from '@emotion/styled'
 
 import Converter from '../../mixins/converter'
 import { IArticle } from '../../model/allContentfulArticle'
@@ -15,6 +16,15 @@ interface IProps {
 }
 
 export default (props: IProps): React.ReactElement => {
+  const Title: StyledComponent<any, any, any> = styled.div({
+    boxSizing: 'border-box',
+    padding: '15px',
+    width: '100%',
+    height: 'calc(100% - 100px)',
+    fontSize: '1.6rem',
+    textAlign: 'center',
+  })
+
   // TOPページの記事一覧の記事カードを返す
   return (
     <div className='article-bg'>
@@ -27,7 +37,7 @@ export default (props: IProps): React.ReactElement => {
                 : props.article.sizes
             }
           />
-          <h1>{props.article.title}</h1>
+          <Title>{props.article.title}</Title>
           <Label
             name={new Converter().changeTimestampToDateString(
               props.article.createdAt

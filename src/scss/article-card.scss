@@ -39,14 +39,6 @@ $article_tag_height: 30px;
         height: $article_image_height;
         border-radius: 15px 15px 0 0;
       }
-      h1 {
-        box-sizing: border-box;
-        padding: 15px;
-        width: 100%;
-        height: calc(100% - #{$article_image_height});
-        font-size: 1.6rem;
-        text-align: center;
-      }
     }
   }
   @include pc {
