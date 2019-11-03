@@ -1,21 +1,22 @@
 import * as React from 'react'
+import styled from '@emotion/styled'
 
-import '../../scss/tag.scss'
-
-interface Props {
-  bgColor: string
-  color: string
+interface IComponentProps {
   itemName: string
 }
 
-export default (props: Props): React.ReactElement => {
-  const style = {
-    backgroundColor: props.bgColor,
-    color: props.color,
-  }
-  return (
-    <span style={style} className='tag'>
-      {props.itemName}
-    </span>
-  )
+export default (props: IComponentProps): React.ReactElement => {
+  const Style = styled.span`
+    display: inline-block;
+    border-radius: 1em;
+    padding: 0.25em 0.75em;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    background-color: #3d3d3d;
+    color: #ca3e47;
+    &:hover {
+      box-shadow: 2px 4px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+  `
+  return <Style>{props.itemName}</Style>
 }

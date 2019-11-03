@@ -76,8 +76,6 @@ export default (): React.ReactElement => {
                       : '0') +
                     ')'
                   }
-                  bgColor='#3D3D3D'
-                  color='#CA3E47'
                 />
               </li>
             )

@@ -49,11 +49,7 @@ export default (props: IProps): React.ReactElement => {
           {data.category.map((category, index) => {
             return (
               <Link to={'/?word=' + category.name} key={index}>
-                <Tag
-                  itemName={category.name}
-                  bgColor='#3D3D3D'
-                  color='#CA3E47'
-                />
+                <Tag itemName={category.name} />
               </Link>
             )
           })}
