@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, { StyledComponent } from '@emotion/styled'
+import { css, SerializedStyles } from '@emotion/core'
 
 import cssProperties from '../../mixins/cssProperties'
 
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 export default (props: IProps): React.ReactElement => {
-  const LabelStyle: StyledComponent<any, any, any> = styled.span({
+  const labelStyle: SerializedStyles = css({
     width: '80px',
     height: '30px',
     position: 'absolute',
@@ -20,5 +20,5 @@ export default (props: IProps): React.ReactElement => {
     fontSize: '0.9rem',
     textAlign: 'center',
   })
-  return <LabelStyle>{props.name}</LabelStyle>
+  return <span css={labelStyle}>{props.name}</span>
 }
