@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { css, SerializedStyles } from '@emotion/core'
 
-import cssProperties from '../../mixins/cssProperties'
+import CssProperties from '../../mixins/cssProperties'
 
 interface IComponentProps {
   itemName: string
@@ -14,8 +14,8 @@ export default (props: IComponentProps): React.ReactElement => {
     padding: '0.25rem 0.75rem',
     transition: '0.3s',
     fontSize: '1.1rem',
-    backgroundColor: cssProperties.subColor,
-    color: cssProperties.accentColor,
+    backgroundColor: CssProperties.subColor,
+    color: CssProperties.accentColor,
     '&:hover': {
       boxShadow: '2px 4px 2px 2px rgba(0, 0, 0, 0.2)',
     },
