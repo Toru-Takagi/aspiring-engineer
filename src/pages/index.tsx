@@ -91,22 +91,6 @@ export default (): React.ReactElement => {
     }, 500)
   }
 
-  /**
-   * 記事一覧を遅らせて表示するメソッド
-   */
-  const showArticle: () => void = () => {
-    // 読み込み時から何秒遅らせるかの値を保持
-    let time: number = 300
-
-    // 記事一覧の表示をする
-    document.querySelectorAll('.article-animation').forEach(elm => {
-      setTimeout(() => {
-        elm.classList.add('show-animation')
-      }, time)
-      time += 200
-    })
-  }
-
   // 読み込み完了時に呼ばれるメソッド
   React.useEffect(() => {
     if (!isLoaded) {
@@ -140,11 +124,6 @@ export default (): React.ReactElement => {
     }
   }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
 
-  // 初回読み込み時に呼ばれる
-  React.useEffect(() => {
-    showArticle()
-  }, [articleList])
-
   // Topページを描画
   return (
     <Layout>
@@ -169,7 +148,7 @@ export default (): React.ReactElement => {
             </div>
           ) : (
             articleList.map((article, index) => {
-              return <ArticleCard article={article} key={index} />
+              return <ArticleCard article={article} index={index} key={index} />
             })
           )}
         </div>
