@@ -1,10 +1,10 @@
 import * as React from 'react'
-import styled, { StyledComponent } from '@emotion/styled'
 import { useDispatch } from 'react-redux'
+import { css, SerializedStyles } from '@emotion/core'
 
 import { ILikeMapValue } from '../../state/state'
 import { ILikeMap, useLikeMap } from '../../modules/useLikeMap'
-import cssProperties from '../../mixins/cssProperties'
+import CssProperties from '../../mixins/cssProperties'
 
 import LikeIcon from '../atoms/icons/LikeIcon'
 import NotLikeIcon from '../atoms/icons/NotLikeIcon'
@@ -21,7 +21,7 @@ export default (props: IProps) => {
     ILikeMap
   ] = useLikeMap(useDispatch())
 
-  const IconContainer: StyledComponent<any, any, any> = styled.div({
+  const iconContainerStyle: SerializedStyles = css({
     width: 'auto',
     height: 'auto',
     position: 'absolute',
@@ -30,12 +30,13 @@ export default (props: IProps) => {
     zIndex: 100,
     svg: {
       height: '30px',
-      color: cssProperties.accentColor,
+      color: CssProperties.accentColor,
     },
   })
 
   return (
-    <IconContainer
+    <div
+      css={iconContainerStyle}
       data-like={
         likeMap.get(props.createNumber.toString()) !== undefined ? true : false
       }
@@ -48,6 +49,6 @@ export default (props: IProps) => {
       ) : (
         <NotLikeIcon />
       )}
-    </IconContainer>
+    </div>
   )
 }
