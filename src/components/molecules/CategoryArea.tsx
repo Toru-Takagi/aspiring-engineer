@@ -63,7 +63,7 @@ export default (): React.ReactElement => {
       alignContent: 'flex-start',
       margin: 0,
       padding: '0 0 0 20px',
-      height: 'calc(1005 - 20px)',
+      height: 'calc(100% - 20px)',
       overflow: 'auto',
       li: {
         margin: '0.25rem',

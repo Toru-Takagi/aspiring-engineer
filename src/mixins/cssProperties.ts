@@ -20,7 +20,7 @@ const CssProperties: ICssProperties = {
   isPc: '@media screen and (max-width: 1024px)',
   footerContentsBasicMarginTop: '20px',
   footerContentsBasicPadding: '0 10px',
-  footerContentsBasicHeight: '20px',
+  footerContentsBasicHeight: '128px',
   profileAreaSize: '250px',
 }
 
