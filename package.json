@@ -14,7 +14,7 @@
     "@types/react-redux": "^7.1.5",
     "algoliasearch": "^3.35.1",
     "gatsby": "^2.17.0",
-    "gatsby-image": "^2.2.29",
+    "gatsby-image": "^2.2.30",
     "gatsby-plugin-algolia": "^0.3.4",
     "gatsby-plugin-emotion": "^4.1.13",
     "gatsby-plugin-manifest": "^2.2.23",
