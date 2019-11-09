@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'gatsby'
+import { css, SerializedStyles } from '@emotion/core'
 
 import { ILikeMapValue } from '../../state/state'
 import { useLikeMap, ILikeMap } from '../../modules/useLikeMap'
+import CssProperties from '../../mixins/cssProperties'
 
 import HomeIcon from '../atoms/icons/HomeIcon'
 import LikeIcon from '../atoms/icons/LikeIcon'
 import NotLikeIcon from '../atoms/icons/NotLikeIcon'
 import TwitterIcon from '../atoms/icons/TwitterIcon'
 import HatenaBookmarkIcon from '../atoms/icons/HatenaBookmarkIcon'
-
-import '../../scss/article-menu-bar.scss'
 
 interface IProps {
   createNumber: string
@@ -25,9 +25,48 @@ export default (props: IProps): React.ReactElement => {
     ILikeMap
   ] = useLikeMap(useDispatch())
 
+  const menuBarStyle: SerializedStyles = css({
+    backgroundColor: CssProperties.accentColor,
+    height: 'auto',
+    '> div': {
+      margin: '0 auto',
+      padding: '5px',
+      display: 'flex',
+      justifyContent: 'space-around',
+      width: '980px',
+      color: CssProperties.white,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      lineHeight: '1.5rem',
+      [CssProperties.isSp]: {
+        width: '100%',
+      },
+      a: {
+        color: CssProperties.white,
+      },
+      '.menu-bar-item': {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: 'auto',
+        cursor: 'pointer',
+        [CssProperties.isSp]: {
+          fontSize: '1rem',
+        },
+        svg: {
+          height: '25px',
+          fill: CssProperties.white,
+          [CssProperties.isSp]: {
+            height: '17px',
+          },
+        },
+      },
+    },
+  })
+
   // 記事詳細ページのメニューバーを描画
   return (
-    <div id='menu-bar-bg'>
+    <div css={menuBarStyle}>
       <div id='menu-bar'>
         <Link to='/'>
           <div className='menu-bar-item'>
@@ -51,7 +90,7 @@ export default (props: IProps): React.ReactElement => {
           )}
           <span>Like</span>
         </div>
-        <div className='menu-bar-item twitter-icon'>
+        <div className='menu-bar-item'>
           <TwitterIcon />
           <span>Twitter</span>
         </div>
