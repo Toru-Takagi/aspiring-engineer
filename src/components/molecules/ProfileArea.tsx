@@ -1,21 +1,99 @@
 import * as React from 'react'
+import { css, SerializedStyles } from '@emotion/core'
+
+import CssProperties from '../../mixins/cssProperties'
 
 import Image from '../atoms/GatsbyImage'
 import TwitterIcon from '../atoms/icons/TwitterIcon'
 import NoteIcon from '../atoms/icons/NoteIcon'
 import MailIcon from '../atoms/icons/MailIcon'
 
-import '../../scss/profile-area.scss'
-
 export default (): React.ReactElement => {
+  const profileAreaStyle: SerializedStyles = css({
+    display: 'flex',
+    padding: CssProperties.footerContentsBasicPadding,
+    width: CssProperties.profileAreaSize,
+    height: CssProperties.footerContentsBasicHeight,
+    [CssProperties.isTablet]: {
+      marginTop: CssProperties.footerContentsBasicMarginTop,
+    },
+    '.profile': {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: CssProperties.profileIconSize,
+      color: CssProperties.white,
+      '.user-icon': {
+        width: CssProperties.profileIconSize,
+        height: CssProperties.profileIconSize,
+        img: {
+          borderRadius: '15px',
+        },
+      },
+    },
+    '.sns-area': {
+      marginLeft: '30px',
+      ul: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        height: '100%',
+        li: {
+          display: 'flex',
+          span: {
+            marginLeft: '8px',
+            height: CssProperties.snsIconSize.height,
+          },
+          svg: {
+            width: CssProperties.snsIconSize.width,
+            height: CssProperties.snsIconSize.height,
+          },
+          '&.twitter': {
+            svg: {
+              fill: CssProperties.twitterColor,
+            },
+            span: {
+              color: CssProperties.twitterColor,
+            },
+          },
+          '&.qiita': {
+            div: {
+              width: CssProperties.snsIconSize.width,
+            },
+            span: {
+              color: CssProperties.qiitaColor,
+            },
+          },
+          '&.note': {
+            span: {
+              color: CssProperties.noteColor,
+            },
+          },
+          '&.mail': {
+            svg: {
+              fill: CssProperties.white,
+            },
+            span: {
+              color: CssProperties.white,
+            },
+          },
+        },
+      },
+    },
+  })
+
   // プロフィール情報を描画
   return (
-    <div id='profile-area'>
-      <div id='profile'>
+    <div css={profileAreaStyle}>
+      <div className='profile'>
         <div className='user-icon'>
           <Image filename='user-icon.png' />
         </div>
-        <span className='profile-name'>Toru Takagi</span>
+        <span>Toru Takagi</span>
       </div>
       <div className='sns-area'>
         <ul>
