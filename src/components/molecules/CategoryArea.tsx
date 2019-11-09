@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { navigate, useStaticQuery, graphql } from 'gatsby'
+import { css, SerializedStyles } from '@emotion/core'
 
 import Algolia from '../../mixins/algolia'
+import CssProperties from '../../mixins/cssProperties'
+import { IAction } from '../../state/createStore'
 import {
   IAllContentfulCategory,
   ICategory,
 } from '../../model/allContentfulCategory'
 
 import Tag from '../atoms/Tag'
-
-import '../../scss/category-area.scss'
-import { IAction } from '../../state/createStore'
 
 export default (): React.ReactElement => {
   // Contentfullからカテゴリー情報を取得して格納
@@ -54,11 +54,48 @@ export default (): React.ReactElement => {
     navigate('/?word=' + word)
   }
 
+  const categoryAreaStyle: SerializedStyles = css({
+    padding: CssProperties.footerContentsBasicPadding,
+    width: `calc((100% - ${CssProperties.profileAreaSize}) / 2)`,
+    ul: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignContent: 'flex-start',
+      margin: 0,
+      padding: '0 0 0 20px',
+      height: 'calc(1005 - 20px)',
+      overflow: 'auto',
+      li: {
+        margin: '0.25rem',
+        height: '2.3rem',
+        cursor: 'pointer',
+      },
+    },
+    [CssProperties.isTablet]: {
+      marginTop: `calc(${CssProperties.footerContentsBasicMarginTop} * 2)`,
+      width: '100%',
+      height: `calc(100% - ${CssProperties.footerContentsBasicHeight})`,
+      order: 2,
+    },
+    [CssProperties.isSp]: {
+      marginTop: CssProperties.footerContentsBasicMarginTop,
+      height: 'auto',
+      ul: {
+        paddingLeft: 0,
+      },
+      '.sub-title': {
+        display: 'block',
+        width: '100%',
+        textAlign: 'center',
+      },
+    },
+  })
+
   // カテゴリ一覧を描画する
   return (
-    <div id='category-area'>
+    <div css={categoryAreaStyle}>
       <span className='sub-title'>カテゴリ一覧</span>
-      <ul id='category-list'>
+      <ul>
         {data.allContentfulCategory.nodes.map(
           (category: ICategory, index: number) => {
             return (
