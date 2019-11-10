@@ -14,8 +14,8 @@ export default (): React.ReactElement => {
   )
 
   const likeArticleAreaStyle: SerializedStyles = css({
-    padding: CssProperties.footerContentsBasicPadding,
-    width: `calc((100% - ${CssProperties.profileAreaSize}) / 2)`,
+    padding: CssProperties.footer.ContentsBasic.padding,
+    width: `calc((100% - ${CssProperties.profile.areaSize}) / 2)`,
     '> ul': {
       margin: 0,
       paddingLeft: '20px',
@@ -25,7 +25,7 @@ export default (): React.ReactElement => {
       whiteSpace: 'nowrap',
       '> span': {
         lineHeight: '2.5rem',
-        color: CssProperties.white,
+        color: CssProperties.colors.white,
         whiteSpace: 'normal',
       },
       '> a': {
@@ -33,12 +33,12 @@ export default (): React.ReactElement => {
           marginTop: '0.25rem',
           marginRight: '0.75rem',
           listStyleType: 'disc',
-          color: CssProperties.white,
+          color: CssProperties.colors.white,
           overflowX: 'hidden',
           transition: '0.4s',
           willChange: 'color',
           '&:hover': {
-            color: CssProperties.accentColor,
+            color: CssProperties.colors.accentColor,
           },
           '&::before': {
             content: "'◆ '",
@@ -46,12 +46,12 @@ export default (): React.ReactElement => {
         },
       },
     },
-    [CssProperties.isTablet]: {
-      marginTop: CssProperties.footerContentsBasicMarginTop,
-      width: `calc(100% - ${CssProperties.profileAreaSize})`,
-      height: CssProperties.footerContentsBasicHeight,
+    [CssProperties.mediaQuery.isTablet]: {
+      marginTop: CssProperties.footer.ContentsBasic.marginTop,
+      width: `calc(100% - ${CssProperties.profile.areaSize})`,
+      height: CssProperties.footer.ContentsBasic.height,
     },
-    [CssProperties.isSp]: {
+    [CssProperties.mediaQuery.isSp]: {
       width: '100%',
       height: 'auto',
       '> ul': {

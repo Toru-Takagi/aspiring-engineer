@@ -24,18 +24,18 @@ export default (props: IProps): React.ReactElement => {
     height: '300px',
     display: 'flex',
     justifyContent: 'center',
-    [CssProperties.isPc]: {
+    [CssProperties.mediaQuery.isPc]: {
       flexBasis: '50%',
     },
     '@media screen and (max-width: 700px)': {
       flexBasis: '100%',
     },
-    [CssProperties.isSp]: {
+    [CssProperties.mediaQuery.isSp]: {
       height: '230px',
     },
     '> a': {
       width: '300px',
-      [CssProperties.isSp]: {
+      [CssProperties.mediaQuery.isSp]: {
         width: '230px',
       },
       '> article': {
@@ -48,7 +48,7 @@ export default (props: IProps): React.ReactElement => {
         opacity: 0,
         transform: 'scale(0)',
         willChange: 'opacity, transform',
-        backgroundColor: CssProperties.white,
+        backgroundColor: CssProperties.colors.white,
         '&:hover': {
           boxShadow: '8px 16px 8px 4px rgba(0, 0, 0, 0.5)',
         },
@@ -56,7 +56,7 @@ export default (props: IProps): React.ReactElement => {
           animation: 'showAnimation 1s, expansionAnimation 1s',
           animationFillMode: 'forwards',
         },
-        [CssProperties.isSp]: {
+        [CssProperties.mediaQuery.isSp]: {
           width: '230px',
           height: '200px',
         },
@@ -67,7 +67,7 @@ export default (props: IProps): React.ReactElement => {
           height: 'calc(100% - 100px)',
           fontSize: '1.6rem',
           textAlign: 'center',
-          [CssProperties.isSp]: {
+          [CssProperties.mediaQuery.isSp]: {
             fontSize: '1.2rem',
           },
         },

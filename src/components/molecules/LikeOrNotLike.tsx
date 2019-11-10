@@ -30,7 +30,7 @@ export default (props: IProps) => {
     zIndex: 100,
     svg: {
       height: '30px',
-      color: CssProperties.accentColor,
+      color: CssProperties.colors.accentColor,
     },
   })
 

@@ -1,14 +1,18 @@
 interface ICssProperties {
-  mainColor: string
-  subColor: string
-  accentColor: string
-  white: string
-  twitterColor: string
-  qiitaColor: string
-  noteColor: string
-  isSp: string
-  isTablet: string
-  isPc: string
+  colors: {
+    mainColor: string
+    subColor: string
+    accentColor: string
+    white: string
+    twitterColor: string
+    qiitaColor: string
+    noteColor: string
+  }
+  mediaQuery: {
+    isSp: string
+    isTablet: string
+    isPc: string
+  }
   footer: {
     openHeight: {
       pc: string
@@ -18,12 +22,16 @@ interface ICssProperties {
       top: string
       size: string
     }
+    ContentsBasic: {
+      marginTop: string
+      padding: string
+      height: string
+    }
   }
-  footerContentsBasicMarginTop: string
-  footerContentsBasicPadding: string
-  footerContentsBasicHeight: string
-  profileAreaSize: string
-  profileIconSize: string
+  profile: {
+    areaSize: string
+    iconSize: string
+  }
   snsIconSize: {
     width: string
     height: string
@@ -31,16 +39,20 @@ interface ICssProperties {
 }
 
 const CssProperties: ICssProperties = {
-  mainColor: '#5f5e5e',
-  subColor: '#3d3d3d',
-  accentColor: '#ca3e47',
-  white: '#f5f7fa',
-  twitterColor: '#1da0f1',
-  qiitaColor: '#58ba0c',
-  noteColor: '#31c9b4',
-  isSp: '@media screen and (max-width: 480px)',
-  isTablet: '@media screen and (max-width: 896px)',
-  isPc: '@media screen and (max-width: 1024px)',
+  colors: {
+    mainColor: '#5f5e5e',
+    subColor: '#3d3d3d',
+    accentColor: '#ca3e47',
+    white: '#f5f7fa',
+    twitterColor: '#1da0f1',
+    qiitaColor: '#58ba0c',
+    noteColor: '#31c9b4',
+  },
+  mediaQuery: {
+    isSp: '@media screen and (max-width: 480px)',
+    isTablet: '@media screen and (max-width: 896px)',
+    isPc: '@media screen and (max-width: 1024px)',
+  },
   footer: {
     openHeight: {
       pc: '225px',
@@ -50,12 +62,16 @@ const CssProperties: ICssProperties = {
       top: '15px',
       size: '70px',
     },
+    ContentsBasic: {
+      marginTop: '20px',
+      padding: '0 10px',
+      height: '128px',
+    },
   },
-  footerContentsBasicMarginTop: '20px',
-  footerContentsBasicPadding: '0 10px',
-  footerContentsBasicHeight: '128px',
-  profileAreaSize: '250px',
-  profileIconSize: '100px',
+  profile: {
+    areaSize: '250px',
+    iconSize: '100px',
+  },
   snsIconSize: {
     width: '20px',
     height: '25px',

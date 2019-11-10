@@ -22,7 +22,7 @@ export default (): React.ReactElement => {
     width: '100%',
     height: CssProperties.footer.openHeight.pc,
     fontSize: '1.2rem',
-    [CssProperties.isTablet]: {
+    [CssProperties.mediaQuery.isTablet]: {
       height: CssProperties.footer.openHeight.sp,
     },
     '.reverse': {
@@ -40,7 +40,7 @@ export default (): React.ReactElement => {
       alignItems: 'center',
       width: CssProperties.footer.toggleButton.size,
       height: CssProperties.footer.toggleButton.size,
-      backgroundColor: CssProperties.accentColor,
+      backgroundColor: CssProperties.colors.accentColor,
       zIndex: 100,
       transition: '1s',
       willChange: 'transform',
@@ -50,7 +50,7 @@ export default (): React.ReactElement => {
       svg: {
         width: '40px',
         height: '40px',
-        color: CssProperties.white,
+        color: CssProperties.colors.white,
       },
     },
     '#footer-background': {
@@ -58,7 +58,7 @@ export default (): React.ReactElement => {
       bottom: 0,
       borderRadius: '30px 30px 0 0',
       height: `calc(100% - ${CssProperties.footer.toggleButton.top} - ${CssProperties.footer.toggleButton.size} / 2)`,
-      backgroundColor: CssProperties.mainColor,
+      backgroundColor: CssProperties.colors.mainColor,
       overflow: 'hidden',
       '#footer-container': {
         position: 'relative',
@@ -66,13 +66,13 @@ export default (): React.ReactElement => {
         flexWrap: 'wrap',
         justifyContent: 'center',
         padding: '37px 35px 10px 35px',
-        [CssProperties.isSp]: {
+        [CssProperties.mediaQuery.isSp]: {
           paddingLeft: '5px',
           paddingRight: '5px',
           overflowY: 'scroll',
         },
         '.sub-title': {
-          color: CssProperties.white,
+          color: CssProperties.colors.white,
           height: '20px',
           fontWeight: 'bold',
         },

@@ -26,7 +26,7 @@ export default (props: IProps): React.ReactElement => {
   ] = useLikeMap(useDispatch())
 
   const menuBarStyle: SerializedStyles = css({
-    backgroundColor: CssProperties.accentColor,
+    backgroundColor: CssProperties.colors.accentColor,
     height: 'auto',
     '> div': {
       margin: '0 auto',
@@ -34,15 +34,15 @@ export default (props: IProps): React.ReactElement => {
       display: 'flex',
       justifyContent: 'space-around',
       width: '980px',
-      color: CssProperties.white,
+      color: CssProperties.colors.white,
       textAlign: 'center',
       fontWeight: 'bold',
       lineHeight: '1.5rem',
-      [CssProperties.isSp]: {
+      [CssProperties.mediaQuery.isSp]: {
         width: '100%',
       },
       a: {
-        color: CssProperties.white,
+        color: CssProperties.colors.white,
       },
       '.menu-bar-item': {
         display: 'flex',
@@ -50,13 +50,13 @@ export default (props: IProps): React.ReactElement => {
         justifyContent: 'center',
         width: 'auto',
         cursor: 'pointer',
-        [CssProperties.isSp]: {
+        [CssProperties.mediaQuery.isSp]: {
           fontSize: '1rem',
         },
         svg: {
           height: '25px',
-          fill: CssProperties.white,
-          [CssProperties.isSp]: {
+          fill: CssProperties.colors.white,
+          [CssProperties.mediaQuery.isSp]: {
             height: '17px',
           },
         },

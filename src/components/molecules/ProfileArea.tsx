@@ -11,22 +11,22 @@ import MailIcon from '../atoms/icons/MailIcon'
 export default (): React.ReactElement => {
   const profileAreaStyle: SerializedStyles = css({
     display: 'flex',
-    padding: CssProperties.footerContentsBasicPadding,
-    width: CssProperties.profileAreaSize,
-    height: CssProperties.footerContentsBasicHeight,
-    [CssProperties.isTablet]: {
-      marginTop: CssProperties.footerContentsBasicMarginTop,
+    padding: CssProperties.footer.ContentsBasic.padding,
+    width: CssProperties.profile.areaSize,
+    height: CssProperties.footer.ContentsBasic.height,
+    [CssProperties.mediaQuery.isTablet]: {
+      marginTop: CssProperties.footer.ContentsBasic.marginTop,
     },
     '.profile': {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: CssProperties.profileIconSize,
-      color: CssProperties.white,
+      width: CssProperties.profile.iconSize,
+      color: CssProperties.colors.white,
       '.user-icon': {
-        width: CssProperties.profileIconSize,
-        height: CssProperties.profileIconSize,
+        width: CssProperties.profile.iconSize,
+        height: CssProperties.profile.iconSize,
         img: {
           borderRadius: '15px',
         },
@@ -54,10 +54,10 @@ export default (): React.ReactElement => {
           },
           '&.twitter': {
             svg: {
-              fill: CssProperties.twitterColor,
+              fill: CssProperties.colors.twitterColor,
             },
             span: {
-              color: CssProperties.twitterColor,
+              color: CssProperties.colors.twitterColor,
             },
           },
           '&.qiita': {
@@ -65,20 +65,20 @@ export default (): React.ReactElement => {
               width: CssProperties.snsIconSize.width,
             },
             span: {
-              color: CssProperties.qiitaColor,
+              color: CssProperties.colors.qiitaColor,
             },
           },
           '&.note': {
             span: {
-              color: CssProperties.noteColor,
+              color: CssProperties.colors.noteColor,
             },
           },
           '&.mail': {
             svg: {
-              fill: CssProperties.white,
+              fill: CssProperties.colors.white,
             },
             span: {
-              color: CssProperties.white,
+              color: CssProperties.colors.white,
             },
           },
         },

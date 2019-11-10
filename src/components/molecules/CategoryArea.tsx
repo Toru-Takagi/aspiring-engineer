@@ -55,8 +55,8 @@ export default (): React.ReactElement => {
   }
 
   const categoryAreaStyle: SerializedStyles = css({
-    padding: CssProperties.footerContentsBasicPadding,
-    width: `calc((100% - ${CssProperties.profileAreaSize}) / 2)`,
+    padding: CssProperties.footer.ContentsBasic.padding,
+    width: `calc((100% - ${CssProperties.profile.areaSize}) / 2)`,
     ul: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -71,14 +71,14 @@ export default (): React.ReactElement => {
         cursor: 'pointer',
       },
     },
-    [CssProperties.isTablet]: {
-      marginTop: `calc(${CssProperties.footerContentsBasicMarginTop} * 2)`,
+    [CssProperties.mediaQuery.isTablet]: {
+      marginTop: `calc(${CssProperties.footer.ContentsBasic.marginTop} * 2)`,
       width: '100%',
-      height: `calc(100% - ${CssProperties.footerContentsBasicHeight})`,
+      height: `calc(100% - ${CssProperties.footer.ContentsBasic.height})`,
       order: 2,
     },
-    [CssProperties.isSp]: {
-      marginTop: CssProperties.footerContentsBasicMarginTop,
+    [CssProperties.mediaQuery.isSp]: {
+      marginTop: CssProperties.footer.ContentsBasic.marginTop,
       height: 'auto',
       ul: {
         paddingLeft: 0,

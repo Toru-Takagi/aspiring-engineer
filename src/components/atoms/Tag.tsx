@@ -14,8 +14,8 @@ export default (props: IComponentProps): React.ReactElement => {
     padding: '0.25rem 0.75rem',
     transition: '0.3s',
     fontSize: '1.1rem',
-    backgroundColor: CssProperties.subColor,
-    color: CssProperties.accentColor,
+    backgroundColor: CssProperties.colors.subColor,
+    color: CssProperties.colors.accentColor,
     '&:hover': {
       boxShadow: '2px 4px 2px 2px rgba(0, 0, 0, 0.2)',
     },
