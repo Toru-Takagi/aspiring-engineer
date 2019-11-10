@@ -17,6 +17,15 @@ interface ICssProperties {
     isTablet: string
     isPc: string
   }
+  header: {
+    height: {
+      pc: string
+      sp: string
+    }
+    margin: {
+      horizontal: string
+    }
+  }
   footer: {
     openHeight: {
       pc: string
@@ -40,6 +49,16 @@ interface ICssProperties {
     width: string
     height: string
   }
+  on: {
+    scroll: {
+      transition: string
+    }
+  }
+  scroll: {
+    translate: {
+      y: string
+    }
+  }
 }
 
 const CssProperties: ICssProperties = {
@@ -60,6 +79,15 @@ const CssProperties: ICssProperties = {
     isSp: '@media screen and (max-width: 480px)',
     isTablet: '@media screen and (max-width: 896px)',
     isPc: '@media screen and (max-width: 1024px)',
+  },
+  header: {
+    height: {
+      pc: '200px',
+      sp: '100px',
+    },
+    margin: {
+      horizontal: '15px',
+    },
   },
   footer: {
     openHeight: {
@@ -83,6 +111,16 @@ const CssProperties: ICssProperties = {
   snsIconSize: {
     width: '20px',
     height: '25px',
+  },
+  on: {
+    scroll: {
+      transition: '1s',
+    },
+  },
+  scroll: {
+    translate: {
+      y: '100px',
+    },
   },
 }
 

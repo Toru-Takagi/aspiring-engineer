@@ -70,6 +70,29 @@ li {
   height: auto;
 }
 
+@keyframes showAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes expansionAnimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+::placeholder {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', 'Kosugi Maru';
+  color: #f5f7fa;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   background: $scroll_bar_background_color;
