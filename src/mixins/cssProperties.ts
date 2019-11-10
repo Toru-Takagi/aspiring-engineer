@@ -3,6 +3,10 @@ interface ICssProperties {
     mainColor: string
     subColor: string
     accentColor: string
+    scrollBar: {
+      backgroundColor: string
+      color: string
+    }
     white: string
     twitterColor: string
     qiitaColor: string
@@ -43,6 +47,10 @@ const CssProperties: ICssProperties = {
     mainColor: '#5f5e5e',
     subColor: '#3d3d3d',
     accentColor: '#ca3e47',
+    scrollBar: {
+      backgroundColor: 'rgba(202, 62, 62, 0.2)',
+      color: 'rgba(61, 61, 61, 0.9)',
+    },
     white: '#f5f7fa',
     twitterColor: '#1da0f1',
     qiitaColor: '#58ba0c',

@@ -11,6 +11,9 @@ body {
   font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', 'Kosugi Maru';
   font-size: 14px;
   overflow: hidden;
+  @include sp {
+    font-size: 12px;
+  }
 }
 
 main {
@@ -65,4 +68,16 @@ p {
 li {
   list-style-type: none;
   height: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: $scroll_bar_background_color;
+  opacity: 0.1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-radius: 8px;
+  background-color: $accent_color;
 }
