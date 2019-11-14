@@ -22,7 +22,7 @@ export default (props: IProps): React.ReactElement => {
   // Twitter URL
   const twitterPostURL =
     typeof window !== 'undefined'
-      ? `https://twitter.com/intent/tweet?text=${props.title} - Aspiring%20Engineer&url=${window.location.href}`
+      ? `https://twitter.com/intent/tweet?text=${props.title} - Aspiring%20Engineer&url=${window.location.href}&via=TTrpbm`
       : ''
 
   // hatena URL
