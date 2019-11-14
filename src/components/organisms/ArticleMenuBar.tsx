@@ -38,7 +38,7 @@ export default (props: IProps): React.ReactElement => {
       textAlign: 'center',
       fontWeight: 'bold',
       lineHeight: '1.5rem',
-      [CssProperties.mediaQuery.isSp]: {
+      [CssProperties.mediaQuery.isPc]: {
         width: '100%',
       },
       a: {

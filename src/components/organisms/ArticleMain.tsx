@@ -14,12 +14,19 @@ export default (props: IProps) => {
     width: '980px',
     height: 'auto',
     color: CssProperties.colors.white,
+    [CssProperties.mediaQuery.isPc]: {
+      width: '100%',
+      padding: '15px 10px',
+    },
     h2: {
       margin: '30px 0 20px 0',
       borderLeft: `8px solid ${CssProperties.colors.accentColor}`,
       padding: '5px 0 5px 10px',
       backgroundColor: CssProperties.colors.subColor,
       fontSize: '1.8rem',
+      [CssProperties.mediaQuery.isSp]: {
+        margin: '15px 0 10px 0',
+      },
       '&:first-of-type': {
         marginTop: 0,
       },
@@ -37,12 +44,18 @@ export default (props: IProps) => {
       padding: '5px 0 5px 20px',
       lineHeight: '1.5rem',
       fontSize: '1.1rem',
+      [CssProperties.mediaQuery.isSp]: {
+        paddingLeft: '10px',
+      },
     },
     img: {
       marginTop: '10px',
       borderRadius: '10px',
       maxWidth: '80%',
       boxShadow: '0 0 16px 8px rgba(0, 0, 0, 0.3)',
+      [CssProperties.mediaQuery.isSp]: {
+        maxWidth: '100%',
+      },
     },
     strong: {
       color: CssProperties.colors.qiitaColor,
@@ -56,9 +69,17 @@ export default (props: IProps) => {
       marginLeft: '20px',
       borderRadius: '15px',
       boxShadow: '0 0 16px 8px rgba(0, 0, 0, 0.3)',
+      [CssProperties.mediaQuery.isSp]: {
+        marginLeft: '10px',
+      },
     },
     '.twitter-tweet': {
       marginLeft: '20px',
+      [CssProperties.mediaQuery.isSp]: {
+        marginLeft: '10px',
+        width: 'calc(100% - 10px) !important',
+        minWidth: 'auto !important',
+      },
     },
     blockquote: {
       margin: '5px 0 5px 40px',
@@ -68,9 +89,18 @@ export default (props: IProps) => {
       marginLeft: '40px',
       width: '480px',
       height: '270px',
+      [CssProperties.mediaQuery.isSp]: {
+        margin: 0,
+        width: '100%',
+        boxSizing: 'border-box',
+      },
     },
     ul: {
       marginLeft: '10px',
+      [CssProperties.mediaQuery.isSp]: {
+        margin: 0,
+        paddingLeft: '30px',
+      },
       li: {
         listStyleType: 'disc',
         padding: '3px 0',
@@ -108,36 +138,6 @@ export default (props: IProps) => {
             borderBottom: 0,
           },
         },
-      },
-    },
-    [CssProperties.mediaQuery.isSp]: {
-      width: '100%',
-      padding: '15px 10px',
-      h2: {
-        margin: '15px 0 10px 0',
-      },
-      iframe: {
-        margin: 0,
-        width: '100%',
-        boxSizing: 'border-box',
-      },
-      p: {
-        paddingLeft: '10px',
-      },
-      ul: {
-        margin: 0,
-        paddingLeft: '30px',
-      },
-      img: {
-        maxWidth: '100%',
-      },
-      pre: {
-        marginLeft: '10px',
-      },
-      '.twitter-tweet': {
-        marginLeft: '10px',
-        width: 'calc(100% - 10px) !important',
-        minWidth: 'auto !important',
       },
     },
   })

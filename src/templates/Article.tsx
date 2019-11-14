@@ -30,6 +30,9 @@ export default (props: IProps): React.ReactElement => {
     header: {
       height: '250px',
       position: 'relative',
+      [CssProperties.mediaQuery.isSp]: {
+        height: '150px',
+      },
       '.article-title-area': {
         position: 'absolute',
         top: 0,
@@ -41,8 +44,17 @@ export default (props: IProps): React.ReactElement => {
         color: CssProperties.colors.white,
         textAlign: 'center',
         backgroundColor: 'rgba(0 , 0, 0, 0.4)',
+        [CssProperties.mediaQuery.isTablet]: {
+          padding: '10px 50px',
+        },
+        [CssProperties.mediaQuery.isSp]: {
+          padding: '0 10px',
+        },
         '.article-title': {
           fontSize: '2.5rem',
+          [CssProperties.mediaQuery.isSp]: {
+            fontSize: '1.7rem',
+          },
         },
         '.date': {
           fontSize: '1.5rem',
@@ -59,16 +71,8 @@ export default (props: IProps): React.ReactElement => {
         marginLeft: '3px',
         marginRight: '3px',
       },
-    },
-    [CssProperties.mediaQuery.isSp]: {
-      header: {
-        height: '150px',
-        '.article-title-area': {
-          padding: '0 10px',
-          '.article-title': {
-            fontSize: '1.7rem',
-          },
-        },
+      [CssProperties.mediaQuery.isPc]: {
+        width: '100%',
       },
     },
   })
