@@ -19,6 +19,9 @@ interface IProps {
 }
 
 export default (props: IProps): React.ReactElement => {
+  // Twitter URL
+  const twitterPostURL = `https://twitter.com/intent/tweet?text=${props.title} - Aspiring%20Engineer&url=${window.location.href}`
+
   // お気に入りの記事情報を格納
   const [likeMap, { clickLike }]: [
     Map<string, ILikeMapValue>,
@@ -90,10 +93,12 @@ export default (props: IProps): React.ReactElement => {
           )}
           <span>Like</span>
         </div>
-        <div className='menu-bar-item'>
-          <TwitterIcon />
-          <span>Twitter</span>
-        </div>
+        <a href={twitterPostURL} target='_blank'>
+          <div className='menu-bar-item'>
+            <TwitterIcon />
+            <span>Twitter</span>
+          </div>
+        </a>
         <div className='menu-bar-item'>
           <HatenaBookmarkIcon />
           <span>Hatena</span>
