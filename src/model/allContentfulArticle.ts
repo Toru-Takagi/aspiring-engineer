@@ -12,7 +12,7 @@ export interface IArticle {
   content: {
     content: string
   }
-  createNumber: string
+  createNumber: number
   createdAt: string
   coverImage: {
     sizes: FluidObject

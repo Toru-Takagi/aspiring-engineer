@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import { navigate, useStaticQuery, graphql } from 'gatsby'
+import { css, SerializedStyles } from '@emotion/core'
 
 import Algolia from '../../mixins/algolia'
+import CssProperties from '../../mixins/cssProperties'
+import { IAction } from '../../state/createStore'
 import {
   IAllContentfulCategory,
   ICategory,
 } from '../../model/allContentfulCategory'
 
 import Tag from '../atoms/Tag'
-
-import '../../scss/category-area.scss'
-import { IAction } from '../../state/createStore'
 
 export default (): React.ReactElement => {
   // Contentfullからカテゴリー情報を取得して格納
@@ -54,11 +54,48 @@ export default (): React.ReactElement => {
     navigate('/?word=' + word)
   }
 
+  const categoryAreaStyle: SerializedStyles = css({
+    padding: CssProperties.footer.ContentsBasic.padding,
+    width: `calc((100% - ${CssProperties.profile.areaSize}) / 2)`,
+    ul: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignContent: 'flex-start',
+      margin: 0,
+      padding: '0 0 0 20px',
+      height: 'calc(100% - 20px)',
+      overflow: 'auto',
+      li: {
+        margin: '0.25rem',
+        height: '2.3rem',
+        cursor: 'pointer',
+      },
+    },
+    [CssProperties.mediaQuery.isTablet]: {
+      marginTop: `calc(${CssProperties.footer.ContentsBasic.marginTop} * 2)`,
+      width: '100%',
+      height: `calc(100% - ${CssProperties.footer.ContentsBasic.height})`,
+      order: 2,
+    },
+    [CssProperties.mediaQuery.isSp]: {
+      marginTop: CssProperties.footer.ContentsBasic.marginTop,
+      height: 'auto',
+      ul: {
+        paddingLeft: 0,
+      },
+      '.sub-title': {
+        display: 'block',
+        width: '100%',
+        textAlign: 'center',
+      },
+    },
+  })
+
   // カテゴリ一覧を描画する
   return (
-    <div id='category-area'>
+    <div css={categoryAreaStyle}>
       <span className='sub-title'>カテゴリ一覧</span>
-      <ul id='category-list'>
+      <ul>
         {data.allContentfulCategory.nodes.map(
           (category: ICategory, index: number) => {
             return (
@@ -76,8 +113,6 @@ export default (): React.ReactElement => {
                       : '0') +
                     ')'
                   }
-                  bgColor='#3D3D3D'
-                  color='#CA3E47'
                 />
               </li>
             )

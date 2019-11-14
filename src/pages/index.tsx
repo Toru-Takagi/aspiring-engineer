@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
 import { useSelector, useDispatch } from 'react-redux'
+import { css, SerializedStyles } from '@emotion/core'
 
 import Algolia from '../mixins/algolia'
+import CssProperties from '../mixins/cssProperties'
 import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
 import { IState } from '../state/state'
 import { IScrollFlag, useScrollFlag } from '../modules/useScrollFlag'
@@ -12,8 +14,6 @@ import ArticleCard from '../components/molecules/ArticleCard'
 import Image from '../components/atoms/GatsbyImage'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
 import SearchIcon from '../components/atoms/icons/SearchIcon'
-
-import '../scss/index.scss'
 
 export default (): React.ReactElement => {
   // 記事情報をContentfullから取得して格納
@@ -91,22 +91,6 @@ export default (): React.ReactElement => {
     }, 500)
   }
 
-  /**
-   * 記事一覧を遅らせて表示するメソッド
-   */
-  const showArticle: () => void = () => {
-    // 読み込み時から何秒遅らせるかの値を保持
-    let time: number = 300
-
-    // 記事一覧の表示をする
-    document.querySelectorAll('.article-animation').forEach(elm => {
-      setTimeout(() => {
-        elm.classList.add('show-animation')
-      }, time)
-      time += 200
-    })
-  }
-
   // 読み込み完了時に呼ばれるメソッド
   React.useEffect(() => {
     if (!isLoaded) {
@@ -140,15 +124,119 @@ export default (): React.ReactElement => {
     }
   }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
 
-  // 初回読み込み時に呼ばれる
-  React.useEffect(() => {
-    showArticle()
-  }, [articleList])
+  const homeLayout: SerializedStyles = css({
+    '> header': {
+      height: CssProperties.header.height.pc,
+      transformOrigin: 'top center',
+      willChange: 'transform',
+      transition: CssProperties.on.scroll.transition,
+      cursor: 'pointer',
+      [CssProperties.mediaQuery.isSp]: {
+        height: CssProperties.header.height.sp,
+      },
+      img: {
+        objectPosition: 'center 55%',
+      },
+      svg: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        margin: `${CssProperties.header.margin.horizontal} auto`,
+        maxWidth: '90%',
+        height: `calc(${CssProperties.header.height.pc} - ${CssProperties.header.margin.horizontal} * 2)`,
+        willChange: 'transform',
+        transition: CssProperties.on.scroll.transition,
+        [CssProperties.mediaQuery.isSp]: {
+          height: `calc(${CssProperties.header.height.sp} - ${CssProperties.header.margin.horizontal} * 2)`,
+        },
+      },
+    },
+    '#search-area': {
+      margin: '10px auto 0',
+      width: '40%',
+      height: '50px',
+      willChange: 'transform',
+      transition: CssProperties.on.scroll.transition,
+      [CssProperties.mediaQuery.isSp]: {
+        width: '80%',
+      },
+      input: {
+        boxSizing: 'border-box',
+        outline: 'none',
+        border: `1px solid ${CssProperties.colors.white}`,
+        borderRadius: '5px',
+        padding: '0 10px',
+        width: '100%',
+        height: '100%',
+        backgroundColor: CssProperties.colors.mainColor,
+        fontSize: '1.3rem',
+        color: CssProperties.colors.white,
+        '&:hover': {
+          outline: 'none',
+        },
+      },
+      svg: {
+        boxSizing: 'border-box',
+        padding: '10px',
+        height: '100%',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        color: CssProperties.colors.accentColor,
+      },
+    },
+    '#article-area': {
+      display: 'flex',
+      justifyContent: 'flex-start',
+      flexWrap: 'wrap',
+      marginTop: '30px',
+      height: 'calc(100% - 100px - 90px)',
+      willChange: 'transform',
+      transition: CssProperties.on.scroll.transition,
+      overflowY: 'scroll',
+      '.not-found-area': {
+        fontSize: '1.2rem',
+        color: CssProperties.colors.white,
+        textAlign: 'center',
+        lineHeight: '2.2rem',
+        opacity: 0,
+        animation: 'showAnimation 1s 2s',
+        animationFillMode: 'forwards',
+      },
+    },
+    '&.on-scroll': {
+      header: {
+        transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
+        [CssProperties.mediaQuery.isSp]: {
+          transform: 'translate(0)',
+        },
+        svg: {
+          transform: `scale(0.5) translateY(${CssProperties.scroll.translate.y})`,
+          [CssProperties.mediaQuery.isSp]: {
+            transform: 'scale(1) translate(0)',
+          },
+        },
+      },
+      '#search-area': {
+        transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
+        [CssProperties.mediaQuery.isSp]: {
+          transform: 'translate(0)',
+        },
+      },
+      '#article-area': {
+        transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
+        [CssProperties.mediaQuery.isSp]: {
+          transform: 'translate(0)',
+        },
+      },
+    },
+  })
 
   // Topページを描画
   return (
     <Layout>
-      <div id='home' className={scrollFlag ? 'on-scroll' : ''}>
+      <div css={homeLayout} className={scrollFlag ? 'on-scroll' : ''}>
         <header onClick={clickHeader}>
           <Image filename='header' />
           <AspiringEngineer />
@@ -169,7 +257,7 @@ export default (): React.ReactElement => {
             </div>
           ) : (
             articleList.map((article, index) => {
-              return <ArticleCard article={article} key={index} />
+              return <ArticleCard article={article} index={index} key={index} />
             })
           )}
         </div>
