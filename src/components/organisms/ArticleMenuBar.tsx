@@ -20,10 +20,16 @@ interface IProps {
 
 export default (props: IProps): React.ReactElement => {
   // Twitter URL
-  const twitterPostURL = `https://twitter.com/intent/tweet?text=${props.title} - Aspiring%20Engineer&url=${window.location.href}`
+  const twitterPostURL =
+    typeof window !== 'undefined'
+      ? `https://twitter.com/intent/tweet?text=${props.title} - Aspiring%20Engineer&url=${window.location.href}`
+      : ''
 
   // hatena URL
-  const hatenaPostURL = `https://b.hatena.ne.jp/entry/${window.location.href}`
+  const hatenaPostURL =
+    typeof window !== 'undefined'
+      ? `https://b.hatena.ne.jp/entry/${window.location.href}`
+      : ''
 
   // お気に入りの記事情報を格納
   const [likeMap, { clickLike }]: [
