@@ -7,6 +7,7 @@ import Converter from '../../mixins/converter'
 import CssProperties from '../../mixins/cssProperties'
 import { IArticle } from '../../model/allContentfulArticle'
 import useIsShow from '../../modules/useIsShow'
+import { showAnimation, expansionAnimation } from '../../modules/animation'
 
 import Label from '../atoms/Label'
 import LikeOrNotLike from '../molecules/LikeOrNotLike'
@@ -53,7 +54,7 @@ export default (props: IProps): React.ReactElement => {
           boxShadow: '8px 16px 8px 4px rgba(0, 0, 0, 0.5)',
         },
         '&.show-animation': {
-          animation: 'showAnimation 1s, expansionAnimation 1s',
+          animation: `${showAnimation} 1s, ${expansionAnimation} 1s`,
           animationFillMode: 'forwards',
         },
         [CssProperties.mediaQuery.isSp]: {

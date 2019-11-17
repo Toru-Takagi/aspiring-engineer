@@ -44,6 +44,10 @@ export default (): React.ReactElement => {
       zIndex: 100,
       transition: '1s',
       willChange: 'transform',
+      [CssProperties.mediaQuery.isSp]: {
+        width: '60px',
+        height: '60px',
+      },
       '&:hover': {
         cursor: 'pointer',
       },
