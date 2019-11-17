@@ -195,6 +195,10 @@ export default (): React.ReactElement => {
       willChange: 'transform',
       transition: CssProperties.on.scroll.transition,
       overflowY: 'scroll',
+      [CssProperties.mediaQuery.isSp]: {
+        marginTop: '15px',
+        height: 'calc(100% - 175px)',
+      },
       '.not-found-area': {
         fontSize: '1.2rem',
         color: CssProperties.colors.white,

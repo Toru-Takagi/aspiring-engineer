@@ -24,6 +24,9 @@ const Layout: (props: IProps) => React.ReactElement = props => {
   const defaultLayout: SerializedStyles = css({
     position: 'relative',
     padding: '20px 20px 0 20px',
+    [CssProperties.mediaQuery.isSp]: {
+      padding: '10px 10px 0 10px',
+    },
     '> main': {
       position: 'relative',
       borderRadius: '15px',

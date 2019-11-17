@@ -22,6 +22,9 @@ main {
   transition: 1s;
   backface-visibility: hidden;
   will-change: height;
+  @include sp {
+    height: calc(100% - 80px);
+  }
   &.footer-open {
     height: calc(100% - #{$footer_open_height_pc});
   }
