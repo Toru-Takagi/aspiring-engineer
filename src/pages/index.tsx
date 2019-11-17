@@ -8,6 +8,7 @@ import CssProperties from '../mixins/cssProperties'
 import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
 import { IState } from '../state/state'
 import { IScrollFlag, useScrollFlag } from '../modules/useScrollFlag'
+import { showAnimation } from '../modules/animation'
 
 import Layout from '../templates/DefaultLayout'
 import ArticleCard from '../components/molecules/ArticleCard'
@@ -205,7 +206,7 @@ export default (): React.ReactElement => {
         textAlign: 'center',
         lineHeight: '2.2rem',
         opacity: 0,
-        animation: 'showAnimation 1s 2s',
+        animation: `${showAnimation} 1s 2s`,
         animationFillMode: 'forwards',
       },
     },
