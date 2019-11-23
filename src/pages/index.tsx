@@ -13,9 +13,9 @@ import { showAnimation } from '../modules/animation'
 import Layout from '../templates/DefaultLayout'
 import Header from '../components/molecules/Header'
 import ScrollTransformArea from '../components/molecules/ScrollTransformArea'
+import SearchArea from '../components/molecules/SearchArea'
 import ArticleCard from '../components/molecules/ArticleCard'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
-import SearchIcon from '../components/atoms/icons/SearchIcon'
 
 export default (): React.ReactElement => {
   // 記事情報をContentfullから取得して格納
@@ -127,40 +127,6 @@ export default (): React.ReactElement => {
   }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
 
   const homeLayout: SerializedStyles = css({
-    '#search-area': {
-      margin: '10px auto 0',
-      width: '40%',
-      height: '50px',
-      willChange: 'transform',
-      transition: CssProperties.on.scroll.transition,
-      [CssProperties.mediaQuery.isSp]: {
-        width: '80%',
-      },
-      input: {
-        boxSizing: 'border-box',
-        outline: 'none',
-        border: `1px solid ${CssProperties.colors.white}`,
-        borderRadius: '5px',
-        padding: '0 10px',
-        width: '100%',
-        height: '100%',
-        backgroundColor: CssProperties.colors.mainColor,
-        fontSize: '1.3rem',
-        color: CssProperties.colors.white,
-        '&:hover': {
-          outline: 'none',
-        },
-      },
-      svg: {
-        boxSizing: 'border-box',
-        padding: '10px',
-        height: '100%',
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        color: CssProperties.colors.accentColor,
-      },
-    },
     '#article-area': {
       display: 'flex',
       justifyContent: 'flex-start',
@@ -200,14 +166,7 @@ export default (): React.ReactElement => {
         </Header>
         <ScrollTransformArea scrollFlag={scrollFlag}>
           <div>
-            <div id='search-area'>
-              <input
-                type='text'
-                placeholder='記事を検索'
-                onChange={inputSearchKeyword}
-              ></input>
-              <SearchIcon />
-            </div>
+            <SearchArea onChange={inputSearchKeyword} />
             <div id='article-area' onScroll={scroll}>
               {articleList.length === 0 ? (
                 <div className='not-found-area'>

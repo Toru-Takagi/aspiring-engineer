@@ -57,6 +57,15 @@ const Layout: (props: IProps) => React.ReactElement = props => {
       listStyleType: 'none',
       height: 'auto',
     },
+    input: {
+      outline: 'none',
+      width: '100%',
+      height: '100%',
+      fontSize: '1.3rem',
+      '&:hover': {
+        outline: 'none',
+      },
+    },
     '::placeholder': {
       fontFamily: `'M PLUS Rounded 1c', 'Noto Sans JP', 'Kosugi Maru'`,
       color: CssProperties.colors.white,
