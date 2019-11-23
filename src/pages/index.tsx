@@ -11,8 +11,8 @@ import { IScrollFlag, useScrollFlag } from '../modules/useScrollFlag'
 import { showAnimation } from '../modules/animation'
 
 import Layout from '../templates/DefaultLayout'
+import Header from '../components/molecules/Header'
 import ArticleCard from '../components/molecules/ArticleCard'
-import Image from '../components/atoms/GatsbyImage'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
 import SearchIcon from '../components/atoms/icons/SearchIcon'
 
@@ -126,33 +126,6 @@ export default (): React.ReactElement => {
   }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
 
   const homeLayout: SerializedStyles = css({
-    '> header': {
-      height: CssProperties.header.height.pc,
-      transformOrigin: 'top center',
-      willChange: 'transform',
-      transition: CssProperties.on.scroll.transition,
-      cursor: 'pointer',
-      [CssProperties.mediaQuery.isSp]: {
-        height: CssProperties.header.height.sp,
-      },
-      img: {
-        objectPosition: 'center 55% !important',
-      },
-      svg: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        margin: `${CssProperties.header.margin.horizontal} auto`,
-        maxWidth: '90%',
-        height: `calc(${CssProperties.header.height.pc} - ${CssProperties.header.margin.horizontal} * 2)`,
-        willChange: 'transform',
-        transition: CssProperties.on.scroll.transition,
-        [CssProperties.mediaQuery.isSp]: {
-          height: `calc(${CssProperties.header.height.sp} - ${CssProperties.header.margin.horizontal} * 2)`,
-        },
-      },
-    },
     '#search-area': {
       margin: '10px auto 0',
       width: '40%',
@@ -211,18 +184,6 @@ export default (): React.ReactElement => {
       },
     },
     '&.on-scroll': {
-      header: {
-        transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
-        [CssProperties.mediaQuery.isSp]: {
-          transform: 'translate(0)',
-        },
-        svg: {
-          transform: `scale(0.5) translateY(${CssProperties.scroll.translate.y})`,
-          [CssProperties.mediaQuery.isSp]: {
-            transform: 'scale(1) translate(0)',
-          },
-        },
-      },
       '#search-area': {
         transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
         [CssProperties.mediaQuery.isSp]: {
@@ -242,10 +203,14 @@ export default (): React.ReactElement => {
   return (
     <Layout>
       <div css={homeLayout} className={scrollFlag ? 'on-scroll' : ''}>
-        <header onClick={clickHeader}>
-          <Image filename='header' />
+        <Header
+          imgPath='header'
+          titleType='svg'
+          scrollFlag={scrollFlag}
+          onClick={clickHeader}
+        >
           <AspiringEngineer />
-        </header>
+        </Header>
         <div id='search-area'>
           <input
             type='text'
