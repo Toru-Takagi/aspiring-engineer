@@ -12,6 +12,7 @@ import { showAnimation } from '../modules/animation'
 
 import Layout from '../templates/DefaultLayout'
 import Header from '../components/molecules/Header'
+import ScrollTransformArea from '../components/molecules/ScrollTransformArea'
 import ArticleCard from '../components/molecules/ArticleCard'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
 import SearchIcon from '../components/atoms/icons/SearchIcon'
@@ -183,26 +184,12 @@ export default (): React.ReactElement => {
         animationFillMode: 'forwards',
       },
     },
-    '&.on-scroll': {
-      '#search-area': {
-        transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
-        [CssProperties.mediaQuery.isSp]: {
-          transform: 'translate(0)',
-        },
-      },
-      '#article-area': {
-        transform: `translateY(calc(-1 * ${CssProperties.scroll.translate.y}))`,
-        [CssProperties.mediaQuery.isSp]: {
-          transform: 'translate(0)',
-        },
-      },
-    },
   })
 
   // Topページを描画
   return (
     <Layout>
-      <div css={homeLayout} className={scrollFlag ? 'on-scroll' : ''}>
+      <div css={homeLayout}>
         <Header
           imgPath='header'
           titleType='svg'
@@ -211,26 +198,32 @@ export default (): React.ReactElement => {
         >
           <AspiringEngineer />
         </Header>
-        <div id='search-area'>
-          <input
-            type='text'
-            placeholder='記事を検索'
-            onChange={inputSearchKeyword}
-          ></input>
-          <SearchIcon />
-        </div>
-        <div id='article-area' onScroll={scroll}>
-          {articleList.length === 0 ? (
-            <div className='not-found-area'>
-              <p>該当の記事は存在しません。</p>
-              <p>検索キーワードを変更してください。</p>
+        <ScrollTransformArea scrollFlag={scrollFlag}>
+          <div>
+            <div id='search-area'>
+              <input
+                type='text'
+                placeholder='記事を検索'
+                onChange={inputSearchKeyword}
+              ></input>
+              <SearchIcon />
             </div>
-          ) : (
-            articleList.map((article, index) => {
-              return <ArticleCard article={article} index={index} key={index} />
-            })
-          )}
-        </div>
+            <div id='article-area' onScroll={scroll}>
+              {articleList.length === 0 ? (
+                <div className='not-found-area'>
+                  <p>該当の記事は存在しません。</p>
+                  <p>検索キーワードを変更してください。</p>
+                </div>
+              ) : (
+                articleList.map((article, index) => {
+                  return (
+                    <ArticleCard article={article} index={index} key={index} />
+                  )
+                })
+              )}
+            </div>
+          </div>
+        </ScrollTransformArea>
       </div>
     </Layout>
   )
