@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'gatsby'
 import { css, SerializedStyles } from '@emotion/core'
 
 import CssProperties from '../../mixins/cssProperties'
@@ -89,12 +90,14 @@ export default (): React.ReactElement => {
   // プロフィール情報を描画
   return (
     <div css={profileAreaStyle}>
-      <div className='profile'>
-        <div className='user-icon'>
-          <Image filename='user-icon.png' />
+      <Link to='profile'>
+        <div className='profile'>
+          <div className='user-icon'>
+            <Image filename='user-icon.png' />
+          </div>
+          <span>Toru Takagi</span>
         </div>
-        <span>Toru Takagi</span>
-      </div>
+      </Link>
       <div className='sns-area'>
         <ul>
           <a

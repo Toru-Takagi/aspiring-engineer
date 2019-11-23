@@ -40,11 +40,11 @@ const Layout: (props: IProps) => React.ReactElement = props => {
       width: '100%',
       height: '100%',
     },
-    span: {
+    'span, p': {
       margin: 0,
       padding: 0,
     },
-    'a, p': {
+    a: {
       color: '#000',
       textDecoration: 'none',
     },

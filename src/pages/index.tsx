@@ -136,7 +136,7 @@ export default (): React.ReactElement => {
         height: CssProperties.header.height.sp,
       },
       img: {
-        objectPosition: 'center 55%',
+        objectPosition: 'center 55% !important',
       },
       svg: {
         position: 'absolute',
