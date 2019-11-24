@@ -36,6 +36,16 @@ export default () => {
       height: 'calc(100% - 150px - 20px - 10px)',
       overflow: 'auto',
       color: CssProperties.colors.white,
+      a: {
+        margin: '0 5px',
+        color: CssProperties.colors.twitterColor,
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        transition: '0.4s',
+        '&:hover': {
+          color: CssProperties.colors.subColor,
+        },
+      },
       dl: {
         display: 'grid',
         gridTemplateColumns: '120px 1fr',
@@ -45,10 +55,17 @@ export default () => {
         dd: {
           margin: 0,
           alignItems: 'center',
+          'a:first-of-type': {
+            marginLeft: 0,
+          },
         },
       },
       h2: {
         fontSize: '1.6rem',
+        marginTop: '50px',
+        '&:first-of-type': {
+          marginTop: 0,
+        },
       },
       ul: {
         paddingLeft: '100px',
@@ -86,16 +103,6 @@ export default () => {
             marginLeft: '5px',
             lineHeight: '40px',
           },
-          a: {
-            margin: '0 5px',
-            color: CssProperties.colors.twitterColor,
-            fontWeight: 'bold',
-            textDecoration: 'underline',
-            transition: '0.4s',
-            '&:hover': {
-              color: CssProperties.colors.subColor,
-            },
-          },
         },
       },
     },
@@ -111,6 +118,42 @@ export default () => {
           </header>
         </Link>
         <div className='profile-area'>
+          <h2>Profile</h2>
+          <dl>
+            <dt>名前</dt>
+            <dd>高木 徹(Takagi Toru)</dd>
+            <dt>性別</dt>
+            <dd>男</dd>
+            <dt>年齢</dt>
+            <dd>20代前半</dd>
+            <dt>SNS</dt>
+            <dd>
+              <a href='https://twitter.com/TTrpbm' target='_blank'>
+                Twitter
+              </a>{' '}
+              /{' '}
+              <a href='http://qiita.com/Kurowasi' target='_blank'>
+                Qiita
+              </a>{' '}
+              /
+              <a href='http://kurowasi2525.hatenablog.com/' target='_blank'>
+                はてなブログ
+              </a>{' '}
+              /{' '}
+              <a href='https://note.mu/toru_takagi' target='_blank'>
+                note
+              </a>{' '}
+              /{' '}
+              <a href='mailto:kurowasi2525@gmail.com' target='_blank'>
+                Mail
+              </a>{' '}
+              /{' '}
+              <a href='https://github.com/Kurowasi' target='_blank'>
+                GitHub
+              </a>
+            </dd>
+          </dl>
+
           <h2>Qualifications</h2>
           <dl>
             <dt>フロント</dt>
@@ -137,7 +180,7 @@ export default () => {
               / Netlify
             </dd>
             <dt>バージョン管理</dt>
-            <dd>Git / SVN /CVS</dd>
+            <dd>Git / SVN / CVS</dd>
             <dt>ツール</dt>
             <dd>Visual Studio Code / Slack / Figma</dd>
           </dl>
