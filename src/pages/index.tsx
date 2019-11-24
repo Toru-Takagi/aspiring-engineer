@@ -1,20 +1,16 @@
 import * as React from 'react'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
-import { useSelector, useDispatch } from 'react-redux'
-import { css, SerializedStyles } from '@emotion/core'
+import { useDispatch } from 'react-redux'
 
 import Algolia from '../mixins/algolia'
-import CssProperties from '../mixins/cssProperties'
-import { IAllContentfulArticle, IArticle } from '../model/allContentfulArticle'
-import { IState } from '../state/state'
+import { IAllContentfulArticle } from '../model/allContentfulArticle'
 import { IScrollFlag, useScrollFlag } from '../modules/useScrollFlag'
-import { showAnimation } from '../modules/animation'
 
 import Layout from '../templates/DefaultLayout'
 import Header from '../components/molecules/Header'
 import ScrollTransformArea from '../components/molecules/ScrollTransformArea'
+import ArticleArea from '../components/molecules/ArticleArea'
 import SearchArea from '../components/molecules/SearchArea'
-import ArticleCard from '../components/molecules/ArticleCard'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
 
 export default (): React.ReactElement => {
@@ -39,11 +35,6 @@ export default (): React.ReactElement => {
       }
     }
   `)
-
-  // 記事情報の一覧を格納
-  const articleList: IArticle[] = useSelector(
-    (state: IState) => state.articleList
-  )
 
   // Storeの情報を変更するdispatchを格納
   const dispatch: React.Dispatch<any> = useDispatch()
@@ -126,36 +117,10 @@ export default (): React.ReactElement => {
     }
   }, [isLoaded, dispatch, data.allContentfulArticle.nodes])
 
-  const homeLayout: SerializedStyles = css({
-    '#article-area': {
-      display: 'flex',
-      justifyContent: 'flex-start',
-      flexWrap: 'wrap',
-      marginTop: '30px',
-      height: 'calc(100% - 100px - 90px)',
-      willChange: 'transform',
-      transition: CssProperties.on.scroll.transition,
-      overflowY: 'scroll',
-      [CssProperties.mediaQuery.isSp]: {
-        marginTop: '15px',
-        height: 'calc(100% - 175px)',
-      },
-      '.not-found-area': {
-        fontSize: '1.2rem',
-        color: CssProperties.colors.white,
-        textAlign: 'center',
-        lineHeight: '2.2rem',
-        opacity: 0,
-        animation: `${showAnimation} 1s 2s`,
-        animationFillMode: 'forwards',
-      },
-    },
-  })
-
   // Topページを描画
   return (
     <Layout>
-      <div css={homeLayout}>
+      <div>
         <Header
           imgPath='header'
           titleType='svg'
@@ -167,20 +132,7 @@ export default (): React.ReactElement => {
         <ScrollTransformArea scrollFlag={scrollFlag}>
           <div>
             <SearchArea onChange={inputSearchKeyword} />
-            <div id='article-area' onScroll={scroll}>
-              {articleList.length === 0 ? (
-                <div className='not-found-area'>
-                  <p>該当の記事は存在しません。</p>
-                  <p>検索キーワードを変更してください。</p>
-                </div>
-              ) : (
-                articleList.map((article, index) => {
-                  return (
-                    <ArticleCard article={article} index={index} key={index} />
-                  )
-                })
-              )}
-            </div>
+            <ArticleArea onScroll={scroll} />
           </div>
         </ScrollTransformArea>
       </div>
