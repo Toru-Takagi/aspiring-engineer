@@ -20,8 +20,9 @@ export default () => {
       <dl>
         <dt>フロント</dt>
         <dd>
-          HTML / Pug / CSS / SCSS / Stylus / JavaScript / TypeScript / Vue.js /
-          Nuxt.js / VuePress / Vuetify / React / Gatsby / Riot / jQuery
+          HTML / Pug / CSS / SCSS / Stylus / AdminLTE / JavaScript / TypeScript
+          / Vue.js / Nuxt.js / VuePress / Vuetify / React / Gatsby / Riot /
+          jQuery
         </dd>
         <dt>バックエンド</dt>
         <dd>
@@ -37,13 +38,18 @@ export default () => {
         </dd>
         <dt>インフラ</dt>
         <dd>
-          CentOS / Debian / Windows / MacOS / AWS EC2 / Firebase / さくらVPS /
-          Netlify
+          Docker / CentOS / Debian / Windows / MacOS / AWS EC2 / Firebase /
+          さくらVPS / Netlify
         </dd>
+        <dt>その他</dt>
+        <dd>Selenium / OOP / AOP</dd>
         <dt>バージョン管理</dt>
         <dd>Git / SVN / CVS</dd>
         <dt>ツール</dt>
-        <dd>Visual Studio Code / Slack / Figma</dd>
+        <dd>
+          Visual Studio Code / Eclipse / Sublime Text3 / Visual Studio / XCode /
+          Android Studio / Slack / Figma
+        </dd>
       </dl>
     </div>
   )
