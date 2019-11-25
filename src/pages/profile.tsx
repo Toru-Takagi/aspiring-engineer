@@ -9,7 +9,7 @@ import Profile from '../components/molecules/Profile'
 import Qualifications from '../components/molecules/Qualifications'
 import Experience from '../components/molecules/Experience'
 import Image from '../components/atoms/GatsbyImage'
-import ToruTakagi from '../components/atoms/ToruTakagi'
+import ProfileSVG from '../components/atoms/ProfileSVG'
 
 export default () => {
   const profileLayout: SerializedStyles = css({
@@ -75,7 +75,7 @@ export default () => {
         <Link to='/'>
           <header>
             <Image filename='profile' />
-            <ToruTakagi />
+            <ProfileSVG />
           </header>
         </Link>
         <div className='profile-area'>
