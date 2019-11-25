@@ -40,11 +40,11 @@ const Layout: (props: IProps) => React.ReactElement = props => {
       width: '100%',
       height: '100%',
     },
-    span: {
+    'span, p': {
       margin: 0,
       padding: 0,
     },
-    'a, p': {
+    a: {
       color: '#000',
       textDecoration: 'none',
     },
@@ -56,6 +56,15 @@ const Layout: (props: IProps) => React.ReactElement = props => {
     li: {
       listStyleType: 'none',
       height: 'auto',
+    },
+    input: {
+      outline: 'none',
+      width: '100%',
+      height: '100%',
+      fontSize: '1.3rem',
+      '&:hover': {
+        outline: 'none',
+      },
     },
     '::placeholder': {
       fontFamily: `'M PLUS Rounded 1c', 'Noto Sans JP', 'Kosugi Maru'`,

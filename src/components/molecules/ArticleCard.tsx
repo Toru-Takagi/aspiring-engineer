@@ -55,6 +55,7 @@ export default (props: IProps): React.ReactElement => {
         },
         '&.show-animation': {
           animation: `${showAnimation} 1s, ${expansionAnimation} 1s`,
+          animationTimingFunction: 'cubic-bezier(.59,.03,.44,.94)',
           animationFillMode: 'forwards',
         },
         [CssProperties.mediaQuery.isSp]: {
