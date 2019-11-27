@@ -43,6 +43,9 @@ export default () => {
       height: 'calc(100% - 150px - 20px - 10px)',
       overflow: 'auto',
       color: CssProperties.colors.white,
+      [CssProperties.mediaQuery.isSp]: {
+        height: 'calc(100% - 130px)',
+      },
       a: {
         margin: '0 5px',
         color: CssProperties.colors.twitterColor,
