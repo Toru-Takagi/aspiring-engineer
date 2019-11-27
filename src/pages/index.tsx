@@ -123,7 +123,7 @@ export default (): React.ReactElement => {
     <Layout>
       <div>
         <Helmet>
-          <title>エンジニアの卵</title>
+          <title>エンジニアの卵の成長日記</title>
           <meta
             name='description'
             content='エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。'

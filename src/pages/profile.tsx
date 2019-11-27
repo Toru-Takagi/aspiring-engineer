@@ -18,6 +18,9 @@ export default () => {
       width: '100%',
       height: '150px',
       position: 'relative',
+      [CssProperties.mediaQuery.isSp]: {
+        height: CssProperties.header.height.sp,
+      },
       img: {
         objectPosition: 'center 20% !important',
       },
