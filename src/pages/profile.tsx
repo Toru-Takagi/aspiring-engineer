@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import { css, SerializedStyles } from '@emotion/core'
+import Helmet from 'react-helmet'
 
 import CssProperties from '../mixins/cssProperties'
 
@@ -72,6 +73,13 @@ export default () => {
   return (
     <DefaultLayout>
       <div css={profileLayout}>
+        <Helmet>
+          <title>高木徹とは？</title>
+          <meta
+            name='description'
+            content='エンジニアの卵である僕についてのプロフィールです。'
+          />
+        </Helmet>
         <Link to='/'>
           <header>
             <Image filename='profile' />

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css, SerializedStyles } from '@emotion/core'
+import { Helmet } from 'react-helmet'
 
 import Converter from '../mixins/converter'
 import CssProperties from '../mixins/cssProperties'
@@ -81,6 +82,13 @@ export default (props: IProps): React.ReactElement => {
   return (
     <Layout>
       <div css={articleStyle}>
+        <Helmet>
+          <title>{data.title}</title>
+          <meta
+            name='description'
+            content='エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。'
+          />
+        </Helmet>
         <header>
           <Img sizes={data.coverImage.sizes} />
           <div className='article-title-area'>

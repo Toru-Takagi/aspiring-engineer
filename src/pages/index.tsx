@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
 import { useDispatch } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import Algolia from '../mixins/algolia'
 import { IAllContentfulArticle } from '../model/allContentfulArticle'
@@ -121,6 +122,13 @@ export default (): React.ReactElement => {
   return (
     <Layout>
       <div>
+        <Helmet>
+          <title>エンジニアの卵</title>
+          <meta
+            name='description'
+            content='エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。'
+          />
+        </Helmet>
         <Header
           imgPath='header'
           titleType='svg'
