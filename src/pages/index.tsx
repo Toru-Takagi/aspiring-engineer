@@ -40,6 +40,9 @@ export default (): React.ReactElement => {
   // Storeの情報を変更するdispatchを格納
   const dispatch: React.Dispatch<any> = useDispatch()
 
+  // URLの取得
+  const url: string = typeof window !== 'undefined' ? window.location.href : ''
+
   // 初めて読み込みであるかを判断するフラグを格納
   const [isLoaded, setIsLoaded]: [
     boolean,
@@ -128,6 +131,21 @@ export default (): React.ReactElement => {
             name='description'
             content='エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。'
           />
+          <meta property='og:url' content={url} />
+          <meta property='og:title' content='エンジニアの卵の成長日記' />
+          <meta
+            property='og:description'
+            content='エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。'
+          />
+          <meta
+            property='og:image'
+            content='https://drive.google.com/uc?export=view&id=1SadUHcKpFlbnQN4xTNn7KgnljvSh2RlX'
+          />
+          <meta property='og:type' content='blog' />
+          <meta property='og:locale' content='ja_JP' />
+          <meta property='og:site_name' content='エンジニアの卵の成長日記' />
+          <meta name='twitter:card' content='summary' />
+          <meta name='twitter:site' content='@TTrpbm' />
         </Helmet>
         <Header
           imgPath='header'
