@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             id
             title
+            metaDescription
             content {
               content
               childMarkdownRemark {

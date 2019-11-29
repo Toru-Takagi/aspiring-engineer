@@ -84,10 +84,7 @@ export default (props: IProps): React.ReactElement => {
       <div css={articleStyle}>
         <Helmet>
           <title>{data.title}</title>
-          <meta
-            name='description'
-            content='エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。'
-          />
+          <meta name='description' content={data.metaDescription} />
         </Helmet>
         <header>
           <Img sizes={data.coverImage.sizes} />

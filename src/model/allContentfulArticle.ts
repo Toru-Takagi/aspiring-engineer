@@ -23,6 +23,7 @@ export interface IArticle {
 export interface IArticleAndCategory {
   id: string
   title: string
+  metaDescription: string
   content: {
     content: string
     childMarkdownRemark: {
