@@ -93,7 +93,7 @@ export default (props: IProps): React.ReactElement => {
           <meta property='og:description' content={data.metaDescription} />
           <meta
             property='og:image'
-            content={`https:${data.coverImage.sizes.src}`}
+            content={`https:${data.coverImage.sizes.src.split('?')[0]}`}
           />
           <meta property='og:type' content='blog' />
           <meta property='og:locale' content='ja_JP' />
