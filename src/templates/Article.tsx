@@ -91,7 +91,10 @@ export default (props: IProps): React.ReactElement => {
           <meta property='og:url' content={url} />
           <meta property='og:title' content={data.title} />
           <meta property='og:description' content={data.metaDescription} />
-          <meta property='og:image' content={data.coverImage.sizes.src} />
+          <meta
+            property='og:image'
+            content={`https:${data.coverImage.sizes.src}`}
+          />
           <meta property='og:type' content='blog' />
           <meta property='og:locale' content='ja_JP' />
           <meta property='og:site_name' content='エンジニアの卵の成長日記' />
@@ -107,7 +110,6 @@ export default (props: IProps): React.ReactElement => {
             </span>
           </div>
         </header>
-        <img src={url + data.coverImage.sizes.src} />
         <ArticleMenuBar
           createNumber={String(data.createNumber)}
           title={data.title}
