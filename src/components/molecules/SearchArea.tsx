@@ -37,7 +37,7 @@ export default (props: IProps) => {
   })
 
   return (
-    <div css={style}>
+    <div id='search-area' css={style}>
       <input
         type='text'
         placeholder='記事を検索'
