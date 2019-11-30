@@ -21,7 +21,6 @@ export default () => {
         position: 'relative',
         borderLeft: `3px solid ${CssProperties.colors.white}`,
         padding: '40px 10px',
-        height: '40px',
         '&::before': {
           content: "''",
           display: 'block',
@@ -37,7 +36,11 @@ export default () => {
           backgroundColor: CssProperties.colors.subColor,
         },
         '> div': {
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
           position: 'absolute',
+          top: 0,
           width: '130px',
           left: '-150px',
           textAlign: 'right',
@@ -46,6 +49,7 @@ export default () => {
             left: '-140px',
           },
           '> span': {
+            width: '100%',
             '&:last-of-type': {
               color: 'rgba(255, 255, 255, 0.5)',
             },
@@ -53,7 +57,6 @@ export default () => {
         },
         '> span': {
           marginLeft: '5px',
-          lineHeight: '40px',
         },
       },
     },
@@ -66,7 +69,6 @@ export default () => {
         <li>
           <div>
             <span>2008-12</span>
-            <br />
             <span>中学1年</span>
           </div>
           <span>ドラマ BLOODY MONDAY を見てエンジニアに興味を持つ</span>
@@ -74,7 +76,6 @@ export default () => {
         <li>
           <div>
             <span>2012-08</span>
-            <br />
             <span>高校3年</span>
           </div>
           <span>
@@ -84,7 +85,6 @@ export default () => {
         <li>
           <div>
             <span>2014-04~2018-03</span>
-            <br />
             <span>大学1年</span>
           </div>
           <span>埼玉にある大学の工学部 情報工学科に入学/卒業する</span>
@@ -92,7 +92,6 @@ export default () => {
         <li>
           <div>
             <span>2014-11</span>
-            <br />
             <span>大学1年</span>
           </div>
           <span>
@@ -105,7 +104,7 @@ export default () => {
         </li>
         <li>
           <div>
-            <span>2016-08</span> <br />
+            <span>2016-08</span>
             <span>大学3年</span>
           </div>
           <span>
@@ -115,7 +114,6 @@ export default () => {
         <li>
           <div>
             <span>2016-10~2017-04</span>
-            <br />
             <span>大学3年</span>
           </div>
           <span>
@@ -125,7 +123,6 @@ export default () => {
         <li>
           <div>
             <span>2017-02~2018-04</span>
-            <br />
             <span>大学4年</span>
           </div>
           <span>
@@ -135,7 +132,6 @@ export default () => {
         <li>
           <div>
             <span>2018-02</span>
-            <br />
             <span>大学4年</span>
           </div>
           <span>
@@ -149,7 +145,6 @@ export default () => {
         <li>
           <div>
             <span>2018-03</span>
-            <br />
             <span>大学4年</span>
           </div>
           <span>
@@ -163,7 +158,6 @@ export default () => {
         <li>
           <div>
             <span>2018-04~</span>
-            <br />
             <span>社会人1年</span>
           </div>
           <span>一部上場の自社開発している会社に入社</span>
@@ -171,7 +165,6 @@ export default () => {
         <li>
           <div>
             <span>2018-09~2019-12</span>
-            <br />
             <span>社会人1年</span>
           </div>
           <span>
@@ -181,7 +174,6 @@ export default () => {
         <li>
           <div>
             <span>2019-01~2019-07</span>
-            <br />
             <span>社会人1年</span>
           </div>
           <span>
@@ -191,7 +183,6 @@ export default () => {
         <li>
           <div>
             <span>2019-07~</span>
-            <br />
             <span>社会人2年</span>
           </div>
           <span>

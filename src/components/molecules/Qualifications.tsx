@@ -50,6 +50,11 @@ export default () => {
           Visual Studio Code / Eclipse / Sublime Text3 / Visual Studio / XCode /
           Android Studio / Slack / Figma
         </dd>
+        <dt>資格</dt>
+        <dd>
+          Bachelor of Engineering / Oracle Java Programmer Silver SE8 / HTML5
+          Professional Certification Level.1 / JSTQB Foundation Level
+        </dd>
       </dl>
     </div>
   )
