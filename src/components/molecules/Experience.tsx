@@ -5,191 +5,92 @@ import { transitionShowAnimation } from '../../modules/animation'
 
 import CssProperties from '../../mixins/cssProperties'
 
-export default () => {
+interface IProps {
+  year: string
+  schoolYear: string
+  children: React.ReactElement
+  scrollInfo: {
+    mainHeight: number
+    scrollTop: number
+  }
+}
+
+export default (props: IProps) => {
+  const [isShow, setIsShow]: [
+    boolean,
+    React.Dispatch<boolean>
+  ] = React.useState<boolean>(false)
+
+  const ref: React.RefObject<HTMLLIElement> = React.createRef()
+
   const experienceStyle: SerializedStyles = css({
-    marginTop: '50px',
-    opacity: 0,
-    transform: 'translateY(50px)',
-    animation: `${transitionShowAnimation} 1s 2s`,
-    animationFillMode: 'forwards',
-    ul: {
-      paddingLeft: '150px',
+    position: 'relative',
+    borderLeft: `3px solid ${CssProperties.colors.white}`,
+    padding: '40px 10px',
+    '&::before': {
+      content: "''",
+      display: 'block',
+      margin: 'auto 0',
+      border: `2px solid ${CssProperties.colors.white}`,
+      borderRadius: '50%',
+      width: '16px',
+      height: '16px',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: '-12px',
+      backgroundColor: CssProperties.colors.subColor,
+    },
+    '.year-area': {
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      position: 'absolute',
+      top: 0,
+      width: '130px',
+      left: '-150px',
+      textAlign: 'right',
       [CssProperties.mediaQuery.isSp]: {
-        paddingLeft: '140px',
+        width: '120px',
+        left: '-140px',
       },
-      li: {
-        position: 'relative',
-        borderLeft: `3px solid ${CssProperties.colors.white}`,
-        padding: '40px 10px',
-        '&::before': {
-          content: "''",
-          display: 'block',
-          margin: 'auto 0',
-          border: `2px solid ${CssProperties.colors.white}`,
-          borderRadius: '50%',
-          width: '16px',
-          height: '16px',
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: '-12px',
-          backgroundColor: CssProperties.colors.subColor,
-        },
-        '> div': {
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          position: 'absolute',
-          top: 0,
-          width: '130px',
-          left: '-150px',
-          textAlign: 'right',
-          [CssProperties.mediaQuery.isSp]: {
-            width: '120px',
-            left: '-140px',
-          },
-          '> span': {
-            width: '100%',
-            '&:last-of-type': {
-              color: 'rgba(255, 255, 255, 0.5)',
-            },
-          },
-        },
-        '> span': {
-          marginLeft: '5px',
+      '> span': {
+        width: '100%',
+        '&:last-of-type': {
+          color: 'rgba(255, 255, 255, 0.5)',
         },
       },
     },
+    '.child-area': {
+      marginLeft: '5px',
+    },
+    '.animation-target': {
+      opacity: 0,
+      transform: 'translateY(50px)',
+      willChange: 'opacity, transform',
+      animation: isShow ? `${transitionShowAnimation} 1s 0.5s` : '',
+      animationFillMode: 'forwards',
+    },
   })
 
+  React.useEffect((): void => {
+    if (!isShow) {
+      const top: number =
+        ref.current != null
+          ? ref.current.getBoundingClientRect().top
+          : 100000000
+
+      if (top < props.scrollInfo.mainHeight) setIsShow(true)
+    }
+  }, [props.scrollInfo])
+
   return (
-    <div css={experienceStyle}>
-      <h2>Experience</h2>
-      <ul>
-        <li>
-          <div>
-            <span>2008-12</span>
-            <span>中学1年</span>
-          </div>
-          <span>ドラマ BLOODY MONDAY を見てエンジニアに興味を持つ</span>
-        </li>
-        <li>
-          <div>
-            <span>2012-08</span>
-            <span>高校3年</span>
-          </div>
-          <span>
-            ドラマ リッチマン・プアウーマン を見てエンジニアになることを決心する
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2014-04~2018-03</span>
-            <span>大学1年</span>
-          </div>
-          <span>埼玉にある大学の工学部 情報工学科に入学/卒業する</span>
-        </li>
-        <li>
-          <div>
-            <span>2014-11</span>
-            <span>大学1年</span>
-          </div>
-          <span>
-            ティロ・フィナーレ加川さんの
-            <a href='http://tfkhp.com' target='_blank'>
-              公式サイト
-            </a>
-            (現ファンクラブサイト)を公開する
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2016-08</span>
-            <span>大学3年</span>
-          </div>
-          <span>
-            小学校の同窓会で再会した旧友の会社で数日間Webエンジニアとして参加
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2016-10~2017-04</span>
-            <span>大学3年</span>
-          </div>
-          <span>
-            渋谷のWeb系ベンチャーで、PHPエンジニアとしてアルバイトを開始
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2017-02~2018-04</span>
-            <span>大学4年</span>
-          </div>
-          <span>
-            一部上場の自社開発している会社で、内定者アルバイトとして開始
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2018-02</span>
-            <span>大学4年</span>
-          </div>
-          <span>
-            仮想通貨のポートフォリオアプリ
-            <a href='https://docheck.kurowasi.com' target='_blank'>
-              DoCheck(非公開)
-            </a>
-            を公開
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2018-03</span>
-            <span>大学4年</span>
-          </div>
-          <span>
-            信用を元にした仮想割り勘アプリ
-            <a href='https://viro.kurowasi.com' target='_blank'>
-              VIRO
-            </a>
-            を公開
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2018-04~</span>
-            <span>社会人1年</span>
-          </div>
-          <span>一部上場の自社開発している会社に入社</span>
-        </li>
-        <li>
-          <div>
-            <span>2018-09~2019-12</span>
-            <span>社会人1年</span>
-          </div>
-          <span>
-            友達の会社で副業として、Pythonを利用してWeb自動化のお手伝い開始
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2019-01~2019-07</span>
-            <span>社会人1年</span>
-          </div>
-          <span>
-            研究開発部に異動になり、中小企業向けプロダクトのプログラマーとして、要件定義/デザイン/設計/開発を行う
-          </span>
-        </li>
-        <li>
-          <div>
-            <span>2019-07~</span>
-            <span>社会人2年</span>
-          </div>
-          <span>
-            新規プロダクトのプロジェクトに配属され、新規プロダクトの要件定義/デザインのフォローと新規プロダクト周りの2製品の企画を行う
-          </span>
-        </li>
-      </ul>
-    </div>
+    <li ref={ref} css={experienceStyle}>
+      <div className='year-area animation-target'>
+        <span>{props.year}</span>
+        <span>{props.schoolYear}</span>
+      </div>
+      <div className='child-area animation-target'>{props.children}</div>
+    </li>
   )
 }

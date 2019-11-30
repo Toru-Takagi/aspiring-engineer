@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@types/algoliasearch": "^3.34.5",

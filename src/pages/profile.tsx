@@ -8,13 +8,33 @@ import CssProperties from '../mixins/cssProperties'
 import DefaultLayout from '../templates/DefaultLayout'
 import Profile from '../components/molecules/Profile'
 import Qualifications from '../components/molecules/Qualifications'
-import Experience from '../components/molecules/Experience'
+import ExperienceArea from '../components/molecules/ExperienceArea'
 import Image from '../components/atoms/GatsbyImage'
 import ProfileSVG from '../components/atoms/ProfileSVG'
 
 export default () => {
   // URLの取得
   const url: string = typeof window !== 'undefined' ? window.location.href : ''
+
+  // rootのエレメント参照
+  const rootRef: React.RefObject<HTMLDivElement> = React.createRef()
+
+  // スクロール情報
+  const [scrollInfo, setScrollInfo]: [
+    { mainHeight: number; scrollTop: number },
+    React.Dispatch<{ mainHeight: number; scrollTop: number }>
+  ] = React.useState<{ mainHeight: number; scrollTop: number }>({
+    mainHeight: 0,
+    scrollTop: 0,
+  })
+
+  // スクロールイベント
+  const scroll: (e: React.UIEvent<HTMLDivElement>) => void = e => {
+    setScrollInfo({
+      mainHeight: rootRef.current != null ? rootRef.current.clientHeight : 0,
+      scrollTop: e.currentTarget.scrollTop,
+    })
+  }
 
   const profileLayout: SerializedStyles = css({
     'a > header': {
@@ -81,7 +101,7 @@ export default () => {
 
   return (
     <DefaultLayout>
-      <div css={profileLayout}>
+      <div ref={rootRef} css={profileLayout}>
         <Helmet>
           <title>高木徹とは？</title>
           <meta
@@ -110,10 +130,10 @@ export default () => {
             <ProfileSVG />
           </header>
         </Link>
-        <div className='profile-area'>
+        <div onScroll={scroll} className='profile-area'>
           <Profile />
           <Qualifications />
-          <Experience />
+          <ExperienceArea scrollInfo={scrollInfo} />
         </div>
       </div>
     </DefaultLayout>
