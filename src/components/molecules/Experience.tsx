@@ -13,7 +13,10 @@ export default () => {
     animation: `${transitionShowAnimation} 1s 2s`,
     animationFillMode: 'forwards',
     ul: {
-      paddingLeft: '100px',
+      paddingLeft: '150px',
+      [CssProperties.mediaQuery.isSp]: {
+        paddingLeft: '140px',
+      },
       li: {
         position: 'relative',
         borderLeft: `3px solid ${CssProperties.colors.white}`,
@@ -35,9 +38,13 @@ export default () => {
         },
         '> div': {
           position: 'absolute',
-          width: '80px',
-          left: '-100px',
+          width: '130px',
+          left: '-150px',
           textAlign: 'right',
+          [CssProperties.mediaQuery.isSp]: {
+            width: '120px',
+            left: '-140px',
+          },
           '> span': {
             '&:last-of-type': {
               color: 'rgba(255, 255, 255, 0.5)',
@@ -76,11 +83,11 @@ export default () => {
         </li>
         <li>
           <div>
-            <span>2014-04</span>
+            <span>2014-04~2018-03</span>
             <br />
             <span>大学1年</span>
           </div>
-          <span>埼玉にある大学の工学部 情報工学科に入学</span>
+          <span>埼玉にある大学の工学部 情報工学科に入学/卒業する</span>
         </li>
         <li>
           <div>
@@ -107,7 +114,8 @@ export default () => {
         </li>
         <li>
           <div>
-            <span>2016-10</span> <br />
+            <span>2016-10~2017-04</span>
+            <br />
             <span>大学3年</span>
           </div>
           <span>
@@ -116,21 +124,13 @@ export default () => {
         </li>
         <li>
           <div>
-            <span>2017-02</span>
+            <span>2017-02~2018-04</span>
             <br />
             <span>大学4年</span>
           </div>
           <span>
             一部上場の自社開発している会社で、内定者アルバイトとして開始
           </span>
-        </li>
-        <li>
-          <div>
-            <span>2017-04</span>
-            <br />
-            <span>大学4年</span>
-          </div>
-          <span>渋谷のWeb系ベンチャーのアルバイトを辞める</span>
         </li>
         <li>
           <div>
@@ -162,15 +162,7 @@ export default () => {
         </li>
         <li>
           <div>
-            <span>2018-03</span>
-            <br />
-            <span>大学4年</span>
-          </div>
-          <span>埼玉にある大学を卒業する</span>
-        </li>
-        <li>
-          <div>
-            <span>2018-04</span>
+            <span>2018-04~</span>
             <br />
             <span>社会人1年</span>
           </div>
@@ -178,11 +170,33 @@ export default () => {
         </li>
         <li>
           <div>
-            <span>2019-01</span>
+            <span>2018-09~2019-12</span>
             <br />
             <span>社会人1年</span>
           </div>
-          <span>研究開発部に異動になる</span>
+          <span>
+            友達の会社で副業として、Pythonを利用してWeb自動化のお手伝い開始
+          </span>
+        </li>
+        <li>
+          <div>
+            <span>2019-01~2019-07</span>
+            <br />
+            <span>社会人1年</span>
+          </div>
+          <span>
+            研究開発部に異動になり、中小企業向けプロダクトのプログラマーとして、要件定義/デザイン/設計/開発を行う
+          </span>
+        </li>
+        <li>
+          <div>
+            <span>2019-07~</span>
+            <br />
+            <span>社会人2年</span>
+          </div>
+          <span>
+            新規プロダクトのプロジェクトに配属され、新規プロダクトの要件定義/デザインのフォローと新規プロダクト周りの2製品の企画を行う
+          </span>
         </li>
       </ul>
     </div>
