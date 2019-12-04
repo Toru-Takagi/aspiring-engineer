@@ -31,6 +31,10 @@ export default (props: IProps) => {
         marginTop: 0,
       },
     },
+    h4: {
+      marginTop: '15px',
+      fontSize: '1.2rem',
+    },
     a: {
       color: CssProperties.colors.twitterColor,
       fontWeight: 'bold',
