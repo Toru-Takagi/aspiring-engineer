@@ -2,6 +2,7 @@ import * as React from 'react'
 import { css, SerializedStyles } from '@emotion/core'
 
 import CssProperties from '../../mixins/cssProperties'
+import { transitionShowAnimation } from '../../modules/animation'
 
 interface IProps {
   html: string
@@ -13,6 +14,10 @@ export default (props: IProps) => {
     padding: '50px 20px 20px 20px',
     width: '980px',
     height: 'auto',
+    opacity: 0,
+    transform: 'translateY(50)',
+    animation: `${transitionShowAnimation} 1s 2.3s`,
+    animationFillMode: 'forwards',
     color: CssProperties.colors.white,
     [CssProperties.mediaQuery.isPc]: {
       width: '100%',
