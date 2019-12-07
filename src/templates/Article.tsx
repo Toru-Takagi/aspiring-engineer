@@ -67,10 +67,15 @@ export default (props: IProps): React.ReactElement => {
     },
     '.tag-area': {
       margin: '0 auto 15px auto',
-      width: '980px',
+      width: '100%',
+      maxWidth: '980px',
       height: 'auto',
       display: 'flex',
+      flexWrap: 'wrap',
       justifyContent: 'center',
+      a: {
+        marginTop: '10px',
+      },
       span: {
         marginLeft: '3px',
         marginRight: '3px',
