@@ -10,7 +10,7 @@ export default () => {
     height: 'auto',
     opacity: 0,
     transform: 'translateY(50px)',
-    animation: `${transitionShowAnimation} 1s 1.5s`,
+    animation: `${transitionShowAnimation} 1s 2.8s`,
     animationFillMode: 'forwards',
   })
 

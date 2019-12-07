@@ -18,7 +18,7 @@ interface IProps {
 }
 
 export default (props: IProps): React.ReactElement => {
-  const [isShow]: [boolean] = useIsShow({ timer: props.index * 200 + 300 })
+  const [isShow]: [boolean] = useIsShow({ timer: props.index * 200 + 2300 })
 
   const articleWrapperStyle: SerializedStyles = css({
     flexBasis: '33%',
