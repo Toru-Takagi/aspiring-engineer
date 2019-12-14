@@ -1,10 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `エンジニアの卵の成長日記`,
+    description: `エンジニアの卵である高木徹が、日々得たプログラミングに関する技術を投稿する技術ブログです。`,
+    author: `Toru Takagi`,
+    siteUrl: 'https://blog.toru-takagi.dev/',
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
