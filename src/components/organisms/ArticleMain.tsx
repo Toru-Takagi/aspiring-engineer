@@ -16,7 +16,7 @@ export default (props: IProps) => {
     height: 'auto',
     opacity: 0,
     transform: 'translateY(50)',
-    animation: `${transitionShowAnimation} 1s 2.3s`,
+    animation: `${transitionShowAnimation} 1s 1s`,
     animationFillMode: 'forwards',
     color: CssProperties.colors.white,
     [CssProperties.mediaQuery.isPc]: {

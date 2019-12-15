@@ -13,6 +13,7 @@ import ScrollTransformArea from '../components/molecules/ScrollTransformArea'
 import ArticleArea from '../components/molecules/ArticleArea'
 import SearchArea from '../components/molecules/SearchArea'
 import AspiringEngineer from '../components/atoms/AspiringEngineer'
+import OpeningAnimation from '../components/atoms/openingAnimation'
 
 export default (): React.ReactElement => {
   // 記事情報をContentfullから取得して格納
@@ -147,6 +148,7 @@ export default (): React.ReactElement => {
           <meta name='twitter:card' content='summary' />
           <meta name='twitter:site' content='@TTrpbm' />
         </Helmet>
+        <OpeningAnimation />
         <Header
           imgPath='header'
           titleType='svg'

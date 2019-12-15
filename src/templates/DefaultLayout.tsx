@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import * as PropTypes from 'prop-types'
-import { Global, css, SerializedStyles, keyframes } from '@emotion/core'
+import { Global, css, SerializedStyles } from '@emotion/core'
 
 import { useToggleFlag, IToggleFlag } from '../modules/useToggleFlag'
 import CssProperties from '../mixins/cssProperties'
@@ -83,21 +83,6 @@ const Layout: (props: IProps) => React.ReactElement = props => {
     },
   })
 
-  const transitionAnimation = keyframes`
-    0% {
-      transform: translateY(0)
-    }
-    30% {
-      transfrom: translateY(-100vh)
-    }
-    40% {
-      transform: translateY(-100vh)
-    }
-    100% {
-      transform: translateY(-200vh)
-    }
-  `
-
   const defaultLayout: SerializedStyles = css({
     position: 'relative',
     padding: '20px 20px 0 20px',
@@ -125,43 +110,12 @@ const Layout: (props: IProps) => React.ReactElement = props => {
         },
       },
     },
-    '.transition-animation': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      zIndex: 10000,
-      width: '100vw',
-      height: '100vh',
-      animation: `${transitionAnimation} 1.5s 0.8s`,
-      animationTimingFunction: 'cubic-bezier(.51,0,.53,1)',
-      animationFillMode: 'forwards',
-      willChange: 'transform',
-      '.first-cover': {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        zIndex: 10001,
-        backgroundColor: CssProperties.colors.mainColor,
-      },
-      '.second-cover': {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        zIndex: 10002,
-        transform: 'translateY(100vh)',
-        backgroundColor: CssProperties.colors.subColor,
-      },
-    },
   })
 
   // デフォルトのレイアウトを描画する
   return (
     <div css={defaultLayout}>
       <Global styles={resetStyle} />
-      <div className='transition-animation'>
-        <div className='first-cover'></div>
-        <div className='second-cover'></div>
-      </div>
       <main className={toggleFlag ? '' : 'footer-open'}>{children}</main>
       <Footer />
     </div>
