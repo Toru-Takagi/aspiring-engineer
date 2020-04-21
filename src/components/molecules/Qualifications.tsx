@@ -21,12 +21,12 @@ export default () => {
         <dt>フロント</dt>
         <dd>
           HTML / Pug / CSS / SCSS / Stylus / AdminLTE / JavaScript / TypeScript
-          / Vue.js / Nuxt.js / VuePress / Vuetify / React / Gatsby / Riot /
-          jQuery
+          / Vue.js / Nuxt.js / VuePress / Vuetify / React / Gatsby / Next.js /
+          Riot / jQuery
         </dd>
         <dt>バックエンド</dt>
         <dd>
-          Node.js / Express / Java / PHP / Laravel / CakePHP / FuelPHP /
+          Go / Node.js / Express / Java / PHP / Laravel / CakePHP / FuelPHP /
           WordPress / Python / C / DxLib / VisualBasic
         </dd>
         <dt>アプリ</dt>
@@ -38,7 +38,7 @@ export default () => {
         </dd>
         <dt>インフラ</dt>
         <dd>
-          Docker / CentOS / Debian / Windows / MacOS / AWS EC2 / Firebase /
+          Docker / CentOS / Debian / Windows / MacOS / AWS / Firebase /
           さくらVPS / Netlify
         </dd>
         <dt>その他</dt>
