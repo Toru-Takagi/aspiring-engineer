@@ -91,9 +91,6 @@ module.exports = {
                 nodes {
                   id
                   title
-                  content {
-                    content
-                  }
                   category {
                     name
                   }
@@ -116,7 +113,6 @@ module.exports = {
                 return {
                   id: article.id,
                   title: article.title,
-                  content: article.content.content,
                   createNumber: article.createNumber,
                   sizes: article.coverImage.sizes,
                   category: article.category.map(cate => cate.name),
