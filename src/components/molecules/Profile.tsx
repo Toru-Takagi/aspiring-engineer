@@ -23,7 +23,7 @@ export default () => {
         <dt>性別</dt>
         <dd>男</dd>
         <dt>年齢</dt>
-        <dd>20代前半</dd>
+        <dd>20代後半</dd>
         <dt>プログラミング歴</dt>
         <dd>6年（社会人プログラミング歴：3年）</dd>
         <dt>SNS</dt>
@@ -49,7 +49,7 @@ export default () => {
             Mail
           </a>{' '}
           /{' '}
-          <a href='https://github.com/Kurowasi' target='_blank'>
+          <a href='https://github.com/Toru-Takagi' target='_blank'>
             GitHub
           </a>
         </dd>

@@ -119,14 +119,14 @@ export default (props: IProps) => {
         </Experience>
         <Experience
           year='2018-04~'
-          schoolYear='社会人1年'
+          schoolYear='社会人1年(1社目)'
           scrollInfo={props.scrollInfo}
         >
           <span>一部上場の自社開発している会社に入社</span>
         </Experience>
         <Experience
           year='2018-09~2019-12'
-          schoolYear='社会人1年'
+          schoolYear='社会人1年(1社目)'
           scrollInfo={props.scrollInfo}
         >
           <span>
@@ -135,7 +135,7 @@ export default (props: IProps) => {
         </Experience>
         <Experience
           year='2019-01~2019-07'
-          schoolYear='社会人1年'
+          schoolYear='社会人1年(1社目)'
           scrollInfo={props.scrollInfo}
         >
           <span>
@@ -143,12 +143,30 @@ export default (props: IProps) => {
           </span>
         </Experience>
         <Experience
-          year='2019-07~'
-          schoolYear='社会人2年'
+          year='2019-07~2020-01'
+          schoolYear='社会人2年(1社目)'
           scrollInfo={props.scrollInfo}
         >
           <span>
-            新規プロダクトのプロジェクトに配属され、新規プロダクトの要件定義/デザインのフォローと新規プロダクト周りの2製品の企画を行う
+            新規プロダクトのプロジェクトに配属され、新規プロダクトの要件定義/デザインのフォローと新規プロダクトのヘルプシステムの企画を行う
+          </span>
+        </Experience>
+        <Experience
+          year='2020-o1~2020-10'
+          schoolYear='社会人2年(1社目)'
+          scrollInfo={props.scrollInfo}
+        >
+          <span>
+            新規プロダクトの決済システムで技術スタックの選定(Next.js+Golang)、開発基盤の作成から開発まで行う
+          </span>
+        </Experience>
+        <Experience
+          year='2020-10~'
+          schoolYear='社会人3年(2社目)'
+          scrollInfo={props.scrollInfo}
+        >
+          <span>
+            友達の会社に転職し、新規プロダクトの初期開発メンバーとして参画
           </span>
         </Experience>
       </ul>
