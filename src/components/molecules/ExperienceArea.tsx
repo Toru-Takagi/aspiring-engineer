@@ -158,6 +158,8 @@ export default (props: IProps) => {
         >
           <span>
             新規プロダクトの決済システムで技術スタックの選定(Next.js+Golang)、開発基盤の作成から開発まで行う
+            <br />
+            ※プロジェクト遅延により、旧システムの改修へと方向転換あり
           </span>
         </Experience>
         <Experience
