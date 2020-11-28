@@ -27,7 +27,7 @@ export default () => {
         <dt>バックエンド</dt>
         <dd>
           Go / Node.js / Express / Java / PHP / Laravel / CakePHP / FuelPHP /
-          WordPress / Python / C / DxLib / VisualBasic
+          WordPress / Ruby / Ruby on Rails /Python / C / DxLib / VisualBasic
         </dd>
         <dt>アプリ</dt>
         <dd>Flutter</dd>
@@ -39,7 +39,7 @@ export default () => {
         <dt>インフラ</dt>
         <dd>
           Docker / CentOS / Debian / Windows / MacOS / AWS / Firebase /
-          さくらVPS / Netlify
+          さくらVPS / Netlify / CircleCI / Wercker / GitHub Actions
         </dd>
         <dt>その他</dt>
         <dd>Selenium / OOP / AOP</dd>
@@ -48,7 +48,7 @@ export default () => {
         <dt>ツール</dt>
         <dd>
           Visual Studio Code / Eclipse / Sublime Text3 / Visual Studio / XCode /
-          Android Studio / Slack / Figma
+          Android Studio / Slack / Figma / Jira / Backlog
         </dd>
         <dt>資格</dt>
         <dd>
