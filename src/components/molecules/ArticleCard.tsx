@@ -50,6 +50,7 @@ export default (props: IProps): React.ReactElement => {
         transform: 'scale(0)',
         willChange: 'opacity, transform',
         backgroundColor: CssProperties.colors.white,
+        overflowX: 'hidden',
         '&:hover': {
           boxShadow: '8px 16px 8px 4px rgba(0, 0, 0, 0.5)',
         },
