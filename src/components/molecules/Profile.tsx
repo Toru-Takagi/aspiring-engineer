@@ -25,7 +25,7 @@ export default () => {
         <dt>年齢</dt>
         <dd>20代後半</dd>
         <dt>プログラミング歴</dt>
-        <dd>6年（社会人プログラミング歴：3年）</dd>
+        <dd>6年（社会人プログラミング歴：4年）</dd>
         <dt>SNS</dt>
         <dd>
           <Link to='/'>技術ブログ</Link> /
