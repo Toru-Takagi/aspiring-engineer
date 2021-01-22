@@ -70,7 +70,7 @@ export default (props: IProps) => {
           scrollInfo={props.scrollInfo}
         >
           <span>
-            小学校の同窓会で再会した旧友の会社でWebエンジニアとして参加
+            小学校の同窓会で再会した友達Aの会社でWebエンジニアとして参加
           </span>
         </Experience>
         <Experience
@@ -130,7 +130,7 @@ export default (props: IProps) => {
           scrollInfo={props.scrollInfo}
         >
           <span>
-            友達の会社で副業として、Pythonを利用してWeb自動化のお手伝い開始
+            友達Bの会社で副業として、Pythonを利用してWeb自動化のお手伝い開始
           </span>
         </Experience>
         <Experience
@@ -168,7 +168,7 @@ export default (props: IProps) => {
           scrollInfo={props.scrollInfo}
         >
           <span>
-            友達の会社に転職し、新規プロダクトの初期開発メンバーとして参画
+            友達Aの会社に転職し、新規プロダクトの初期開発メンバーとして参画
             <br />
             ※役職：Senior Technical Director
           </span>
