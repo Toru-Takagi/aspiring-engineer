@@ -173,6 +173,19 @@ export default (props: IProps) => {
             ※役職：Senior Technical Director
           </span>
         </Experience>
+        <Experience
+          year='2021-02'
+          schoolYear='社会人3年(2社目)'
+          scrollInfo={props.scrollInfo}
+        >
+          <span>
+            友達と遊ぶハードルを下げる、日程調整ツール
+            <a href='https://togello.toru-takagi.dev/' target='_blank'>
+              Togello (Web)
+            </a>
+            を公開
+          </span>
+        </Experience>
       </ul>
     </div>
   )
