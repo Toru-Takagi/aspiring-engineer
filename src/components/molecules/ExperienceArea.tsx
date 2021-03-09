@@ -98,7 +98,11 @@ export default (props: IProps) => {
         >
           <span>
             仮想通貨のポートフォリオアプリ
-            <a href='https://docheck.kurowasi.com' target='_blank'>
+            {/* <a href='https://docheck.kurowasi.com' target='_blank'> */}
+            <a
+              href='https://twitter.com/TTrpbm/status/961914140888465409?s=20'
+              target='_blank'
+            >
               DoCheck(非公開)
             </a>
             を公開
