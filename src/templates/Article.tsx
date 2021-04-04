@@ -84,6 +84,20 @@ export default (props: IProps): React.ReactElement => {
         width: '100%',
       },
     },
+    '.promotion': {
+      marginTop: '30px',
+      padding: '10px',
+      width: '100%',
+      height: 'auto',
+      backgroundColor: CssProperties.colors.white,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      a: {
+        marginRight: '10px',
+        fontSize: '1.6rem',
+        color: CssProperties.colors.accentColor,
+      },
+    },
   })
 
   // 記事詳細ページを描画
@@ -128,6 +142,14 @@ export default (props: IProps): React.ReactElement => {
               </Link>
             )
           })}
+        </div>
+        <div className='promotion'>
+          <p>
+            <a href='http://togello.toru-takagi.dev' target='_blank'>
+              Togello
+            </a>
+            というサービスをリリースいたしました。
+          </p>
         </div>
       </div>
     </Layout>
